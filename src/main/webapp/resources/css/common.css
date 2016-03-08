@@ -254,6 +254,7 @@ nav {
 .mainContainer section .mainData .commentAdd .likeBtn {
 	float:left;
 	margin-right: 10px;
+	cursor: pointer;
 }
 
 
@@ -262,6 +263,7 @@ nav {
 .mainContainer section .mainData .commentAdd .more {
 	padding-top: 5px;
 	float:right;
+	cursor:pointer;
 }
 
 .mainContainer section .mainData .commentAdd .more img {
