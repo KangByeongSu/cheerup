@@ -43,5 +43,11 @@ public class HomeController {
 		
 		return "view";
 	}
+	@RequestMapping(value = "/writeContent", method = RequestMethod.GET)
+	public String writeContent(Locale locale, Model model) {
+
+		
+		return "writeContent";
+	}
 	
 }
