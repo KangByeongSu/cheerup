@@ -2,21 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skplanet.bootcamp.project2">
-	<!-- <select id="getMember" resultType="com.skplanet.bootcamp.member.model.Member">
+	
+
+	
+	 <select id="getComment" resultType="com.skplanet.project2.feed.model.commentDTO">
 		SELECT
-			member_number memberNumber,
-			name name,
-			phone_number phoneNumber,
-			address address,
-			blood_type bloodType,
-			member_type_code memberTypeCode
+			cm_id id,
+			Elephant_User_u_id userId,
+			Elephant_Contents_c_id contentId,
+			cm_time time,
+			cm_content message
 		FROM
-			member_info
+			Elephant_Comment
 		WHERE
-			member_type_code=#{memberTypeCode}
+			Elephant_Contents_c_id=#{contentId}
 	</select>	
 	
-	<insert id="insertMember" parameterType="com.skplanet.bootcamp.member.model.Member" >
+	<!-- <insert id="insertMember" parameterType="com.skplanet.bootcamp.member.model.Member" >
 		INSERT INTO member_info (name, phone_number, address, blood_type, member_type_code) 
 		VALUES (#{name}, #{phoneNumber}, #{address}, #{bloodType}, #{memberTypeCode});
     </insert>
@@ -28,7 +30,7 @@
 			image_path=#{imagePath}
 		WHERE
 			member_number=#{memberNumber}
-    </update>
-     -->
+    </update> -->
+
     
 </mapper>
