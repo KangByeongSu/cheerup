@@ -266,6 +266,23 @@ nav {
 .mainContainer section .mainData .commentAdd .more img {
 	width: 32px;
 }
+
+.mainContainer .moreFeed {
+	width:120px;
+	height:120px;
+	border-radius:100%;
+    text-align:center;
+    line-height:120px;
+	border:2px solid #4090db;	
+	font-size:13px;	
+	color: #3079d6;
+	margin: 20px 0px 20px 240px;
+}
+
+.mainContainer .moreFeed:hover {
+	border:2px solid #125688;
+	color: #125688;		
+}
     
 
 

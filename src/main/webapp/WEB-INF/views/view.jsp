@@ -70,7 +70,6 @@
 						</div>
 					</div>
 				</div>
-				
 			</section>
 			
 			<section>
@@ -121,8 +120,11 @@
 						</div>
 					</div>
 				</div>
-				
 			</section>
+			
+			<div class="moreFeed">
+				<span class="moreText"> 더 읽어들이기 </span>
+			</div>
 		</div>
 	</div>
 </body>
