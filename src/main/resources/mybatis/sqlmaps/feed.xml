@@ -4,15 +4,8 @@
 <mapper namespace="com.skplanet.project2">
 	
 	
-	private String message;
-	private String imgurl;
-	private String createTime;
-	private int feedId;
-	private int userId;
-	private List<CommentDTO> commentList;
-	private List<Integer> upUserList;
-	private List<Integer> downUserList;
-	<resultMap id="FeedResult" type="com.skplanet.project2.FeedDTO">
+
+	<resultMap id="FeedResultMap" type="com.skplanet.project2.FeedDTO">
 		<result property="message" column="c_comment" />
 		<result property="imgurl" column="c_imgurl" />
 		<result property="createTime" column="c_time" />
@@ -20,25 +13,89 @@
 		<result property="userId" column="Elephant_User_u_id" />
 		
 		<collection property="commentList" column="Elephant_Contents_c_id" javaType="java.util.ArrayList"
-			ofType="com.skplanet.project2.feed.model" select="getCommentList" />
+			ofType="com.skplanet.project2.feed.model.CommentDTO" resultMap="CommentResultMap" />
 			
-		<collection property="upUserList" column="Integer" javaType="java.util.ArrayList"
-			ofType="com.skplanet.project2.feed.model" select="getCommentList" />
-			
-		<collection property="upUserList" column="Integer" javaType="java.util.ArrayList"
-			ofType="int" select="getCommentList" />
 	</resultMap>
+	
+	<resultMap id="CommentResultMap" type="com.skplanet.project2.CommentDTO">
+		<id property="commentsId" column="cm_id"/>
+		<result property="userId" column="Elephant_User_u_id"/>
+		<result property="time" column="cm_time"/>
+		<result property="message" column="cm_content"/>
+	</resultMap>
+	
+	
+	
+	
+	
 	 
-	<select id="getFeed" resultMap="FeedResult">
+	<select id="getFeed" resultMap="FeedResultMap">
 		    SELECT 
-		    FROM  
-		    WHERE 
+			c_comment,
+			c_imgurl,
+			c_time,
+			c_id,
+			contents.Elephant_User_u_id Elephant_User_u_id,
+			cm_id,
+			cm_time,
+			cm_content
+			
+			
+		    FROM
+		      Elephant_Contents contents
+		      join 
+		      Elephant_Comment comments
+		      on contents.c_id = comments.Elephant_Contents_c_id
+		      
+		      
+		      
+		    LIMIT 
+				#{limitStart}, 5
+		    
 	</select>
-	<select id="getCommentList" resultType="net.krespo.mybatis.Comment">
-		    SELECT   
-			FROM Elephant_Comment
-		 	WHERE boardid =
-		#{Elephant_Contents_c_id}
+	
+	<select id="getUpUserId" resultType="Integer">
+		    
+			SELECT 
+			Elephant_User_u_id
+			
+		    FROM
+		    Elephant_Like
+		    
+			WHERE
+			Elephant_Contents_c_id=#{feedId}		      
+		    AND
+		    l_up=1
+		    
+	</select>
+	
+	<select id="getDownUserId" resultType="Integer">
+		    
+			SELECT 
+			Elephant_User_u_id
+			
+		    FROM
+		    Elephant_Like
+		    
+			WHERE
+			Elephant_Contents_c_id=#{feedId}		      
+		    AND
+		    l_down=1
+		    
+	</select>
+	
+	<!-- 
+	<select id="getCommentList" resultType="com.skplanet.project2.feed.model.CommentDTO">
+		SELECT
+			cm_id id,
+			Elephant_User_u_id userId,
+			Elephant_Contents_c_id contentId,
+			cm_time time,
+			cm_content message
+		FROM
+			Elephant_Comment
+		WHERE
+			Elephant_Contents_c_id=#{contentId}
 	</select>
 	
 
@@ -56,7 +113,7 @@
 		LIMIT 
 			limitStart, 5
 			
-	</select>	
+	</select>	 -->
 	
 	<!-- <insert id="insertMember" parameterType="com.skplanet.bootcamp.member.model.Member" >
 		INSERT INTO member_info (name, phone_number, address, blood_type, member_type_code) 

@@ -18,8 +18,17 @@ public class FeedDAOImpl implements FeedDAO {
 	
 		int limitStart=(pageNo-1)*5;
 		
+		List<FeedDTO> feedList=sqlSession.selectList("feed.getFeed", limitStart);
 		
-		return sqlSession.selectList("feed.getFeed", limitStart);
+		for (FeedDTO feedDTO : feedList) {
+			List<Integer> upUserIdList=sqlSession.selectList("feed.getUpUserId", feedDTO.getFeedId());
+			List<Integer> downUserIdList=sqlSession.selectList("feed.getDownUserId", feedDTO.getFeedId());
+			
+			feedDTO.setUpUserList(upUserIdList);
+			feedDTO.setUpUserList(downUserIdList);
+		}
+	
+		return feedList;
 	}
 
 	
