@@ -88,7 +88,7 @@ nav {
 	.mainContainer section .mainData .content .text {
 		margin-top:5px;
 		text-decoration: none;
-	    font-size: 15px;
+	    font-size: 90%;
 	    line-height: 22px;
 	    margin-right: 5px;
 	    font-weight: 450;
@@ -131,7 +131,7 @@ nav {
 	.mainContainer section .mainData .content .text {
 		margin-top:5px;
 		text-decoration: none;
-	    font-size: 15px;
+	    font-size: 90%;
 	    line-height: 22px;
 	    margin-right: 5px;
 	    font-weight: 450;
@@ -232,7 +232,7 @@ nav {
 .mainContainer section .mainData .content .text .userId {
 	color: #125688;
 	font-weight: 600;
-	margin-right: 20px;
+	margin-right: 5px;
 }
 
 .mainContainer section .mainData .content .text .hashtag {
