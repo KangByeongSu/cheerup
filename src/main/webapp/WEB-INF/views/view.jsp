@@ -24,7 +24,7 @@
 			<section>
 				<div class="nav">
 					<div class="userImg">
-						 <img src="https://scontent.cdninstagram.com/t51.2885-19/s150x150/12797646_1586114025041720_1619955416_a.jpg" />
+						 <img src="https://igcdn-photos-g-a.akamaihd.net/hphotos-ak-xft1/t51.2885-19/s150x150/12552423_441484902713862_1832731177_a.jpg" />
 						 <span class="userId">
 						 	akdung21
 						 </span>
@@ -48,8 +48,16 @@
 							비싼데 이쁘긴하네~ 물 많이 마시자!!💦 <br>
 							<span class="hashtag">#스타벅스</span> <span class="hashtag">#STARBUCKS</span>  <span class="hashtag">#텀블러</span>  <span class="hashtag">#써니보틀</span>  <span class="hashtag">#물병</span> 
 						</div>
-						<div class="comment">
-						
+					</div>
+					<div class="comment">
+						<div class="likeBtn">
+							<img src="<c:url value='/resources/img/like_.png' />" />
+						</div>
+						<div>
+							<input class="commentInput" type="text" placeholder="댓글달기..." />
+						</div>
+						<div class="more">
+							<img src="<c:url value='/resources/img/moreBtn.png' />" />
 						</div>
 					</div>
 				</div>

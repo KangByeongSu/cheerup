@@ -98,7 +98,7 @@ nav .content {
 
 
 .mainContainer section .mainData {
-	padding: 0px 24px 20px 24px;
+	padding: 0px 24px 0px 24px;
 	
 }
 
@@ -113,10 +113,9 @@ nav .content {
 	height:18px;
 }
 
-.mainContainer section .mainData .content {
-	border-bottom: 1px solid #eeefef;
-	padding-bottom: 20px;
-}
+/* .mainContainer section .mainData .content {
+	padding-bottom: 15px;
+} */
 
 .mainContainer section .mainData .content .text {
 	margin-top:5px;
@@ -130,6 +129,8 @@ nav .content {
     text-overflow: ellipsis;
     white-space: nowrap;
 	color: #4b4f54;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #eeefef;
 }
 
 
@@ -143,8 +144,37 @@ nav .content {
 }
 
 
-	
-	
-	
-	
+.mainContainer section .mainData .comment {
+	padding-top: 20px;
+	height: 40px;	
 }
+
+.mainContainer section .mainData .comment .likeBtn {
+	float:left;
+	margin-right: 10px;
+}
+
+
+.mainContainer section .mainData .comment .commentInput {
+	float:left;
+	border: 0px;
+	height: 18px;
+	font-size: 15px;
+    line-height: 18px;
+    outline: none;
+	width: 80%;
+    font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.mainContainer section .mainData .comment .more {
+	padding-top: 5px;
+}
+
+.mainContainer section .mainData .comment .more img {
+	width: 32px;
+}
+    
+
+
+
+
