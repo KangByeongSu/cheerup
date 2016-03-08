@@ -1,47 +1,43 @@
 package com.skplanet.project2.feed.model;
 
 public class ContentDTO {
+
+	private String message;
+	private String imgurl;
+	private String createTime;
+	private int feedId;
+	private int userId;
 	
-	private int id;
-	private String  userId;
-	private String  comment;
-	private String  imgUrl;
-	private String  time;
 	
-	
-	public int getId() {
-		return id;
+	public String getMessage() {
+		return message;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-	public String getUserId() {
+	public String getImgurl() {
+		return imgurl;
+	}
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+	public int getFeedId() {
+		return feedId;
+	}
+	public void setFeedId(int feedId) {
+		this.feedId = feedId;
+	}
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	public String getImgUrl() {
-		return imgUrl;
-	}
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
-	}
-	public String getTime() {
-		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
-	}
-	
-
-
-
 	
 }
