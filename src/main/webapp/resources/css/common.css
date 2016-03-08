@@ -82,7 +82,7 @@ nav {
 	    line-height: 18px;
 	    outline: none;
 	    background-color: #fafafa;
-		width: 80%;
+		width: 60%;
 	    font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	}
 	.mainContainer section .mainData .content .text {
@@ -260,6 +260,7 @@ nav {
 
 .mainContainer section .mainData .commentAdd .more {
 	padding-top: 5px;
+	float:right;
 }
 
 .mainContainer section .mainData .commentAdd .more img {
