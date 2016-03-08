@@ -4,6 +4,7 @@
 <html>
 <head>
 	<title>Home</title>
+	<meta id="viewport" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="<c:url value='/resources/css/common.css' />" type="text/css" />
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
