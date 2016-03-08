@@ -116,6 +116,7 @@ nav {
 	    margin-top: 55px;
 		border: 1px solid #edeeee;
 		background-color: #fff;
+		margin-bottom:25px;
 	}
 	.mainContainer section .mainData .commentAdd .commentInput {
 		float:left;
@@ -276,7 +277,7 @@ nav {
 	border:2px solid #4090db;	
 	font-size:13px;	
 	color: #3079d6;
-	margin: 20px 0px 20px 240px;
+	margin: 0 auto;
 }
 
 .mainContainer .moreFeed:hover {
