@@ -14,7 +14,7 @@
 				<div class="logo">
 					<img src="<c:url value='/resources/img/instagram.png' />" />
 				</div>
-				<div class="personInfo">
+				<div class="personInfo userId">
 					akdung21
 				</div>
 			</div>
@@ -48,8 +48,16 @@
 							비싼데 이쁘긴하네~ 물 많이 마시자!!💦 <br>
 							<span class="hashtag">#스타벅스</span> <span class="hashtag">#STARBUCKS</span>  <span class="hashtag">#텀블러</span>  <span class="hashtag">#써니보틀</span>  <span class="hashtag">#물병</span> 
 						</div>
+						<div class="comment">
+							<div class="commentList">
+								<p><span class="userId">akdung21</span> 우왕~~~😍😍</p>
+								<p><span class="userId">joao.marcos.mt</span> 😍😘😘</p>
+								
+							</div>
+							
+						</div>
 					</div>
-					<div class="comment">
+					<div class="commentAdd">
 						<div class="likeBtn">
 							<img src="<c:url value='/resources/img/like_.png' />" />
 						</div>
