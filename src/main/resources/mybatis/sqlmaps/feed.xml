@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skplanet.project2">
+	
+	
+	private String message;
+	private String imgurl;
+	private String createTime;
+	private int feedId;
+	private int userId;
+	private List<CommentDTO> commentList;
+	private List<Integer> upUserList;
+	private List<Integer> downUserList;
+	<resultMap id="FeedResult" type="com.skplanet.project2.FeedDTO">
+		<result property="message" column="c_comment" />
+		<result property="imgurl" column="c_imgurl" />
+		<result property="createTime" column="c_time" />
+		<result property="feedId" column="c_id" />
+		<result property="userId" column="Elephant_User_u_id" />
+		
+		<collection property="commentList" column="Elephant_Contents_c_id" javaType="java.util.ArrayList"
+			ofType="com.skplanet.project2.feed.model" select="getCommentList" />
+			
+		<collection property="upUserList" column="Integer" javaType="java.util.ArrayList"
+			ofType="com.skplanet.project2.feed.model" select="getCommentList" />
+			
+		<collection property="upUserList" column="Integer" javaType="java.util.ArrayList"
+			ofType="int" select="getCommentList" />
+	</resultMap>
+	 
+	<select id="getFeed" resultMap="FeedResult">
+		    SELECT 
+		    FROM  
+		    WHERE 
+	</select>
+	<select id="getCommentList" resultType="net.krespo.mybatis.Comment">
+		    SELECT   
+			FROM Elephant_Comment
+		 	WHERE boardid =
+		#{Elephant_Contents_c_id}
+	</select>
+	
+
+	 <select id="getContent" resultType="com.skplanet.project2.feed.model.ContentDTO">
+		SELECT
+			c_comment message,
+			c_imgurl imgurl,
+			c_time createTime,
+			c_id feedId,
+			Elephant_User_u_id userId,
+			cm_content message
+		FROM
+			Elephant_Contents
+			
+		LIMIT 
+			limitStart, 5
+			
+	</select>	
+	
+	<!-- <insert id="insertMember" parameterType="com.skplanet.bootcamp.member.model.Member" >
+		INSERT INTO member_info (name, phone_number, address, blood_type, member_type_code) 
+		VALUES (#{name}, #{phoneNumber}, #{address}, #{bloodType}, #{memberTypeCode});
+    </insert>
+    
+    <update id="updateMemberImg" parameterType="com.skplanet.bootcamp.member.model.Member" >
+		UPDATE
+			member_info
+		SET
+			image_path=#{imagePath}
+		WHERE
+			member_number=#{memberNumber}
+    </update> -->
+
+    
+</mapper>
