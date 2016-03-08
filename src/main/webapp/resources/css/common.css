@@ -13,37 +13,148 @@ nav {
 	background-color: #fff;
 }
 
-nav .content {
-	width:600px;
-	margin: 0 auto;
-	padding-top:25px;
+@media not screen and (min-width : 431px) and (min-device-width: 431px)  {
+	.content .logo img {
+		height:28px;
+	}
+	.content .personInfo {
+		float:right;
+	    padding-top: 5px;
+	    margin-right: 20px;
+	    font-size:13px;
+	}
+	nav .content {
+		width:100%;
+		margin: 0 auto;
+		padding-top:25px;
+	}
 }
+
+@media screen and (min-width : 431px) and (min-device-width: 431px)  {
+	.content .logo img {
+		height:38px;
+	}
+	.content .personInfo {
+		float:right;
+	    padding-top: 8px;
+	    margin-right: 20px;
+	}
+	nav .content {
+		width:100%;
+		margin: 0 auto;
+		padding-top:20px;
+	}
+		
+}
+
+@media not screen and (min-width : 601px) and (min-device-width: 601px)  {
+	@media not screen and (min-width : 431px) and (min-device-width: 431px)  {
+		nav .content {
+			width:100%;
+			margin: 0 auto;
+			padding-top:25px;
+		}
+	}
+	
+	@media screen and (min-width : 431px) and (min-device-width: 431px)  {
+		nav .content {
+			width:100%;
+			margin: 0 auto;
+			padding-top:20px;
+		}
+	}
+	.mainContainer {
+		margin: 0 auto;
+		width: 100%;
+		
+	}
+	.mainContainer section {
+	    margin-top: 2%;
+		border: 0px;
+		margin-bottom:9%
+	}
+	
+	.mainContainer section .mainData .commentAdd .commentInput {
+		float:left;
+		border: 0px;
+		height: 18px;
+		font-size: 15px;
+	    line-height: 18px;
+	    outline: none;
+	    background-color: #fafafa;
+		width: 80%;
+	    font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	}
+	.mainContainer section .mainData .content .text {
+		margin-top:5px;
+		text-decoration: none;
+	    font-size: 15px;
+	    line-height: 22px;
+	    margin-right: 5px;
+	    font-weight: 450;
+	    overflow: hidden;
+	    text-align: left;
+		color: #4b4f54;
+		
+	}
+}
+
+
+@media screen and (min-width : 601px) and (min-device-width: 601px){
+	nav .content {
+		width:600px;
+		margin: 0 auto;
+		padding-top:20px;
+	}
+	
+	.mainContainer {
+		margin: 0 auto;
+		width: 600px;
+
+	}
+	.mainContainer section {
+	    margin-top: 55px;
+		border: 1px solid #edeeee;
+		background-color: #fff;
+	}
+	.mainContainer section .mainData .commentAdd .commentInput {
+		float:left;
+		border: 0px;
+		height: 18px;
+		font-size: 15px;
+	    line-height: 18px;
+	    outline: none;
+		width: 80%;
+	    font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	}
+	
+	.mainContainer section .mainData .content .text {
+		margin-top:5px;
+		text-decoration: none;
+	    font-size: 15px;
+	    line-height: 22px;
+	    margin-right: 5px;
+	    font-weight: 450;
+	    overflow: hidden;
+	    text-align: left;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+		color: #4b4f54;
+		
+	}
+}
+
 
 .content .logo {
 	float:left;
+	padding-left:10px;
 }
 
-.content .logo img {
-	width:102px;
-	height:28px;
-}
 
-.content .personInfo {
-	float:right;
-    padding-top: 3px;
-    margin-right: 20px;
-}
 
-.mainContainer {
-	margin: 0 auto;
-	width: 600px;
-	background-color:#fff;
-}
 
-.mainContainer section {
-    margin-top: 55px;
-	border: 1px solid #edeeee;
-}
+
+
 .mainContainer section .nav {
 	height: 36px;
 	padding: 14px 20px;
@@ -115,20 +226,7 @@ nav .content {
 	border-bottom: 1px solid #eeefef;
 }
 
-.mainContainer section .mainData .content .text {
-	margin-top:5px;
-	text-decoration: none;
-    font-size: 15px;
-    line-height: 22px;
-    margin-right: 5px;
-    font-weight: 450;
-    overflow: hidden;
-    text-align: left;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-	color: #4b4f54;
-	
-}
+
 
 
 .mainContainer section .mainData .content .text .userId {
@@ -158,16 +256,7 @@ nav .content {
 }
 
 
-.mainContainer section .mainData .commentAdd .commentInput {
-	float:left;
-	border: 0px;
-	height: 18px;
-	font-size: 15px;
-    line-height: 18px;
-    outline: none;
-	width: 80%;
-    font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-}
+
 
 .mainContainer section .mainData .commentAdd .more {
 	padding-top: 5px;
@@ -177,6 +266,8 @@ nav .content {
 	width: 32px;
 }
     
+
+
 
 
 
