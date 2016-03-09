@@ -17,18 +17,18 @@ public class FeedController {
 	@Autowired
 	FeedService feedService;
 	
-//	
-//	@RequestMapping(value="/lists",method=RequestMethod.GET)
-//	public @ResponseBody FeedResultDTO getFeedLists(@RequestParam int pageNo){
-//
-//		
-//		FeedResultDTO result=new FeedResultDTO();
-//		result.setIsSuccess(1);
-//		result.setMsg("success");
-//		result.setFeedList(feedService.getFeedlists(pageNo));
-//		return result;
-//	}
-//	
+	
+	@RequestMapping(value="/lists",method=RequestMethod.GET)
+	public @ResponseBody FeedResultDTO getFeedLists(@RequestParam int pageNo){
+
+		
+		FeedResultDTO result=new FeedResultDTO();
+		result.setIsSuccess(1);
+		result.setMsg("success");
+		result.setFeedList(feedService.getFeedlists(pageNo));
+		return result;
+	}
+	
 	
 	
 

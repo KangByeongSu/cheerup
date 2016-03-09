@@ -13,7 +13,7 @@
 		<result property="userId" column="Elephant_User_u_id" />
 		
 		<collection property="commentList" column="Elephant_Contents_c_id" javaType="java.util.ArrayList"
-			ofType="com.skplanet.project2.feed.model.CommentDTO" resultMap="CommentResultMap" />
+			ofType="com.skplanet.project2.model.CommentDTO" resultMap="CommentResultMap" />
 			
 	</resultMap>
 	
@@ -84,8 +84,8 @@
 		    
 	</select>
 	
-	<!-- 
-	<select id="getCommentList" resultType="com.skplanet.project2.feed.model.CommentDTO">
+	
+	<select id="getCommentList" resultType="com.skplanet.project2.model.CommentDTO">
 		SELECT
 			cm_id id,
 			Elephant_User_u_id userId,
@@ -99,7 +99,7 @@
 	</select>
 	
 
-	 <select id="getContent" resultType="com.skplanet.project2.feed.model.ContentDTO">
+	 <select id="getContent" resultType="com.skplanet.project2.model.ContentDTO">
 		SELECT
 			c_comment message,
 			c_imgurl imgurl,
@@ -113,21 +113,9 @@
 		LIMIT 
 			limitStart, 5
 			
-	</select>	 -->
+	</select>	
 	
-	<!-- <insert id="insertMember" parameterType="com.skplanet.bootcamp.member.model.Member" >
-		INSERT INTO member_info (name, phone_number, address, blood_type, member_type_code) 
-		VALUES (#{name}, #{phoneNumber}, #{address}, #{bloodType}, #{memberTypeCode});
-    </insert>
-    
-    <update id="updateMemberImg" parameterType="com.skplanet.bootcamp.member.model.Member" >
-		UPDATE
-			member_info
-		SET
-			image_path=#{imagePath}
-		WHERE
-			member_number=#{memberNumber}
-    </update> -->
+	
 
     
 </mapper>
