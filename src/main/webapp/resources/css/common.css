@@ -318,8 +318,6 @@ nav {
 }
     
 
-
-
 .loginBox .logo img {
 	width:171px;
 	height:49px;
@@ -341,8 +339,18 @@ nav {
     font-size:14px;
 }
 
+.loginBox .formBox .loginBtn {
+	padding-bottom:5px;
+}
+
 .loginBox .formBox .loginBtn input {
 	background-color:#4090db;
+	color:#fff;
+	font-weight:600;
+}
+
+.loginBox .formBox .joinBtn input {
+	background-color:#e0373c;
 	color:#fff;
 	font-weight:600;
 }
