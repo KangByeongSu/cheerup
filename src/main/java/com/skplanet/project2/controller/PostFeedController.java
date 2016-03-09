@@ -8,15 +8,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skplanet.project2.model.PostFeedDTO;
 import com.skplanet.project2.model.Result;
-import com.skplanet.project2.service.PostFeedServiceImpl;
-
+import com.skplanet.project2.service.PostFeedService;
 
 @Controller
 @RequestMapping("/feed")
 public class PostFeedController {
 	
 	@Autowired
-	PostFeedServiceImpl feedservice;
+	PostFeedService feedservice;
 	
 	@Autowired
 	Result jsonResult;
