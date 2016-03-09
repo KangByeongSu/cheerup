@@ -1,0 +1,319 @@
+body {
+	margin:0px;
+	background-color: #fafafa;
+}
+p {
+	margin:0px;
+}
+
+nav {
+	width:100%;
+	height:78px;
+	border-bottom: 1px solid #edeeee;
+	background-color: #fff;
+}
+
+@media not screen and (min-width : 431px) and (min-device-width: 431px)  {
+	.content .logo img {
+		height:28px;
+	}
+	.content .personInfo {
+		float:right;
+	    padding-top: 5px;
+	    margin-right: 20px;
+	    font-size:13px;
+	}
+	nav .content {
+		width:100%;
+		margin: 0 auto;
+		padding-top:25px;
+	}
+}
+
+@media screen and (min-width : 431px) and (min-device-width: 431px)  {
+	.content .logo img {
+		height:38px;
+	}
+	.content .personInfo {
+		float:right;
+	    padding-top: 8px;
+	    margin-right: 20px;
+	}
+	nav .content {
+		width:100%;
+		margin: 0 auto;
+		padding-top:20px;
+	}
+		
+}
+
+@media not screen and (min-width : 936px) and (min-device-width: 936px)  {
+	@media not screen and (min-width : 431px) and (min-device-width: 431px)  {
+		nav .content {
+			width:100%;
+			margin: 0 auto;
+			padding-top:25px;
+		}
+	}
+	
+	@media screen and (min-width : 431px) and (min-device-width: 431px)  {
+		nav .content {
+			width:100%;
+			margin: 0 auto;
+			padding-top:20px;
+		}
+	}
+	.mainContainer {
+		margin: 0 auto;
+		width: 100%;
+		padding-top:40px;
+	}
+}
+
+
+@media screen and (min-width : 936px) and (min-device-width: 936px){
+	nav .content {
+		width:935px;
+		margin: 0 auto;
+		padding-top:20px;
+	}
+	
+	.mainContainer {
+		margin: 0 auto;
+		width: 935px;
+		padding-top:40px;
+	}
+}
+
+
+.content .logo {
+	float:left;
+	padding-left:10px;
+}
+
+.userId {
+	color: #125688;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 22px;
+    
+    font-weight: 600;
+    overflow: hidden;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media not screen and (min-width : 736px) and (min-device-width: 736px)  {
+	.mainContainer {
+	    padding-top: 10px;
+	}
+	.mainContainer .navbar {
+		padding: 20px 0px;
+	    height: 75px;
+	    margin-bottom: 10px;
+	}
+	
+	.mainContainer .navbar .userImg {
+		float:left;	
+		margin:0px 30px;
+	}
+	
+	.mainContainer .navbar .userImg img {
+		width: 77px;
+		height:77px;
+		border-radius:100%;
+		border: 1px solid #edeeee;
+	}
+	
+	.mainContainer .navbar .userInfo {
+		margin-top: 0px;
+	}
+	
+	.mainContainer .navbar .userId_ {
+		width: 600px;
+	    height: 43px;
+	}
+	
+	.mainContainer .navbar .userId__ {
+		float: left;
+	    font-size: 19px;
+	    line-height: 40px;
+	    color: #4b4f54;
+	    font-weight: 300;
+	    margin-right: 13px;
+	}
+	.mainContainer .navbar .userId_ .modifyBtn {
+		float: left;
+	    width: 57px;
+	    height: 13px;
+	    border: 1px solid #818488;
+	    border-radius: 4px;
+	    color: #818488;
+	    padding: 5px 11px;
+	    font-size: 12px;
+	    margin-top: 6px;
+	    cursor: pointer;
+
+	}
+	
+	.mainContainer .navbar .userIntro {
+		color: #4b4f54;
+	    display: inline;
+	    font-weight: 600;
+	    font-size: 15px;
+	    line-height: 14px;
+	}
+	
+	.mainContainer .navbar .userIntro .hashtag {
+		font-weight:400;
+		color: #125688;
+	}
+	@media not screen and (min-width : 450px) and (min-device-width: 450px)  {
+		.mainContainer .navbar .userHistory {
+			clear:both;
+		}
+		.mainContainer .navbar .userHistory div{
+			float: left;
+		    margin-right: 35px;
+		    font-weight: 400;
+		}
+		    
+		    
+		.mainContainer .navbar .userHistory{
+			line-height: 33px;
+	    	font-size: 13px;
+		}
+		
+		.mainContainer .navbar .userHistory .num {
+			font-weight:600;
+		}
+	}
+	@media screen and (min-width : 450px) and (min-device-width: 450px)  {
+		.mainContainer .navbar .userHistory div{
+			float: left;
+		    margin-right: 35px;
+		    font-weight: 400;
+		}
+		    
+		    
+		.mainContainer .navbar .userHistory{
+			line-height: 33px;
+	    	font-size: 13px;
+		}
+		
+		.mainContainer .navbar .userHistory .num {
+			font-weight:600;
+		}
+	}
+	
+}
+
+@media screen and (min-width : 736px) and (min-device-width: 736px)  {
+	.mainContainer .navbar {
+		padding:20px 0px;
+		height:135px;
+		margin-bottom:45px;
+	}
+	
+	.mainContainer .navbar .userImg {
+		float:left;	
+		margin:0px 70px;
+	}
+	
+	.mainContainer .navbar .userImg img {
+		width: 150px;
+		height:150px;
+		border-radius:100%;
+		border: 1px solid #edeeee;
+	}
+	
+	.mainContainer .navbar .userInfo {
+		margin-top: 15px;
+	}
+	
+	.mainContainer .navbar .userId_ {
+		width: 600px;
+	    height: 49px;
+	}
+	
+	.mainContainer .navbar .userId__ {
+		float:left;
+		font-size: 34px;
+	    line-height: 40px;
+	    color: #4b4f54;
+	    font-weight: 300;
+		margin-right: 25px;
+		
+	}
+	.mainContainer .navbar .userId_ .modifyBtn {
+		float:left;
+		width: 66px;
+	    height: 18px;
+	    border: 1px solid #818488;
+	    border-radius: 4px;
+	    color: #818488;
+	    padding: 6px 20px;
+	    font-size: 14px;
+	    margin-top: 3px;
+	    cursor: pointer;
+	}
+	
+	.mainContainer .navbar .userIntro {
+		color: #4b4f54;
+	    display: inline;
+	    font-weight: 600;
+	    font-size: 17px;
+	    line-height: 21px;
+	}
+	
+	.mainContainer .navbar .userIntro .hashtag {
+		font-weight:400;
+		color: #125688;
+	}
+	.mainContainer .navbar .userHistory div{
+		float: left;
+	    margin-right: 35px;
+	    font-weight: 400;
+	}
+	    
+	    
+	.mainContainer .navbar .userHistory{
+		line-height: 58px;
+	    font-size: 17px;
+	}
+	
+	.mainContainer .navbar .userHistory .num {
+		font-weight:600;
+	}
+}
+
+
+
+.mainContainer .img_list {
+	clear: both;
+}
+
+.mainContainer .img_list .imgItem {
+	float: left;
+	width:32%;
+	margin-left: 1.2%;
+	margin-bottom: 12px;
+}
+
+.mainContainer .img_list .imgItem img {
+	width:100%
+	
+}
+
+
+    
+
+
+
+
+
+
+
+
+
