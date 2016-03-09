@@ -1,11 +1,11 @@
-package com.skplanet.project2.feed.dao;
+package com.skplanet.project2.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.skplanet.project2.feed.model.FeedDTO;
+import com.skplanet.project2.model.FeedDTO;
 
 public class FeedDAOImpl implements FeedDAO {
 

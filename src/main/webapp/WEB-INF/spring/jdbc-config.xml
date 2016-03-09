@@ -32,5 +32,5 @@
 		<property name="url" value="jdbc:mysql://127.0.0.1:3306/bootcamp" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
-	</bean>
+		</bean>
 </beans>

@@ -1,4 +1,4 @@
-package com.skplanet.project2.feed.model;
+package com.skplanet.project2.model;
 
 import java.util.List;
 

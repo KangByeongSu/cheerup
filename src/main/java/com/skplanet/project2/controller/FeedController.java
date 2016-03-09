@@ -1,4 +1,4 @@
-package com.skplanet.project2.feed.controller;
+package com.skplanet.project2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.skplanet.project2.feed.model.FeedResultDTO;
-import com.skplanet.project2.feed.service.FeedService;
+import com.skplanet.project2.model.FeedResultDTO;
+import com.skplanet.project2.service.FeedService;
 
 @Controller
 @RequestMapping(value="/feed")
@@ -29,10 +29,6 @@ public class FeedController {
 		return result;
 	}
 	
-	@RequestMapping(value="/")
-	public String addFeedPost(){
-		return "home";
-	}
 	
 	
 
