@@ -23,11 +23,24 @@ public class PostFeedController {
 	Result jsonResult;
 	
 	@RequestMapping(value="/feed/add",method=RequestMethod.POST)
-	public @ResponseBody Result addFeedPost(@RequestParam(value="imageFile") MultipartFile file,PostFeedDTO feed){
+	public String addFeedPost(@RequestParam(value="imageFile") MultipartFile file,PostFeedDTO feed){
+		
+		
+		//1. 파일을 save한다.  -내가한다.
+		
+		//2. 파일 저장 return을 url로 받아온다.  -내가한다.
+		
+		//3. db저장 소스에 url넣어서 보낸다. - 내가한다. return 컨텐트 아이디를 받아온다. 
+		
+		//4. 해시태그 자른다.  - 내가한다.
+		
+		//5. 자른 해시태그 해시태그 테이블에 insert한다.(for문 돌려야하나?) - 
+		
 		
 		
 		System.out.println("file :" +file);
 		System.out.println("feed :" +feed.getComment());
+		feed.setUserId("test1");
 		feed.setImgUrl("url");
 		int result = feedservice.postFeed(feed);
 		
@@ -39,6 +52,6 @@ public class PostFeedController {
 			jsonResult.setMsg("fail");
 		}
 		
-		return jsonResult;
+		return "view";
 	}
 }

@@ -67,7 +67,7 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
 	public String uploadText(@RequestParam(value = "imageFile")  MultipartFile imageFile,@RequestParam(value = "hashtag")  String hash,@RequestParam(value = "text")  String text, ModelMap modelMap) {
 				
 		System.out.println("before : upload Image To Server Method");
@@ -82,5 +82,5 @@ public class HomeController {
 		
 		//이미지만 return 해야합니다.
 		return "view";
-	}
+	}*/
 }
