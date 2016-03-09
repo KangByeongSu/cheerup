@@ -66,12 +66,12 @@ public class HomeController {
 		//이미지만 return 해야합니다.
 		return "view";
 	}
-	
-	@RequestMapping(value = "/uploadText", method = RequestMethod.POST)
-	public String uploadText(@RequestParam(value = "imageFile")  MultipartFile imageFile,@RequestParam(value = "text")  String text, ModelMap modelMap) {
+	@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
+	public String uploadText(@RequestParam(value = "imageFile")  MultipartFile imageFile,@RequestParam(value = "hashtag")  String hash,@RequestParam(value = "text")  String text, ModelMap modelMap) {
 				
 		System.out.println("before : upload Image To Server Method");
 		
+		System.out.println("image  : "+hash);
 		System.out.println("image  : "+imageFile);
 //		ImageFile fileInfo = imageService.save(imageFile);
 		System.out.println("text : "+text);

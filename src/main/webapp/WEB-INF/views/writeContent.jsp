@@ -67,14 +67,14 @@
 		<div class="upload-content-text">
 			<img id="thumbnail" src="#" />
 			<!-- 컨트롤러에 있는 해시 이미지 가져온다. 참조 소스있음  -->
-			<textarea name="styled-textarea" id="styled" onfocus="this.value='';"
+			<textarea  contenteditable="true" name="styled-textarea" id="styled" onfocus="this.value='';"
 				onblur="setbg('white')" placeholder="사진과 어울리는 문구를 작성해주세요."></textarea>
 		</div>
 	</div>
 	<div class="upload-footer">
 		<!-- <div class="upload-footer-text upload-header-text">SK플래닛 Team Elephant</div> -->
 		<div class="upload-footer-post">
-			<form name="textUploadForm" action="./uploadText" method="post"
+			<form name="textUploadForm" action="./feed/add" method="post"
 				enctype="multipart/form-data">
 				<button id="submitText" />
 			</form>
