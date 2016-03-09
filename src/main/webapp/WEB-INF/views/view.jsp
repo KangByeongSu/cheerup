@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% request.setCharacterEncoding("euc-kr");%>
+<% request.setCharacterEncoding("utf8");%>
 <%@ page session="false" %>
 <html>
 <head>
 	<title>Home</title>
+	<meta id="viewport" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="<c:url value='/resources/css/common.css' />" type="text/css" />
-	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -14,7 +14,7 @@
 				<div class="logo">
 					<img src="<c:url value='/resources/img/instagram.png' />" />
 				</div>
-				<div class="personInfo">
+				<div class="personInfo userId">
 					akdung21
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 			<section>
 				<div class="nav">
 					<div class="userImg">
-						 <img src="https://scontent.cdninstagram.com/t51.2885-19/s150x150/12797646_1586114025041720_1619955416_a.jpg" />
+						 <img src="https://igcdn-photos-g-a.akamaihd.net/hphotos-ak-xft1/t51.2885-19/s150x150/12552423_441484902713862_1832731177_a.jpg" />
 						 <span class="userId">
 						 	akdung21
 						 </span>
@@ -49,13 +49,36 @@
 							<span class="hashtag">#스타벅스</span> <span class="hashtag">#STARBUCKS</span>  <span class="hashtag">#텀블러</span>  <span class="hashtag">#써니보틀</span>  <span class="hashtag">#물병</span> 
 						</div>
 						<div class="comment">
-						
+							<div class="commentList">
+								<p><span class="userId">akdung21</span> 우왕~~~😍😍</p>
+								<p><span class="userId">joao.marcos.mt</span> 😍😘😘</p>
+								
+							</div>
+							
+						</div>
+					</div>
+					<div class="commentAdd">
+						<div class="likeBtn">
+							<img src="<c:url value='/resources/img/like_.png' />" />
+						</div>
+						<div>
+							<input class="commentInput" type="text" placeholder="댓글달기..." />
+						</div>
+						<div class="more">
+							<img src="<c:url value='/resources/img/moreBtn.png' />" />
 						</div>
 					</div>
 				</div>
-				
 			</section>
+			
+			
+			
+			<div class="moreFeed">
+				<span class="moreText"> 더 읽어들이기 </span>
+			</div>
 		</div>
 	</div>
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="<c:url value='/resources/js/view.js' />"></script>
 </body>
 </html>

@@ -46,6 +46,20 @@ public class HomeController {
 		
 		return "view";
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Locale locale, Model model) {
+
+		
+		return "login";
+	}
+	
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String join(Locale locale, Model model) {
+
+		
+		return "join";
+	}
 	@RequestMapping(value = "/writeContent", method = RequestMethod.GET)
 	public String writeContent(Locale locale, Model model) {
 		
@@ -53,19 +67,6 @@ public class HomeController {
 	}
 	
 	
-	
-	@RequestMapping(value = "/uploadImageToServer", method = RequestMethod.POST)
-	public String uploadImage(@RequestParam(value = "imageFile")  MultipartFile imageFile, ModelMap modelMap) {
-		System.out.println("before : upload Image To Server Method");
-//		ImageFile fileInfo = imageService.save(imageFile);
-		System.out.println("hi"+imageFile);
-		
-		System.out.println("after : upload Image To Server Method");
-	//	modelMap.put("imageFile", fileInfo);
-		
-		//이미지만 return 해야합니다.
-		return "view";
-	}
 	@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
 	public String uploadText(@RequestParam(value = "imageFile")  MultipartFile imageFile,@RequestParam(value = "hashtag")  String hash,@RequestParam(value = "text")  String text, ModelMap modelMap) {
 				
