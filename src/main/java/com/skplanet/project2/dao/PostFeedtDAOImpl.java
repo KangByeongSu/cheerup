@@ -17,5 +17,5 @@ public class PostFeedtDAOImpl implements PostFeedDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("postfeed.insertFeed", content);	
 	}
-	
+	 
 }

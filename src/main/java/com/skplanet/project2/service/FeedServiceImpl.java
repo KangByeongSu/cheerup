@@ -18,7 +18,7 @@ public class FeedServiceImpl implements FeedService {
 	
 	@Override
 	public List<FeedDTO> getFeedlists(int pageNo) {
-	
+
 		return feedDAO.selectFeedList(pageNo);
 		
 	}
