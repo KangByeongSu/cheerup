@@ -1,5 +1,8 @@
 package com.skplanet.project2.model;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class Result {
 
 	private int isSuccess;
