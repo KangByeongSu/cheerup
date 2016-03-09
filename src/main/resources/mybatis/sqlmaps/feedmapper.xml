@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.skplanet.project2.mapper.FeedMapper">
+
+
+
+<select id="selectFeed" resultMap="FeedResultMap">
+		    SELECT 
+			c_comment,
+			c_imgurl,
+			c_time,
+			c_id,
+			contents.Elephant_User_u_id,
+			comments.Elephant_User_u_id,
+			cm_id,
+			cm_time,
+			cm_content
+			
+			
+		    FROM
+		      Elephant_Contents contents
+		      left outer join 
+		      Elephant_Comment comments
+		      on contents.c_id = comments.Elephant_Contents_c_id
+		      
+		    ORDER BY cm_time
+			
+		      
+		    LIMIT 
+				#{limitStart},
+				 5
+		    
+	</select>
+	
+	
+	<resultMap id="FeedResultMap" type="com.skplanet.project2.model.FeedDTO">
+		<result property="message" column="c_comment" />
+		<result property="imgurl" column="c_imgurl" />
+		<result property="createTime" column="c_time" />
+		<result property="feedId" column="c_id" />
+		<result property="userId" column="contents.Elephant_User_u_id" />
+		
+		<collection property="commentList" column="Elephant_Contents_c_id" javaType="java.util.ArrayList"
+			ofType="com.skplanet.project2.model.CommentDTO" resultMap="CommentResultMap" />
+			
+	</resultMap>
+	
+	<resultMap id="CommentResultMap" type="com.skplanet.project2.model.CommentDTO">
+		<id property="commentsId" column="cm_id"/>
+		<result property="userId" column="comments.Elephant_User_u_id"/>
+		<result property="time" column="cm_time"/>
+		<result property="message" column="cm_content"/>
+	</resultMap>
+	
+
+ 
+ 
+ 
+ 
+<select id="getUpUserId" resultType="java.lang.String">
+		    
+			SELECT 
+			Elephant_User_u_id
+			
+		    FROM
+		    Elephant_Like
+		    
+			WHERE
+			Elephant_Contents_c_id=#{feedId}		      
+		    AND
+		    l_up=1
+		    
+	</select>
+	
+	<select id="getDownUserId" resultType="java.lang.String">
+		    
+			SELECT 
+			Elephant_User_u_id
+			
+		    FROM
+		    Elephant_Like
+		    
+			WHERE
+			Elephant_Contents_c_id=#{feedId}		      
+		    AND
+		    l_down=1
+		    
+	</select> 
+	
+	
+</mapper>
