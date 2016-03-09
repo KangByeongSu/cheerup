@@ -63,18 +63,19 @@ public class HomeController {
 		
 		System.out.println("after : upload Image To Server Method");
 	//	modelMap.put("imageFile", fileInfo);
-
 		
 		//이미지만 return 해야합니다.
 		return "view";
 	}
 	
 	@RequestMapping(value = "/uploadText", method = RequestMethod.POST)
-	public String uploadText(@RequestParam(value = "text")  String text, ModelMap modelMap) {
-		
+	public String uploadText(@RequestParam(value = "imageFile")  MultipartFile imageFile,@RequestParam(value = "text")  String text, ModelMap modelMap) {
+				
 		System.out.println("before : upload Image To Server Method");
+		
+		System.out.println("image  : "+imageFile);
 //		ImageFile fileInfo = imageService.save(imageFile);
-		System.out.println("hi"+text);
+		System.out.println("text : "+text);
 		
 		System.out.println("after : upload Image To Server Method");
 	//	modelMap.put("imageFile", fileInfo);

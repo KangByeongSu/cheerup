@@ -4,7 +4,6 @@
 
 'use strict';
 
-
 (function(document, window, index) {
 	var input = document.querySelector('.inputfile');
 	var label = input.nextElementSibling, labelVal = label.innerHTML;
@@ -40,13 +39,23 @@
 	});
 	document.getElementById("submitText").addEventListener('click',function(e){
 		
-		var text=document.querySelector("#styled").value;
+		 alert( "2 : "+typeof $("#file-2")[0].files[0]);
+		 var text=document.querySelector("#styled").value;
 		
-		 var inputForm = document.createElement("input");
-		 inputForm.setAttribute("name","text");
-		 inputForm.setAttribute("type","hidden");
-		 inputForm.setAttribute("value",text);
-		 document.textUploadForm.appendChild(inputForm);
+		 var textForm = document.createElement("input");
+		 
+		 textForm.setAttribute("name","text");
+		 textForm.setAttribute("type","hidden");
+		 textForm.setAttribute("value",text);
+		
+		 var imageForm = document.createElement("input");
+		 imageForm.setAttribute("name","imageFile");
+		 imageForm.setAttribute("type","file");
+		 imageForm.setAttribute("value",$("#file-2")[0].files[0]);
+		 
+		 
+		 document.textUploadForm.appendChild(textForm);
+		 document.textUploadForm.appendChild(imageForm);
 		 document.textUploadForm.submit();
 	});
 
@@ -55,6 +64,7 @@
 var imageUploadAjax = function() {
 	var imgData = new FormData();
 	imgData.append("imageFile", $("#file-2")[0].files[0]);
+	alert( "1 :"+typeof $("#file-2")[0].files[0]);
 
 	$.ajax({
 				type : "post",
@@ -90,3 +100,19 @@ function setbg(color) {
 function setBorder() {
 	document.getElementById("submitText").style.border = "1px solid black";
 }
+
+//////test
+
+function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function (e) {
+	      $('#thumbnail')
+	        .attr('src', e.target.result)
+	        .width(590)
+	        .height(300);
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	    
+	  }
+	}
