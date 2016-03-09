@@ -51,4 +51,11 @@ public class HomeController {
 		
 		return "login";
 	}
+	
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String join(Locale locale, Model model) {
+
+		
+		return "join";
+	}
 }
