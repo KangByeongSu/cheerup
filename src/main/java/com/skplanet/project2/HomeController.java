@@ -48,7 +48,6 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/writeContent", method = RequestMethod.GET)
 	public String writeContent(Locale locale, Model model) {
-
 		
 		return "writeContent";
 	}
@@ -76,10 +75,9 @@ public class HomeController {
 		System.out.println("image  : "+imageFile);
 //		ImageFile fileInfo = imageService.save(imageFile);
 		System.out.println("text : "+text);
-		
+			
 		System.out.println("after : upload Image To Server Method");
 	//	modelMap.put("imageFile", fileInfo);
-
 		
 		//이미지만 return 해야합니다.
 		return "view";
