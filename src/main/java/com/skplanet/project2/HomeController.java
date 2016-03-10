@@ -8,11 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Handles requests for the application home page.
@@ -62,20 +59,18 @@ public class HomeController {
 	}
 	
 	
-	/*@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
-	public String uploadText(@RequestParam(value = "imageFile")  MultipartFile imageFile,@RequestParam(value = "hashtag")  String hash,@RequestParam(value = "text")  String text, ModelMap modelMap) {
-				
-		System.out.println("before : upload Image To Server Method");
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String mypage(Locale locale, Model model) {
+
 		
-		System.out.println("image  : "+hash);
-		System.out.println("image  : "+imageFile);
-//		ImageFile fileInfo = imageService.save(imageFile);
-		System.out.println("text : "+text);
-			
-		System.out.println("after : upload Image To Server Method");
-	//	modelMap.put("imageFile", fileInfo);
+		return "mypage";
+	}
+
+	@RequestMapping(value = "/writeContent", method = RequestMethod.GET)
+	public String writeContent(Locale locale, Model model) {
 		
-		//이미지만 return 해야합니다.
-		return "view";
-	}*/
+		return "writeContent";
+	}
+	
 }
+

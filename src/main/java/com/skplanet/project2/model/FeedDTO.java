@@ -8,10 +8,10 @@ public class FeedDTO{
 	private String imgurl;
 	private String createTime;
 	private int feedId;
-	private int userId;
+	private String userId;
 	private List<CommentDTO> commentList;
-	private List<Integer> upUserList;
-	private List<Integer> downUserList;
+	private List<String> upUserList;
+	private List<String> downUserList;
 	
 	
 	public String getMessage() {
@@ -38,10 +38,10 @@ public class FeedDTO{
 	public void setFeedId(int feedId) {
 		this.feedId = feedId;
 	}
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public List<CommentDTO> getCommentList() {
@@ -50,16 +50,16 @@ public class FeedDTO{
 	public void setCommentList(List<CommentDTO> commentList) {
 		this.commentList = commentList;
 	}
-	public List<Integer> getUpUserList() {
+	public List<String> getUpUserList() {
 		return upUserList;
 	}
-	public void setUpUserList(List<Integer> upUserList) {
+	public void setUpUserList(List<String> upUserList) {
 		this.upUserList = upUserList;
 	}
-	public List<Integer> getDownUserList() {
+	public List<String> getDownUserList() {
 		return downUserList;
 	}
-	public void setDownUserList(List<Integer> downUserList) {
+	public void setDownUserList(List<String> downUserList) {
 		this.downUserList = downUserList;
 	}
 	
