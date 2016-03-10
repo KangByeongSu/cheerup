@@ -18,13 +18,12 @@ public class FeedDAOImpl implements FeedDAO {
 	@Override
 	public List<FeedDTO> selectFeedList(int pageNo) {
 	
-		int limitStart=(pageNo-1)*5;
 		
-		List<FeedDTO> feedList=sqlSession.selectList("feed.getFeed", limitStart);
+		List<FeedDTO> feedList=sqlSession.selectList("com.skplanet.project2.mapper.FeedMapper.selectFeed",(pageNo-1)*5);
 		
 		for (FeedDTO feedDTO : feedList) {
-			List<Integer> upUserIdList=sqlSession.selectList("feed.getUpUserId", feedDTO.getFeedId());
-			List<Integer> downUserIdList=sqlSession.selectList("feed.getDownUserId", feedDTO.getFeedId());
+			List<String> upUserIdList=sqlSession.selectList("com.skplanet.project2.mapper.FeedMapper.getUpUserId", feedDTO.getFeedId());
+			List<String> downUserIdList=sqlSession.selectList("com.skplanet.project2.mapper.FeedMapper.getDownUserId", feedDTO.getFeedId());
 			
 			feedDTO.setUpUserList(upUserIdList);
 			feedDTO.setUpUserList(downUserIdList);
