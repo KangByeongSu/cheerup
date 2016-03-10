@@ -25,7 +25,14 @@ public class FeedController {
 		FeedResultDTO result=new FeedResultDTO();
 		result.setIsSuccess(1);
 		result.setMsg("success");
-		result.setFeedList(feedService.getFeedlists(pageNo));
+		try{
+			result.setFeedList(feedService.getFeedlists(pageNo));
+		}catch(Exception e){
+		
+			result.setIsSuccess(0);
+			result.setMsg("fail, "+e.getMessage());
+			return result;
+		}
 		return result;
 	}
 	
