@@ -30,7 +30,6 @@
 
 </head>
 <body>
-
 	<nav class="navbar">
 	<div class="content">
 		<div class="logo">
@@ -46,40 +45,38 @@
 	<div class="upload-header">
 		<span class="upload-header-text">Instagram Upload</span>
 	</div>
+	<form name="textUploadForm" action="./feed/add" method="post"
+		enctype="multipart/form-data">
+		<div class="upload-content">
+			<div class="upload-content-image">
+				<div class="contents">
 
-	<div class="upload-content">
-		<div class="upload-content-image">
-			<div class="contents">
+					<div class="box">
 
-				<div class="box">
-					<form name="uploadForm" action="#" method="post"
-						enctype="multipart/form-data">
 						<input onchange="readURL(this);" type="file" name="imageFile"
 							id="file-2" class="inputfile inputfile-2" /> <label for="file-2"><svg
 								xmlns="http://www.w3.org/2000/svg" width="20" height="17"
 								viewBox="0 0 20 17"> <path
 								d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" /></svg>
 							<span>사진 고르기&hellip;</span></label>
-					</form>
+					</div>
 				</div>
 			</div>
+			<div class="upload-content-text">
+				<img id="thumbnail" src="#" />
+				<!-- 컨트롤러에 있는 해시 이미지 가져온다. 참조 소스있음  -->
+				<textarea name="comment" contenteditable="true" name="styled-textarea" id="styled"
+					onfocus="this.value='';" onblur="setbg('white')"
+					placeholder="사진과 어울리는 문구를 작성해주세요."></textarea>
+			</div>
 		</div>
-		<div class="upload-content-text">
-			<img id="thumbnail" src="#" />
-			<!-- 컨트롤러에 있는 해시 이미지 가져온다. 참조 소스있음  -->
-			<textarea  contenteditable="true" name="styled-textarea" id="styled" onfocus="this.value='';"
-				onblur="setbg('white')" placeholder="사진과 어울리는 문구를 작성해주세요."></textarea>
+		<div class="upload-footer">
+			<!-- <div class="upload-footer-text upload-header-text">SK플래닛 Team Elephant</div> -->
+			<div class="upload-footer-post">
+				<input type="submit" id="submitText" value=''/>
+			</div>
 		</div>
-	</div>
-	<div class="upload-footer">
-		<!-- <div class="upload-footer-text upload-header-text">SK플래닛 Team Elephant</div> -->
-		<div class="upload-footer-post">
-			<form name="textUploadForm" action="./feed/add" method="post"
-				enctype="multipart/form-data">
-				<button id="submitText" />
-			</form>
-		</div>
-	</div>
+	</form>
 	<section> <script
 		src=<c:url value="/resources/js/writeContent.js"/>></script>
 </body>
