@@ -8,7 +8,6 @@ $(document).ready(function() {
 			console.log(resData.isSuccess);
 			if(resData.isSuccess) {
 				$.each(resData.feedList, function(i, v) {
-					console.log("--",v.message);
 					var temp =
 						'<section>' +
 							'<div class="nav">' +
