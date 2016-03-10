@@ -26,7 +26,7 @@ public class FeedDAOImpl implements FeedDAO {
 			List<String> downUserIdList=sqlSession.selectList("com.skplanet.project2.mapper.FeedMapper.getDownUserId", feedDTO.getFeedId());
 			
 			feedDTO.setUpUserList(upUserIdList);
-			feedDTO.setUpUserList(downUserIdList);
+			feedDTO.setDownUserList(downUserIdList);
 		}
 	
 		return feedList;
