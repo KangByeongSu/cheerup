@@ -58,7 +58,6 @@ $(document).ready(function() {
 					
 					$('.moreFeed').before(temp);
 				});
-				
 			} else {
 				alert("알 수 없는 오류로 실패하였습니다.");
 			}
