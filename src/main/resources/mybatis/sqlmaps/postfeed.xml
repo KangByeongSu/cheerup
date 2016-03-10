@@ -5,7 +5,7 @@
 
 	<insert id="insertFeed" parameterType="com.skplanet.project2.model.PostFeedDTO" useGeneratedKeys="true" keyProperty="id" keyColumn="c_id">
 	insert into Elephant_Contents(Elephant_User_u_id,c_comment,c_imgurl,c_time)
-	values(#{userId},#{comment},#{imgUrl},CURRENT_TIMESTAMP());
+	values(#{userId},#{comment},#{imgUrl},now());
 	</insert>
 	
 	<insert id="inserthashtag" parameterType="hashmap">

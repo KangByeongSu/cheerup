@@ -60,11 +60,6 @@ public class HomeController {
 		
 		return "join";
 	}
-	@RequestMapping(value = "/writeContent", method = RequestMethod.GET)
-	public String writeContent(Locale locale, Model model) {
-		
-		return "writeContent";
-	}
 	
 	
 	/*@RequestMapping(value = "/feed/add", method = RequestMethod.POST)

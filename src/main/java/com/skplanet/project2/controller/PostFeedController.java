@@ -42,7 +42,6 @@ public class PostFeedController {
 			ImageFile fileInfo = imageService.save(file);
 
 			if (feed.getComment() != null) {
-				// System.out.println("feed :" + feed.getComment());
 			} else {
 				feed.setComment(" ");
 			}
