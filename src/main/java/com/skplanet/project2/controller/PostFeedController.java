@@ -49,12 +49,6 @@ public class PostFeedController {
 			feed.setUserId("test1");
 			feed.setImgUrl("url");
 			int result = feedservice.postFeed(feed);
-
-			/*
-			 * jsonResult.setIsSuccess(result); if (result == 1) {
-			 * jsonResult.setMsg("Success"); } else { jsonResult.setMsg("fail");
-			 * }
-			 */
 		}
 		return "redirect:/view";
 	}

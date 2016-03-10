@@ -28,10 +28,9 @@ public class PostFeedServiceImpl implements PostFeedService {
 	@Override
 	public int postFeed(PostFeedDTO content) {
 		// TODO hashtag token, file upload
-		System.out.println("content get hashtag" + content.getHashtag());
-
 		int result = contentDAO.insertFeed(content);
 		String hashtag = content.getHashtag();
+
 		if (hashtag.equals("hash_null") || hashtag == null) {
 			System.out.println("hash is null");
 		} else {
@@ -51,5 +50,4 @@ public class PostFeedServiceImpl implements PostFeedService {
 		}
 		return resultHash;
 	}
-
 }
