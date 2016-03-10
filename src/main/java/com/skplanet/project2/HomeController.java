@@ -60,6 +60,14 @@ public class HomeController {
 		
 		return "join";
 	}
+	
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String mypage(Locale locale, Model model) {
+
+		
+		return "mypage";
+	}
+
 	@RequestMapping(value = "/writeContent", method = RequestMethod.GET)
 	public String writeContent(Locale locale, Model model) {
 		
@@ -80,7 +88,8 @@ public class HomeController {
 		System.out.println("after : upload Image To Server Method");
 	//	modelMap.put("imageFile", fileInfo);
 		
-		//ÀÌ¹ÌÁö¸¸ return ÇØ¾ßÇÕ´Ï´Ù.
+		//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ return ï¿½Ø¾ï¿½ï¿½Õ´Ï´ï¿½.
 		return "view";
 	}
 }
+
