@@ -2,6 +2,7 @@ package com.skplanet.project2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,9 +19,9 @@ public class FeedController {
 	FeedService feedService;
 	
 	
-	@RequestMapping(value="/lists",method=RequestMethod.GET)
+	@RequestMapping(value="/lists/{pageNo}",method=RequestMethod.GET)
 	public @ResponseBody FeedResultDTO getFeedLists(
-			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo) {
+			@PathVariable(value = "pageNo") int pageNo) {
 		
 		FeedResultDTO result=new FeedResultDTO();
 		result.setIsSuccess(1);

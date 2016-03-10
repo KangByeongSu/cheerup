@@ -12,8 +12,8 @@
 			c_imgurl,
 			c_time,
 			c_id,
-			contents.Elephant_User_u_id,
-			comments.Elephant_User_u_id,
+			contents.Elephant_User_u_id content_user_id,
+			comments.Elephant_User_u_id comment_user_id,
 			cm_id,
 			cm_time,
 			cm_content
@@ -40,7 +40,7 @@
 		<result property="imgurl" column="c_imgurl" />
 		<result property="createTime" column="c_time" />
 		<result property="feedId" column="c_id" />
-		<result property="userId" column="contents.Elephant_User_u_id" />
+		<result property="userId" column="content_user_id" />
 		
 		<collection property="commentList" column="Elephant_Contents_c_id" javaType="java.util.ArrayList"
 			ofType="com.skplanet.project2.model.CommentDTO" resultMap="CommentResultMap" />
@@ -49,7 +49,7 @@
 	
 	<resultMap id="CommentResultMap" type="com.skplanet.project2.model.CommentDTO">
 		<id property="commentsId" column="cm_id"/>
-		<result property="userId" column="comments.Elephant_User_u_id"/>
+		<result property="userId" column="comment_user_id"/>
 		<result property="time" column="cm_time"/>
 		<result property="message" column="cm_content"/>
 	</resultMap>

@@ -74,22 +74,5 @@ public class HomeController {
 		return "writeContent";
 	}
 	
-	
-	@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
-	public String uploadText(@RequestParam(value = "imageFile")  MultipartFile imageFile,@RequestParam(value = "hashtag")  String hash,@RequestParam(value = "text")  String text, ModelMap modelMap) {
-				
-		System.out.println("before : upload Image To Server Method");
-		
-		System.out.println("image  : "+hash);
-		System.out.println("image  : "+imageFile);
-//		ImageFile fileInfo = imageService.save(imageFile);
-		System.out.println("text : "+text);
-			
-		System.out.println("after : upload Image To Server Method");
-	//	modelMap.put("imageFile", fileInfo);
-		
-		//�̹����� return �ؾ��մϴ�.
-		return "view";
-	}
 }
 
