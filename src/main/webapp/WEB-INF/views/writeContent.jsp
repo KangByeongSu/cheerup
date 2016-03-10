@@ -30,7 +30,7 @@
 	<div class="upload-header">
 		<span class="upload-header-text">Instagram Upload</span>
 	</div>
-	<form name="textUploadForm" action="./feed/add" method="post"
+	<form name="textUploadForm" action="./add" method="post"
 		enctype="multipart/form-data">
 		<div class="upload-content">
 			<div class="upload-content-image">

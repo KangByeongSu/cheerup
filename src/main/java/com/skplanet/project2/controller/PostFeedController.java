@@ -1,5 +1,7 @@
 package com.skplanet.project2.controller;
 
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,30 +28,34 @@ public class PostFeedController {
 	@Autowired
 	ImageUploadServiceImpl imageService;
 
+	@RequestMapping(value = "/feed/add", method = RequestMethod.GET)
+	public String writeContent(Locale locale, Model model) {
+
+		return "writeContent";
+	}
+
 	@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
 	public String addFeedPost(@RequestParam(value = "imageFile") MultipartFile file, PostFeedDTO feed, Model model) {
-
+		System.out.println("Post controller In");
 		if (file.getSize() == 0) {
-			System.out.println("Crashed the File..");
-		}
-
-		ImageFile fileInfo = imageService.save(file);
-
-		System.out.println("hash!!!!!! :" + feed.getHashtag());
-		if (feed.getComment() != null) {
-			System.out.println("feed :" + feed.getComment());
 		} else {
-			feed.setComment(" ");
+			ImageFile fileInfo = imageService.save(file);
+
+			if (feed.getComment() != null) {
+				// System.out.println("feed :" + feed.getComment());
+			} else {
+				feed.setComment(" ");
+			}
+			feed.setUserId("test1");
+			feed.setImgUrl("url");
+			int result = feedservice.postFeed(feed);
+
+			/*
+			 * jsonResult.setIsSuccess(result); if (result == 1) {
+			 * jsonResult.setMsg("Success"); } else { jsonResult.setMsg("fail");
+			 * }
+			 */
 		}
-		feed.setUserId("test1");
-		feed.setImgUrl("url");
-		int result = feedservice.postFeed(feed);
-
-		/*
-		 * jsonResult.setIsSuccess(result); if (result == 1) {
-		 * jsonResult.setMsg("Success"); } else { jsonResult.setMsg("fail"); }
-		 */
-
 		return "redirect:/view";
 	}
 }
