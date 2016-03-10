@@ -30,12 +30,12 @@ public class PostFeedController {
 	public String addFeedPost(@RequestParam(value = "imageFile") MultipartFile file, PostFeedDTO feed, Model model) {
 
 		if (file.getSize() == 0) {
-			System.out.println("빈 파일입니다.");
+			System.out.println("Crashed the File..");
 		}
 
 		ImageFile fileInfo = imageService.save(file);
 
-
+		System.out.println("hash!!!!!! :" + feed.getHashtag());
 		if (feed.getComment() != null) {
 			System.out.println("feed :" + feed.getComment());
 		} else {
@@ -44,7 +44,6 @@ public class PostFeedController {
 		feed.setUserId("test1");
 		feed.setImgUrl("url");
 		int result = feedservice.postFeed(feed);
-		System.out.println("result :" + result);
 
 		/*
 		 * jsonResult.setIsSuccess(result); if (result == 1) {

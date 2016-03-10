@@ -55,11 +55,12 @@
 
 .upload-content-text {
 	display: none;
-	height: 400px;
+}
+.upload-context-text-textform{
+	position:relative;
 }
 
 .upload-content-text img {
-	height: 300px;
 	max-width: 600px
 }
 
@@ -160,7 +161,16 @@ textarea#styled {
 	color: #4b4f54;
 	padding: 15px 20px;
 }
-
+#adapted-hashtag{
+	position:absolute;
+	top:0px;
+	font-size: 15px;
+	line-height: 18px;
+	font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica,
+		sans-serif;
+	color: #4b4f54;
+	padding: 15px 20px;
+}
 #submitText {
 	background: url(/project2/resources/img/post-button.png) no-repeat;
 	width: 58px;

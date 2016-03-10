@@ -14,19 +14,7 @@
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/common.css' />" type="text/css" />
 
-
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-
-
-`
-
-<!-- remove this if you use Modernizr -->
-<script>
-	(function(e, t, n) {
-		var r = e.querySelectorAll("html")[0];
-		r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2")
-	})(document, window, 0);
-</script>
 
 </head>
 <body>
@@ -38,9 +26,6 @@
 		<div class="personInfo">akdung21</div>
 	</div>
 	</nav>
-
-
-
 	<section id="container">
 	<div class="upload-header">
 		<span class="upload-header-text">Instagram Upload</span>
@@ -63,17 +48,21 @@
 				</div>
 			</div>
 			<div class="upload-content-text">
-				<img id="thumbnail" src="#" />
-				<!-- 컨트롤러에 있는 해시 이미지 가져온다. 참조 소스있음  -->
-				<textarea name="comment" contenteditable="true" name="styled-textarea" id="styled"
-					onfocus="this.value='';" onblur="setbg('white')"
-					placeholder="사진과 어울리는 문구를 작성해주세요."></textarea>
+				<div>
+					<img id="thumbnail" src="#" />
+				</div>
+				<div class="upload-context-text-textform">
+					<textarea name="comment" id="styled"
+						onfocus="this.value='';" onblur="setbg('white')"
+					 	placeholder="사진과 어울리는 문구를 작성해주세요."></textarea>
+					<input type="hidden" name="hashtag" id="hashing">
+				</div>
 			</div>
 		</div>
 		<div class="upload-footer">
 			<!-- <div class="upload-footer-text upload-header-text">SK플래닛 Team Elephant</div> -->
 			<div class="upload-footer-post">
-				<input type="submit" id="submitText" value=''/>
+				<input type="button" id="submitText" value='' />
 			</div>
 		</div>
 	</form>
