@@ -8,6 +8,7 @@ $(document).ready(function() {
 			console.log(resData.isSuccess);
 			if(resData.isSuccess) {
 				$.each(resData.feedList, function(i, v) {
+					console.log("--",v.message);
 					var temp =
 						'<section>' +
 							'<div class="nav">' +
@@ -31,7 +32,7 @@ $(document).ready(function() {
 								'<div class="content">'+
 									'<div class="text">'+
 										'<span class="userId">'+v.userId+'</span>'+
-										+ v.message +
+										v.message +
 										'<span class="hashtag">#스타벅스</span> <span class="hashtag">#STARBUCKS</span>  <span class="hashtag">#텀블러</span>  <span class="hashtag">#써니보틀</span>  <span class="hashtag">#물병</span>'+ 
 									'</div>'+
 									'<div class="comment">'+
