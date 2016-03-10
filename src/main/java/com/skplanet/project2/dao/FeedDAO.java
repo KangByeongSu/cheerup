@@ -8,5 +8,4 @@ public interface FeedDAO {
 
 	List<FeedDTO> selectFeedList(int pageNo);
 
-
 }
