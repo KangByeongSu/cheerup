@@ -1,6 +1,15 @@
 $(document).ready(function() {	
-	var feedLoad = function() {
-			
+	var makeHashtag = function(message) {
+		var tmpMessage = "";
+		$.each(message.split(" "), function(i, v) {
+			if(v.indexOf("#") == 0) {
+				tmpMessage += '<span class="hashtag">'+v+'</span> '
+			} else {
+				tmpMessage += v+' ';
+			} 
+		});
+		return tmpMessage;
+//		'<span class="hashtag">#스타벅스</span>' <span class="hashtag">#STARBUCKS</span>  <span class="hashtag">#텀블러</span>  <span class="hashtag">#써니보틀</span>  <span class="hashtag">#물병</span>'+
 	};
 	$.ajax({
 		url: "./feed/lists/1",
@@ -31,8 +40,7 @@ $(document).ready(function() {
 								'<div class="content">'+
 									'<div class="text">'+
 										'<span class="userId">'+v.userId+'</span>'+
-										v.message +
-										'<span class="hashtag">#스타벅스</span> <span class="hashtag">#STARBUCKS</span>  <span class="hashtag">#텀블러</span>  <span class="hashtag">#써니보틀</span>  <span class="hashtag">#물병</span>'+ 
+										makeHashtag(v.message) + 
 									'</div>'+
 									'<div class="comment">'+
 										'<div class="commentList">'+
