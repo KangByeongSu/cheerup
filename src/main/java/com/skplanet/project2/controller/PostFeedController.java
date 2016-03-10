@@ -27,12 +27,13 @@ public class PostFeedController {
 
 	@Autowired
 	ImageUploadServiceImpl imageService;
-
+	
 	@RequestMapping(value = "/feed/add", method = RequestMethod.GET)
 	public String writeContent(Locale locale, Model model) {
-
+		
 		return "writeContent";
 	}
+
 
 	@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
 	public String addFeedPost(@RequestParam(value = "imageFile") MultipartFile file, PostFeedDTO feed, Model model) {

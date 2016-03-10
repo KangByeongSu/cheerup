@@ -48,6 +48,7 @@ public class PostFeedServiceImpl implements PostFeedService {
 			System.out.println("insert hashtag");
 			resultHash.add(tokenTemp.nextToken());
 		}
+
 		return resultHash;
 	}
 }
