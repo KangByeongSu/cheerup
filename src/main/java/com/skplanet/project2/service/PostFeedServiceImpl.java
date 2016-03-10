@@ -28,6 +28,7 @@ public class PostFeedServiceImpl implements PostFeedService {
 	@Override
 	public int postFeed(PostFeedDTO content) {
 		// TODO hashtag token, file upload
+
 		int result = contentDAO.insertFeed(content);
 		String hashtag = content.getHashtag();
 
@@ -43,6 +44,7 @@ public class PostFeedServiceImpl implements PostFeedService {
 
 	public List<String> tokenizeHashTag(String hashtags) {
 		List<String> resultHash = new ArrayList<String>();
+
 		StringTokenizer tokenTemp = new StringTokenizer(hashtags, "-||-");
 		while (tokenTemp.hasMoreTokens()) {
 			System.out.println("insert hashtag");

@@ -39,6 +39,7 @@ public class PostFeedController {
 	public String addFeedPost(@RequestParam(value = "imageFile") MultipartFile file, PostFeedDTO feed, Model model) {
 		System.out.println("Post controller In");
 		if (file.getSize() == 0) {
+
 		} else {
 			ImageFile fileInfo = imageService.save(file);
 
