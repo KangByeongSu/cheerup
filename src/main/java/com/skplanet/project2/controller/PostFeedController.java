@@ -1,5 +1,7 @@
 package com.skplanet.project2.controller;
 
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,17 +27,22 @@ public class PostFeedController {
 
 	@Autowired
 	ImageUploadServiceImpl imageService;
+	
+	@RequestMapping(value = "/feed/add", method = RequestMethod.GET)
+	public String writeContent(Locale locale, Model model) {
+		
+		return "writeContent";
+	}
 
 	@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
 	public String addFeedPost(@RequestParam(value = "imageFile") MultipartFile file, PostFeedDTO feed, Model model) {
 
 		if (file.getSize() == 0) {
-			System.out.println("ºó ÆÄÀÏÀÔ´Ï´Ù.");
+			System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}
 
 		ImageFile fileInfo = imageService.save(file);
-
-
+		System.out.println("feed :" + feed.getHashtag());
 		if (feed.getComment() != null) {
 			System.out.println("feed :" + feed.getComment());
 		} else {
