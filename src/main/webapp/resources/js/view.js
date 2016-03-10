@@ -15,7 +15,7 @@ $(document).ready(function() {
 								'<div class="userImg">' +
 									 '<img src="'+ v.imgurl +'" />' +
 									 '<span class="userId">' +
-									 	+ v.userId +
+									 	v.userId +
 									 '</span>'+
 								'</div>'+
 								'<div class="updateTime">'+
