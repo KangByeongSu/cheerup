@@ -19,8 +19,8 @@ public class FeedController {
 	
 	
 	@RequestMapping(value="/lists",method=RequestMethod.GET)
-	public @ResponseBody FeedResultDTO getFeedLists(@RequestParam("pageNo") int pageNo){
-
+	public @ResponseBody FeedResultDTO getFeedLists(
+			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo) {
 		
 		FeedResultDTO result=new FeedResultDTO();
 		result.setIsSuccess(1);
