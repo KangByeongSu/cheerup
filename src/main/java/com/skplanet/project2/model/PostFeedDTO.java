@@ -47,8 +47,4 @@ public class PostFeedDTO {
 	public void setHashtag(String hashtag) {
 		this.hashtag = hashtag;
 	}
-
-
-
-	
 }

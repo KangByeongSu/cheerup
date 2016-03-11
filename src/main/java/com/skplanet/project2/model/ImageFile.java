@@ -1,8 +1,6 @@
 package com.skplanet.project2.model;
 public class ImageFile {
-	/**
-	 * 업로드한 이미지 파일이 저장될 경로
-	 */
+	
 	public static final String IMAGE_DIR = "../images/";
 
 	private String id;
