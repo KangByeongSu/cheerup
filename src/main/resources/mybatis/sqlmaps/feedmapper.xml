@@ -25,7 +25,7 @@
 		      Elephant_Comment comments
 		      on contents.c_id = comments.Elephant_Contents_c_id
 		      
-		    ORDER BY cm_time
+		    ORDER BY cm_time DESC
 			
 		      
 		    LIMIT 
@@ -88,6 +88,18 @@
 		    l_down=1
 		    
 	</select> 
+	
+	 <insert id="insertComment" parameterType="com.skplanet.project2.model.commentDTO">
+
+		INSERT INTO 
+		
+		Elephant_Comment
+		(Elephant_User_u_id,Elephant_Contents_c_id,cm_time,cm_content)
+		
+		VALUES
+		(#{userId},#{feedId},#{time},#{message})
+
+	</insert> 
 	
 	
 </mapper>

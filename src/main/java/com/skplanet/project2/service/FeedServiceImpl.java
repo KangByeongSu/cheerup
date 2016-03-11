@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skplanet.project2.dao.FeedDAO;
+import com.skplanet.project2.model.CommentDTO;
 import com.skplanet.project2.model.FeedDTO;
 
 @Service
@@ -22,6 +23,13 @@ public class FeedServiceImpl implements FeedService {
 		return feedDAO.selectFeedList(pageNo);
 		
 	}
+
+
+	@Override
+	public int insertComment(CommentDTO commentDTO) {
+		return feedDAO.insertComment(commentDTO);
+	}
 	
+
 	
 }
