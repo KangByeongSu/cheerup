@@ -9,6 +9,9 @@ public interface FeedDAO {
 
 	List<FeedDTO> selectFeedList(int pageNo);
 	int insertComment(CommentDTO commentDTO);
+	List<CommentDTO> selectCommentList(int feedId, int pageNo);
+	int updateComment(int commentId);
+	int deleteComment(int commentId);
 
 
 }

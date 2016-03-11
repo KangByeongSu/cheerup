@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.skplanet.project2.model.CommentDTO;
 import com.skplanet.project2.model.FeedDTO;
+import com.skplanet.project2.model.FeedIdAndPageNo;
 
 @Repository
 public class FeedDAOImpl implements FeedDAO {
@@ -43,4 +44,23 @@ public class FeedDAOImpl implements FeedDAO {
 		return sqlSession.insert(MAPPER_PACKAGE+".FeedMapper.insertComment",commentDTO);
 	}
 
+	@Override
+	public List<CommentDTO> selectCommentList(int feedId, int pageNo) {
+		FeedIdAndPageNo fp=new FeedIdAndPageNo(feedId,(pageNo-1)*5);
+		return sqlSession.selectList(MAPPER_PACKAGE+".FeedMapper.selectComment",fp);
+	}
+
+	@Override
+	public int updateComment(int commentId) {
+		return sqlSession.update(MAPPER_PACKAGE+".FeedMapper.updateComment", commentId);
+	}
+
+	@Override
+	public int deleteComment(int commentId) {
+		return sqlSession.delete(MAPPER_PACKAGE+".FeedMapper.deleteComment", commentId);
+	}
+	
+	
+
 }
+
