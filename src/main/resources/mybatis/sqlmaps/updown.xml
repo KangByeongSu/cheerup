@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="up_down">
+
+
+	<!-- select mapper -->
+	<select id="findUser" parameterType="com.skplanet.project2.model.LikeDTO"
+		resultType="com.skplanet.project2.model.LikeDTO">
+		select Elephant_Contents_c_id as
+		contentId,Elephant_User_u_id as userId,l_up as up,l_down as down from
+		Elephant_Like where
+		Elephant_Contents_c_id =${contentId} AND
+		Elephant_User_u_id='${userId}';
+	</select>
+
+	<!-- insert mapper -->
+	<insert id="insertUp" parameterType="com.skplanet.project2.model.LikeDTO">
+		insert into Elephant_Like
+		values(#{contentId},#{userId},1,0);
+	</insert>
+
+	<insert id="insertDown" parameterType="com.skplanet.project2.model.LikeDTO">
+		insert into Elephant_Like
+		values(#{contentId},#{userId},0,1);
+	</insert>
+
+	<!-- delete mapper -->
+	<delete id="deleteUser" parameterType="com.skplanet.project2.model.LikeDTO">
+		delete from Elephant_Like
+		where Elephant_Contents_c_id=#{contentId} AND
+		Elephant_User_u_id=#{userId};
+	</delete>
+
+	<!-- update mapper -->
+	<insert id="updateUser" parameterType="com.skplanet.project2.model.LikeDTO">
+		update Elephant_Like set
+		l_up=#{up} , l_down=#{down} 
+		where Elephant_Contents_c_id=#{contentId} AND
+		Elephant_User_u_id=#{userId};
+	</insert>
+</mapper>
