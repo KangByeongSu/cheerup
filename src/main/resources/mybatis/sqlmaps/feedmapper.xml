@@ -25,7 +25,7 @@
 		      Elephant_Comment comments
 		      on contents.c_id = comments.Elephant_Contents_c_id
 		      
-		    ORDER BY cm_time
+		    ORDER BY cm_time DESC
 			
 		      
 		    LIMIT 
@@ -48,7 +48,7 @@
 	</resultMap>
 	
 	<resultMap id="CommentResultMap" type="com.skplanet.project2.model.CommentDTO">
-		<id property="commentsId" column="cm_id"/>
+		<id property="commentId" column="cm_id"/>
 		<result property="userId" column="comment_user_id"/>
 		<result property="time" column="cm_time"/>
 		<result property="message" column="cm_content"/>
@@ -89,5 +89,59 @@
 		    
 	</select> 
 	
+ 	 <insert id="insertComment" parameterType="com.skplanet.project2.model.CommentDTO">
+
+		INSERT INTO 
+		
+		Elephant_Comment
+		(Elephant_User_u_id,Elephant_Contents_c_id,cm_time,cm_content)
+		
+		VALUES
+		(#{userId},#{feedId},#{time},#{message})
+
+	</insert> 
+
+	<select id="selectComment" resultType="com.skplanet.project2.model.CommentDTO" parameterType="com.skplanet.project2.model.FeedIdAndPageNo">
+		SELECT
+		cm_id commentId,
+		cm_content message,
+		cm_time time
+		
+		FROM
+		Elephant_Comment
+		
+		WHERE
+		Elephant_Contents_c_id=#{feedId}
+		
+		 LIMIT 
+				#{pageNo},
+				 5
+		
+		
+	</select>
+	
+	
+	<update id="updateComment" parameterType="com.skplanet.project2.model.CommentDTO">
+	
+		update 
+		Elephant_Comment 
+		
+		set cm_time=#{time},cm_content=#{message}
+		
+		where
+		cm_id=#{commentId}
+
+	
+	</update>
+	
+	<delete id="deleteComment">
+		
+		delete from 
+		Elephant_Comment
+		
+		where 
+		cm_id=#{commentId}
+	
+	</delete>
 	
 </mapper>
