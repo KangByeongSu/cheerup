@@ -1,5 +1,8 @@
 package com.skplanet.project2.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +27,17 @@ public class UpDownController {
 
 	@RequestMapping(value = "/feed/like", method = RequestMethod.POST)
 	/* @RequestMapping(value = "/feed/like", method = RequestMethod.POST) */
-	public @ResponseBody Result callLike(@RequestBody LikeDTO like, Model model) {
+	public @ResponseBody Result callLike(HttpServletRequest request, @RequestBody LikeDTO like, Model model) {
 		logger.info("Enter in the UpDownController. ");
-		logger.info("Request Parameter is contentId:{}, up:{}", like.getContentId(), like.getUp());
+		
+		
+		HttpSession session = request.getSession();
+		logger.info("session:{}", session.getAttribute("id"));
+		
 		
 		LikeResultDTO resultJson = new LikeResultDTO();
 		int result = 0;
-		like.setUserId("user");  //session
+		like.setUserId((String)session.getAttribute("id"));  //session
 		
 		try {
 			// Select Like Table
