@@ -42,8 +42,7 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
-	public ModelAndView view(HttpServletRequest request, Locale locale, Model model) {
-		HttpSession session = request.getSession();
+	public ModelAndView view(HttpServletRequest request, HttpSession session, Locale locale, Model model) {
 		
 		ModelAndView mav = new ModelAndView();
 

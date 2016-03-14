@@ -54,15 +54,18 @@ public class UserController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public @ResponseBody Result Login(HttpSession session, 
 			@RequestBody UserDTO inputUserDTO) {
-		
-		String token;
+
 		
 		UserDTO user = userService.loginProc(inputUserDTO);
 		
 		if(user.getCount() == 1) {
-			token = Jwts.builder().setId(inputUserDTO.getU_id()).setSubject(user.getU_nickname()).signWith(SignatureAlgorithm.HS512, key).compact();
+//			token = Jwts.builder().setId(inputUserDTO.getU_id()).setSubject(user.getU_nickname()).signWith(SignatureAlgorithm.HS512, key).compact();
 			jsonResult.setIsSuccess(1);
-			jsonResult.setMsg(token);
+			session.setAttribute("id",inputUserDTO.getuId());
+		    session.setAttribute("nickname",user.getuNickname());
+		    
+		    logger.info("id:{}, nickname:{}", inputUserDTO.getuId(),user.getuNickname());
+//			jsonResult.setMsg(token);
 			
 		} else {
 			jsonResult.setIsSuccess(0);

@@ -6,11 +6,11 @@
 	<select id="checkUser" parameterType="com.skplanet.project2.model.UserDTO" resultType="com.skplanet.project2.model.UserDTO">
 		    SELECT 
 				count(*) as count,
-				IFNULL(u_nickname, '') as u_nickname
+				IFNULL(u_nickname, '') as uNickname
 		    FROM
 		      Elephant_User user
 		    WHERE
-				u_id=#{u_id} and u_pw=#{u_pw}
+				u_id=#{uId} and u_pw=#{uPw}
 	</select>
 	
 	
