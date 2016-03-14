@@ -14,7 +14,7 @@ public class UpDownDAOImpl implements UpDownDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	@Override
+/*	@Override
 	public int insertUp(LikeDTO like) {
 
 		int up_result = sqlSession.insert("up_down.insertUp", like);
@@ -27,11 +27,6 @@ public class UpDownDAOImpl implements UpDownDAO {
 		return down_result;
 	}
 
-	@Override
-	public LikeDTO findUser(LikeDTO like) {
-		LikeDTO find_user=sqlSession.selectOne("up_down.findUser",like);
-		return find_user;
-	}
 
 	@Override
 	public int deleteUser(LikeDTO like) {
@@ -42,6 +37,33 @@ public class UpDownDAOImpl implements UpDownDAO {
 	@Override
 	public int updateUser(LikeDTO like) {
 		int result=sqlSession.update("up_down.updateUser",like);
+		return result;
+	}
+*/
+	
+	
+	@Override
+	public LikeDTO findUser(LikeDTO like) {
+		LikeDTO find_user=sqlSession.selectOne("up_down.findUser",like);
+		return find_user;
+	}
+
+	
+	@Override
+	public int insertLikeStatus(LikeDTO like) {
+		int up_result = sqlSession.insert("up_down.insertLikeStatus", like);
+		return up_result;
+	}
+
+	@Override
+	public int deleteLikeStatus(LikeDTO like) {
+		int result=sqlSession.delete("up_down.deleteLikeStatus",like);
+		return result;
+	}
+
+	@Override
+	public int updateLikeStatus(LikeDTO like) {
+		int result=sqlSession.update("up_down.updateLikeStatus",like);
 		return result;
 	}
 

@@ -15,28 +15,25 @@
 	</select>
 
 	<!-- insert mapper -->
-	<insert id="insertUp" parameterType="com.skplanet.project2.model.LikeDTO">
-		insert into Elephant_Like
-		values(#{contentId},#{userId},1,0);
+	<insert id="insertLikeStatus" parameterType="com.skplanet.project2.model.LikeDTO">
+		insert into
+		Elephant_Like
+		values(#{contentId},#{userId},#{up},#{down});
 	</insert>
-
-	<insert id="insertDown" parameterType="com.skplanet.project2.model.LikeDTO">
-		insert into Elephant_Like
-		values(#{contentId},#{userId},0,1);
-	</insert>
-
 	<!-- delete mapper -->
-	<delete id="deleteUser" parameterType="com.skplanet.project2.model.LikeDTO">
-		delete from Elephant_Like
+	<delete id="deleteLikeStatus" parameterType="com.skplanet.project2.model.LikeDTO">
+		delete from
+		Elephant_Like
 		where Elephant_Contents_c_id=#{contentId} AND
 		Elephant_User_u_id=#{userId};
 	</delete>
-
 	<!-- update mapper -->
-	<insert id="updateUser" parameterType="com.skplanet.project2.model.LikeDTO">
-		update Elephant_Like set
-		l_up=#{up} , l_down=#{down} 
+	<update id="updateLikeStatus" parameterType="com.skplanet.project2.model.LikeDTO">
+		update Elephant_Like
+		set
+		l_up=#{up} , l_down=#{down}
 		where Elephant_Contents_c_id=#{contentId} AND
 		Elephant_User_u_id=#{userId};
-	</insert>
+	</update>
+
 </mapper>

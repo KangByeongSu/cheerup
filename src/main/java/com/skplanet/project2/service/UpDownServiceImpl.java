@@ -13,7 +13,7 @@ public class UpDownServiceImpl implements UpDownService {
 	@Autowired
 	private UpDownDAO upDownDAO;
 
-	@Override
+/*	@Override
 	public int insertUp(LikeDTO like) {
 		int up_result=upDownDAO.insertUp(like);
 		return up_result;
@@ -24,12 +24,6 @@ public class UpDownServiceImpl implements UpDownService {
 		System.out.println("Insert Down Service");
 		int down_result=upDownDAO.insertDown(like);
 		return down_result;
-	}
-
-	@Override
-	public LikeDTO findUser(LikeDTO like) {
-		LikeDTO find_user=upDownDAO.findUser(like);
-		return find_user;
 	}
 
 	@Override
@@ -57,6 +51,30 @@ public class UpDownServiceImpl implements UpDownService {
 		like.setDown(1);
 		
 		int result=upDownDAO.updateUser(like);
+		return result;
+	}
+*/
+	
+	@Override
+	public LikeDTO findUser(LikeDTO like) {
+		LikeDTO find_user=upDownDAO.findUser(like);
+		return find_user;
+	}
+	@Override
+	public int deleteLikeStatus(LikeDTO like) {
+		int result=upDownDAO.deleteLikeStatus(like);
+		return result;
+	}
+	@Override
+	public int insertLikeStatus(LikeDTO like) {
+		
+		int up_result=upDownDAO.insertLikeStatus(like);
+		return up_result;
+	}
+
+	@Override
+	public int updateLikeStatus(LikeDTO like) {
+		int result=upDownDAO.updateLikeStatus(like);
 		return result;
 	}
 	

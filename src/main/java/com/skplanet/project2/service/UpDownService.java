@@ -6,7 +6,7 @@ public interface UpDownService {
 
 	public LikeDTO findUser(LikeDTO like);
 
-	public int insertUp(LikeDTO like);
+/*	public int insertUp(LikeDTO like);
 
 	public int insertDown(LikeDTO like);
 
@@ -15,4 +15,11 @@ public interface UpDownService {
 	public int updateUp(LikeDTO like);
 
 	public int updateDown(LikeDTO like);
+	
+	*/
+	public int deleteLikeStatus(LikeDTO like);
+	
+	public int insertLikeStatus(LikeDTO like);
+	
+	public int updateLikeStatus(LikeDTO like);
 }

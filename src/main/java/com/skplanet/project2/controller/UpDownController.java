@@ -16,10 +16,48 @@ public class UpDownController {
 	@Autowired
 	UpDownServiceImpl upDownService;
 
-	@RequestMapping(value = "/feed/up", method = RequestMethod.GET)
-/*	@RequestMapping(value = "/feed/up", method = RequestMethod.POST)*/
+	@RequestMapping(value = "/feed/like", method = RequestMethod.GET)
+	/* @RequestMapping(value = "/feed/like", method = RequestMethod.POST) */
+	public String callLike(LikeDTO like, Model model) {
+		int result = 1;
+		like.setUserId("user");
+		like.setContentId(1);
+		like.setDown(0);
+		like.setUp(1);
+
+		// Select Like Table
+		LikeDTO find_user = upDownService.findUser(like);
+		if (find_user == null) {
+			// If find_user is Null, insert new data.
+			upDownService.insertLikeStatus(like);
+			if (result == 1) {
+				System.out.println("Success Insert Count = " + result);
+			}
+		} else {
+			if (find_user.getUp() == like.getUp() || find_user.getDown()==like.getDown()) {
+				// If find_user is not null and user up number is 1, delete
+				// user.
+				result = upDownService.deleteLikeStatus(like);
+				if (result == 1) {
+					System.out.println("Success Delete Count = " + result);
+				}
+			} else{
+				// If find_user is not null and user down number is 1, update
+				// user data. l_down=0,l_up=1.
+				result = upDownService.updateLikeStatus(like);
+				if (result == 1) {
+					System.out.println("Success Update Count = " + result);
+				}
+			}
+		}
+
+		return "view";
+	}
+
+	/*@RequestMapping(value = "/feed/up", method = RequestMethod.GET)
+	 @RequestMapping(value = "/feed/up", method = RequestMethod.POST) 
 	public String callUp(LikeDTO like, Model model) {
-		int result=1;
+		int result = 1;
 		like.setUserId("user");
 		like.setContentId(1);
 		like.setDown(0);
@@ -55,7 +93,7 @@ public class UpDownController {
 	}
 
 	@RequestMapping(value = "/feed/down", method = RequestMethod.GET)
-	/*@RequestMapping(value = "/feed/down", method = RequestMethod.POST)*/
+	 @RequestMapping(value = "/feed/down", method = RequestMethod.POST) 
 	public String callDown(LikeDTO like, Model model) {
 
 		int result = 0;
@@ -63,7 +101,6 @@ public class UpDownController {
 		like.setContentId(1);
 		like.setDown(1);
 		like.setUp(0);
-
 
 		// Select Like Table
 		LikeDTO find_user = upDownService.findUser(like);
@@ -92,5 +129,5 @@ public class UpDownController {
 
 		}
 		return "view";
-	}
+	}*/
 }
