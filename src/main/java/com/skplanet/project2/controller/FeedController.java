@@ -41,7 +41,7 @@ public class FeedController {
 	}
 	
 	
-	@RequestMapping(value = "/comment", method = RequestMethod.POST)
+	@RequestMapping(value = "/comment", method = RequestMethod.POST,consumes="application/json")
 	public @ResponseBody Result insertComment(@RequestBody CommentDTO commentDTO) {
 		
 		int insertResult=feedService.insertComment(commentDTO);
@@ -80,10 +80,10 @@ public class FeedController {
 	}
 	
 	@RequestMapping(value = "/comment/{comment_id}", method = RequestMethod.PUT)
-	public @ResponseBody Result updateComment(@PathVariable(value = "comment_id") int commentId) {
+	public @ResponseBody Result updateComment(@PathVariable(value = "comment_id") int commentId,@RequestBody CommentDTO commentDTO) {
 		
-
-	int insertResult=feedService.updateComment(commentId);
+	commentDTO.setCommentId(commentId);
+	int insertResult=feedService.updateComment(commentDTO);
 
 		
 		Result result = new Result();

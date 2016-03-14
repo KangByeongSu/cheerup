@@ -51,8 +51,8 @@ public class FeedDAOImpl implements FeedDAO {
 	}
 
 	@Override
-	public int updateComment(int commentId) {
-		return sqlSession.update(MAPPER_PACKAGE+".FeedMapper.updateComment", commentId);
+	public int updateComment(CommentDTO commentDTO) {
+		return sqlSession.update(MAPPER_PACKAGE+".FeedMapper.updateComment", commentDTO);
 	}
 
 	@Override

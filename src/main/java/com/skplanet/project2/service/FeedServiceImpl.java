@@ -39,8 +39,8 @@ public class FeedServiceImpl implements FeedService {
 
 
 	@Override
-	public int updateComment(int commentId) {
-		return feedDAO.updateComment(commentId);
+	public int updateComment(CommentDTO commentDTO) {
+		return feedDAO.updateComment(commentDTO);
 	}
 
 

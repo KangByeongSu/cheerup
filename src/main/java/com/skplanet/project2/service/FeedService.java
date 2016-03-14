@@ -10,7 +10,7 @@ public interface FeedService {
 	public List<FeedDTO> getFeedlist(int pageNo);
 	public int insertComment(CommentDTO commentDTO);
 	public List<CommentDTO> getCommentList(int feedId, int pageNo);
-	public int updateComment(int commentId);
+	public int updateComment(CommentDTO commentDTO);
 	public int deleteComment(int commentId);
 
 
