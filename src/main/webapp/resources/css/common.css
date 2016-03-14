@@ -257,6 +257,11 @@ nav {
 	cursor: pointer;
 }
 
+.mainContainer section .mainData .commentAdd .dislikeBtn {
+	float:left;
+	margin-right: 10px;
+	cursor: pointer;
+}
 
 
 

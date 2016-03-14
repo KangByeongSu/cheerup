@@ -8,7 +8,14 @@ public class UserDTO {
 	private String uId;
 	private String uPw;
 	private String uNickname;
+	private int count;
 	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public String getuId() {
 		return uId;
 	}
@@ -27,5 +34,4 @@ public class UserDTO {
 	public void setuNickname(String uNickname) {
 		this.uNickname = uNickname;
 	}
-
 }
