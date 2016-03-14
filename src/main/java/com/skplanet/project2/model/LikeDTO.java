@@ -6,8 +6,6 @@ public class LikeDTO {
 	private int down;
 	private int contentId;
 	private String userId;
-
-	
 	public int getUp() {
 		return up;
 	}
@@ -32,5 +30,4 @@ public class LikeDTO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	
 }

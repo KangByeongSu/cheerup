@@ -9,19 +9,51 @@ $(document).ready(function() {
 			} 
 		});
 		return tmpMessage;
-//		'<span class="hashtag">#스타벅스</span>' <span class="hashtag">#STARBUCKS</span>  <span class="hashtag">#텀블러</span>  <span class="hashtag">#써니보틀</span>  <span class="hashtag">#물병</span>'+
+// '<span class="hashtag">#스타벅스</span>' <span class="hashtag">#STARBUCKS</span>
+// <span class="hashtag">#텀블러</span> <span class="hashtag">#써니보틀</span> <span
+// class="hashtag">#물병</span>'+
+
 	};
+		
+	$(".commentInput").keydown(function() {
+		var commentData = {		
+			  "feedId" : $(this).attr("feedId"),
+			  "message" : $(this).val()
+		};
+
+		$.ajax({
+			url : "./feed/comment",
+			type : 'POST', // define the type of HTTP verb
+							// we want to use (POST for our
+							// form)
+			data : JSON.stringify(commentData), // our data
+												// object
+			contentType : "application/json",
+			charset : "utf-8",
+			success : function(resData) {
+				// comment view
+				commentView();
+			},
+
+			error : function() {
+				alert("알 수 없는 오류로 실패하였습니다.");
+			}
+		});
+	});
+	
 	$.ajax({
 		url: "./feed/lists/1",
 		success:function(resData) {
-			console.log(resData.isSuccess);
 			if(resData.isSuccess) {
+				$(".likeBtn").off("click");
+				$(".dislikeBtn").off("click");
+				
 				$.each(resData.feedList, function(i, v) {
 					var temp =
 						'<section>' +
 							'<div class="nav">' +
 								'<div class="userImg">' +
-									 '<img src="'+ v.imgurl +'" />' +
+// '<img src="'+ v.imgurl +'" />' +
 									 '<span class="userId">' +
 									 	v.userId +
 									 '</span>'+
@@ -31,7 +63,7 @@ $(document).ready(function() {
 								'</div>'+
 							'</div>'+
 							'<div class="img">'+
-								'<img src="'+ v.imgurl +'" />'+
+// '<img src="'+ v.imgurl +'" />'+
 							'</div>'+
 							'<div class="mainData">'+
 								'<div class="likeCount">'+
@@ -50,11 +82,14 @@ $(document).ready(function() {
 									'</div>'+
 								'</div>'+
 								'<div class="commentAdd">'+
-									'<div class="likeBtn">'+
+									'<div feedId="'+v.feedId+'" class="likeBtn">'+
+										'<img  src="./resources/img/like_.png" />'+
+									'</div>'+
+									'<div feedId="'+v.feedId+'" class="dislikeBtn">'+
 										'<img src="./resources/img/like_.png" />'+
 									'</div>'+
 									'<div>'+
-										'<input class="commentInput" type="text" placeholder="댓글달기..." />'+
+										'<input feedId="'+v.feedId+'"class="commentInput" type="text" placeholder="댓글달기..." />'+
 									'</div>'+
 									'<div class="more">'+
 										'<img src="./resources/img/moreBtn.png" />'+
@@ -65,6 +100,52 @@ $(document).ready(function() {
 					
 					$('.moreFeed').before(temp);
 				});
+				
+				$(".likeBtn").click(function(e) {
+					console.log("feedId : ", $(this).attr("feedId"));
+					$.ajax({
+				    	type:'post',
+				    	contentType: "application/json",
+				    	url: "./feed/like", 
+				    	data : JSON.stringify({
+				    		contentId: $(this).attr("feedId"),
+				    		up:1,
+				    		down:0
+				    	}),
+				    	dataType: 'json',
+				    	success: function(result){
+				    		if(result.isSuccess == 1) {
+				    			alert("success")	
+				    		} else {
+				    			alert("fail");
+				    		}
+				    		
+				    	}
+				    });
+				}) ;
+				
+				$(".dislikeBtn").click(function(e) {
+					console.log("feedId : ", $(this).attr("feedId"));
+					$.ajax({
+				    	type:'post',
+				    	contentType: "application/json",
+				    	url: "./feed/like", 
+				    	data : JSON.stringify({
+				    		contentId: $(this).attr("feedId"),
+				    		up:0,
+				    		down:1
+				    	}),
+				    	dataType: 'json',
+				    	success: function(result){
+				    		if(result.isSuccess == 1) {
+				    			alert("success")	
+				    		} else {
+				    			alert("fail");
+				    		}
+				    		
+				    	}
+				    });
+				}) ;
 			} else {
 				alert("알 수 없는 오류로 실패하였습니다.");
 			}
@@ -74,3 +155,21 @@ $(document).ready(function() {
 		}
 	});
 });
+
+function commentView(){
+// $.ajax({
+// url : "./feed/"+$(this).attr("feedId")+"/comment/1",
+// type : 'GET',
+// charset : "utf-8",
+// success : function(resData) {
+//
+// },
+//
+// error : function() {
+// alert("알 수 없는 오류로 실패하였습니다.");
+// }
+//	
+// });
+		
+	
+}

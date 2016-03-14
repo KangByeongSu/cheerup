@@ -2,12 +2,17 @@ package com.skplanet.project2.model;
 
 public class CommentDTO {
 
+	private int commentId;
+	private String userId;
+	private String time;
+	private String message;
+	private int feedId;
 	
-	public int getCommentsId() {
-		return commentsId;
+	public int getCommentId() {
+		return commentId;
 	}
-	public void setCommentsId(int commentsId) {
-		this.commentsId = commentsId;
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
 	}
 	public String getUserId() {
 		return userId;
@@ -27,11 +32,14 @@ public class CommentDTO {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	public int getFeedId() {
+		return feedId;
+	}
+	public void setFeedId(int feedId) {
+		this.feedId = feedId;
+	}
 	
-	private int commentsId;
-	private String userId;
-	private String time;
-	private String message;
+	
 
 
 }
