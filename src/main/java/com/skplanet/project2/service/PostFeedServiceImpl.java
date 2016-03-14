@@ -4,42 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skplanet.project2.controller.PostFeedController;
 import com.skplanet.project2.dao.PostFeedDAO;
 import com.skplanet.project2.model.PostFeedDTO;
 
 @Service
 public class PostFeedServiceImpl implements PostFeedService {
-
+	private static final Logger logger = LoggerFactory.getLogger(PostFeedServiceImpl.class);
+	
 	@Autowired
 	PostFeedDAO contentDAO;
 
 	@Override
-	public void getFeedlists() {
-		// TODO Auto-generated method stub
-
-		System.out.println("hi");
-		return;
-
-	}
-
-	@Override
 	public int postFeed(PostFeedDTO content) {
-		// TODO hashtag token, file upload
 
-		int result = contentDAO.insertFeed(content);
+		int ContentInsertResult;
+		int hashtagInsertResult;
 		String hashtag = content.getHashtag();
 
+		ContentInsertResult = contentDAO.insertFeed(content);
 		if (hashtag.equals("hash_null") || hashtag == null) {
-			System.out.println("hash is null");
+			logger.info("This Content has not hashtags.");
+
 		} else {
 			List<String> hashtags = tokenizeHashTag(content.getHashtag());
-			int result2 = contentDAO.insertHashTagList(result, hashtags);
+			hashtagInsertResult = contentDAO.insertHashTagList(ContentInsertResult, hashtags);
 		}
 
-		return result;
+		return ContentInsertResult;
 	}
 
 	public List<String> tokenizeHashTag(String hashtags) {
@@ -47,7 +44,6 @@ public class PostFeedServiceImpl implements PostFeedService {
 
 		StringTokenizer tokenTemp = new StringTokenizer(hashtags, "-||-");
 		while (tokenTemp.hasMoreTokens()) {
-			System.out.println("insert hashtag");
 			resultHash.add(tokenTemp.nextToken());
 		}
 
