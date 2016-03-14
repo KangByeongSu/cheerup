@@ -29,6 +29,11 @@ $(document).ready(function() {
 	                required: true,
 	                minlength: 5
 	            },
+	            password_again: {
+	            	required: true,
+	            	minlength: 5,
+	                equalTo: "#password"
+	            },
 	            uNickname: "required"
 	        },
 	        messages: {
@@ -41,6 +46,11 @@ $(document).ready(function() {
 	                required: "패스워드를 입력해줘",
 	                minlength: "5자리 이상이야"
 	            },
+	            password_again:{
+	            	required: "패스워드 확인해줘",
+	                minlength: "5자리 이상이야",
+                    equalTo: "패스워드가 달라ㅠ"	
+                },
 	            uNickname: "닉네임을 입력해줘"
 	        },
 	        submitHandler: function(form) {
