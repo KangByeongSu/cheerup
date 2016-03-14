@@ -26,16 +26,12 @@ public class UpDownController {
 	/* @RequestMapping(value = "/feed/like", method = RequestMethod.POST) */
 	public @ResponseBody Result callLike(@RequestBody LikeDTO like, Model model) {
 		logger.info("Enter in the UpDownController. ");
-		
-		logger.info("contentId:{}, up:{}", like.getContentId(), like.getUp());
+		logger.info("Request Parameter is contentId:{}, up:{}", like.getContentId(), like.getUp());
 		
 		LikeResultDTO resultJson = new LikeResultDTO();
 		int result = 0;
 		like.setUserId("user");  //session
-		like.setContentId(1);  
-		like.setDown(0);      
-		like.setUp(1);         
-
+		
 		try {
 			// Select Like Table
 			LikeDTO find_user = upDownService.findUser(like);
