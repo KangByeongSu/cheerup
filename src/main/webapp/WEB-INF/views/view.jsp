@@ -62,6 +62,9 @@
 						<div class="likeBtn">
 							<img src="<c:url value='/resources/img/like_.png' />" />
 						</div>
+						<div class="dislikeBtn">
+							<img src="<c:url value='/resources/img/like_.png' />" />
+						</div>
 						<div>
 							<input class="commentInput" type="text" placeholder="댓글달기..." />
 						</div>
