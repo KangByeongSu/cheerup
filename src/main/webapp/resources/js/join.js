@@ -33,7 +33,7 @@ $(document).ready(function() {
 	
 	function checkId() {
 		var checkid = $("#checkid").val();
-		if (checkid.length > 4) {
+		if (checkid.length > 5) {
 				$.ajax({
 					url : "./check",
 					data : {
@@ -46,7 +46,10 @@ $(document).ready(function() {
 					error : function() {
 					}
 				});
-		} 
+		} else{
+			$("#checkidtext").html();
+
+		}
 	}
 
 });
