@@ -70,15 +70,25 @@ $(document).ready(function() {
 				
 				$(".likeBtn").click(function(e) {
 					console.log("feedId : ", $(this).attr("feedId"));
-					/**
-					 * Url : /feed/like
-					 * Data : 
-					 * {
-					 * 		"contentId" : 콘텐츠아이디
-					 * 		"up"		: up이면 1 , down이면 0
-					 * 		"down"		: up이면 0, down이면 1
-					 * }
-					 */
+					$.ajax({
+				    	type:'post',
+				    	contentType: "application/json",
+				    	url: "./feed/like", 
+				    	data : JSON.stringify({
+				    		contentId: $(this).attr("feedId"),
+				    		up:1,
+				    		down:0
+				    	}),
+				    	dataType: 'json',
+				    	success: function(result){
+				    		if(result.isSuccess == 1) {
+				    			alert("success")	
+				    		} else {
+				    			alert("fail");
+				    		}
+				    		
+				    	}
+				    });
 				}) ;
 			} else {
 				alert("알 수 없는 오류로 실패하였습니다.");

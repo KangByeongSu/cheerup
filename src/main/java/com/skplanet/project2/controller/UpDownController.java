@@ -5,11 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.skplanet.project2.HomeController;
 import com.skplanet.project2.model.LikeDTO;
 import com.skplanet.project2.model.LikeResultDTO;
 import com.skplanet.project2.model.Result;
@@ -22,10 +22,12 @@ public class UpDownController {
 	@Autowired
 	UpDownServiceImpl upDownService;
 
-	@RequestMapping(value = "/feed/like", method = RequestMethod.GET)
+	@RequestMapping(value = "/feed/like", method = RequestMethod.POST)
 	/* @RequestMapping(value = "/feed/like", method = RequestMethod.POST) */
-	public @ResponseBody Result callLike(LikeDTO like, Model model) {
-		logger.info("Enter in the UpDownController.");
+	public @ResponseBody Result callLike(@RequestBody LikeDTO like, Model model) {
+		logger.info("Enter in the UpDownController. ");
+		
+		logger.info("contentId:{}, up:{}", like.getContentId(), like.getUp());
 		
 		LikeResultDTO resultJson = new LikeResultDTO();
 		int result = 0;
