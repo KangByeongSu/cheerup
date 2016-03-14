@@ -12,48 +12,6 @@ public class UpDownServiceImpl implements UpDownService {
 	
 	@Autowired
 	private UpDownDAO upDownDAO;
-
-/*	@Override
-	public int insertUp(LikeDTO like) {
-		int up_result=upDownDAO.insertUp(like);
-		return up_result;
-	}
-
-	@Override
-	public int insertDown(LikeDTO like) {
-		System.out.println("Insert Down Service");
-		int down_result=upDownDAO.insertDown(like);
-		return down_result;
-	}
-
-	@Override
-	public int deleteUser(LikeDTO like) {
-		int result=upDownDAO.deleteUser(like);
-		return result;
-	}
-
-	@Override
-	public int updateUp(LikeDTO like) {
-		
-		// Setting value
-		like.setUp(1);
-		like.setDown(0);
-		
-		int result=upDownDAO.updateUser(like);
-		return result;
-	}
-
-	@Override
-	public int updateDown(LikeDTO like) {
-		
-		// Setting value
-		like.setUp(0);
-		like.setDown(1);
-		
-		int result=upDownDAO.updateUser(like);
-		return result;
-	}
-*/
 	
 	@Override
 	public LikeDTO findUser(LikeDTO like) {
