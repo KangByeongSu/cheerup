@@ -18,6 +18,8 @@ $(document).ready(function() {
 		success:function(resData) {
 			if(resData.isSuccess) {
 				$(".likeBtn").off("click");
+				$(".dislikeBtn").off("click");
+				
 				$.each(resData.feedList, function(i, v) {
 					var temp =
 						'<section>' +
@@ -55,6 +57,9 @@ $(document).ready(function() {
 									'<div feedId="'+v.feedId+'" class="likeBtn">'+
 										'<img  src="./resources/img/like_.png" />'+
 									'</div>'+
+									'<div feedId="'+v.feedId+'" class="dislikeBtn">'+
+										'<img src="./resources/img/like_.png" />'+
+									'</div>'+
 									'<div>'+
 										'<input class="commentInput" type="text" placeholder="댓글달기..." />'+
 									'</div>'+
@@ -78,6 +83,29 @@ $(document).ready(function() {
 				    		contentId: $(this).attr("feedId"),
 				    		up:1,
 				    		down:0
+				    	}),
+				    	dataType: 'json',
+				    	success: function(result){
+				    		if(result.isSuccess == 1) {
+				    			alert("success")	
+				    		} else {
+				    			alert("fail");
+				    		}
+				    		
+				    	}
+				    });
+				}) ;
+				
+				$(".dislikeBtn").click(function(e) {
+					console.log("feedId : ", $(this).attr("feedId"));
+					$.ajax({
+				    	type:'post',
+				    	contentType: "application/json",
+				    	url: "./feed/like", 
+				    	data : JSON.stringify({
+				    		contentId: $(this).attr("feedId"),
+				    		up:0,
+				    		down:1
 				    	}),
 				    	dataType: 'json',
 				    	success: function(result){
