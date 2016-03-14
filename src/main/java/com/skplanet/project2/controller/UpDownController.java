@@ -29,10 +29,10 @@ public class UpDownController {
 		
 		LikeResultDTO resultJson = new LikeResultDTO();
 		int result = 0;
-		like.setUserId("user");
-		like.setContentId(1);
-		like.setDown(0);
-		like.setUp(1);
+		like.setUserId("user");  //session
+		like.setContentId(1);  
+		like.setDown(0);      
+		like.setUp(1);         
 
 		try {
 			// Select Like Table
