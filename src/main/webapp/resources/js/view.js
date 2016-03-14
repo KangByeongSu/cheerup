@@ -70,6 +70,15 @@ $(document).ready(function() {
 				
 				$(".likeBtn").click(function(e) {
 					console.log("feedId : ", $(this).attr("feedId"));
+					/**
+					 * Url : /feed/like
+					 * Data : 
+					 * {
+					 * 		"contentId" : 콘텐츠아이디
+					 * 		"up"		: up이면 1 , down이면 0
+					 * 		"down"		: up이면 0, down이면 1
+					 * }
+					 */
 				}) ;
 			} else {
 				alert("알 수 없는 오류로 실패하였습니다.");
