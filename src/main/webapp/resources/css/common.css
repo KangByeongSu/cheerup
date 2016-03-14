@@ -311,7 +311,7 @@ nav {
 	    top: 50%;
 	    left: 50%;
 	    width: 350px;
-	    height: 313px;
+	    height: 380px;
 	    margin-top: -156px;
 	    margin-left: -175px;
 	    border: 1px solid #edeeee;
@@ -333,7 +333,7 @@ nav {
 }
 
 .loginBox .formBox div {
-	padding-bottom: 15px;
+	padding-bottom: 5px;
 }
 .loginBox .formBox input {
 	border: 1px solid #edeeee;
@@ -360,6 +360,10 @@ nav {
 	font-weight:600;
 }
 
+#checkidText{
+	 padding-top:8px;
+	 color:red;
+}
 
 
 

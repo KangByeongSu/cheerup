@@ -1,12 +1,14 @@
 package com.skplanet.project2.model;
 
+import org.springframework.stereotype.Repository;
 
-public class UserDTO{
-	private String u_id;
-	private String u_pw;
-	private String u_nickname;
-	private int count;
+@Repository
+public class UserDTO {
 	
+	private String uId;
+	private String uPw;
+	private String uNickname;
+	private int count;
 	
 	public int getCount() {
 		return count;
@@ -14,22 +16,22 @@ public class UserDTO{
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public String getU_id() {
-		return u_id;
+	public String getuId() {
+		return uId;
 	}
-	public void setU_id(String u_id) {
-		this.u_id = u_id;
+	public void setuId(String uId) {
+		this.uId = uId;
 	}
-	public String getU_pw() {
-		return u_pw;
+	public String getuPw() {
+		return uPw;
 	}
-	public void setU_pw(String u_pw) {
-		this.u_pw = u_pw;
+	public void setuPw(String uPw) {
+		this.uPw = uPw;
 	}
-	public String getU_nickname() {
-		return u_nickname;
+	public String getuNickname() {
+		return uNickname;
 	}
-	public void setU_nickname(String u_nickname) {
-		this.u_nickname = u_nickname;
+	public void setuNickname(String uNickname) {
+		this.uNickname = uNickname;
 	}
 }
