@@ -42,13 +42,13 @@
 		    	contentType: "application/json",
 		    	url: "./user/login", 
 		    	data : JSON.stringify({
-		    		u_id:$("#u_id").val(),
-		    		u_pw:$("#u_pw").val()
+		    		uId:$("#u_id").val(),
+		    		uPw:$("#u_pw").val()
 		    	}),
 		    	dataType: 'json',
 		    	success: function(result){
 		    		if(result.isSuccess == 1) {
-		    			location.href='./user/loginProc/'+result.msg;	
+		    			location.href='./view';	
 		    		} else {
 		    			alert("로그인에 실패했습니다!");
 		    		}
