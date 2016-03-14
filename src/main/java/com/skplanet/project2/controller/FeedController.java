@@ -1,5 +1,8 @@
 package com.skplanet.project2.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,8 +45,11 @@ public class FeedController {
 	
 	
 	@RequestMapping(value = "/comment", method = RequestMethod.POST,consumes="application/json")
-	public @ResponseBody Result insertComment(@RequestBody CommentDTO commentDTO) {
+	public @ResponseBody Result insertComment(HttpServletRequest request,@RequestBody CommentDTO commentDTO) {
 		
+		
+		HttpSession session = request.getSession();
+		commentDTO.setUserId((String)session.getAttribute("id"));
 		int insertResult=feedService.insertComment(commentDTO);
 
 		
