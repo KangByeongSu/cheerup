@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,17 +17,17 @@ import com.skplanet.project2.model.ImageFile;
 @Service
 public class ImageUploadServiceImpl implements ImageUploadService {
 
+	private static final Logger logger = LoggerFactory.getLogger(ImageUploadServiceImpl.class);
+
 	private Map<String, ImageFile> imageFilesMap;
 
 	public ImageUploadServiceImpl() {
 		init();
 	}
 
-
 	@Override
 	public void init() {
 		imageFilesMap = new HashMap<String, ImageFile>();
-
 	}
 
 	@Override
@@ -35,26 +37,22 @@ public class ImageUploadServiceImpl implements ImageUploadService {
 
 	@Override
 	public ImageFile save(MultipartFile multipartFile) {
-	
 
-		System.out.println(multipartFile.getSize());
-		String genId = UUID.randomUUID().toString();   
+		logger.info("File size is {}.", multipartFile.getSize());
+		String genId = UUID.randomUUID().toString();
 		ImageFile imageFile = null;
 
 		try {
-			System.out.println("Service Start");
-			System.out.println("Gen ID = " + genId);
-			
-			String savedFileName = saveToFile(multipartFile, genId); 
-		
-			System.out.println("saved File Name = " + savedFileName);
-		
-			imageFile = new ImageFile(genId, multipartFile.getContentType(), (int) multipartFile.getSize(),
-					savedFileName); 
 
-			imageFilesMap.put(genId, imageFile); 
+			String savedFileName = saveToFile(multipartFile, genId);
+			logger.info("File Name is {}.", savedFileName);
+
+			imageFile = new ImageFile(genId, multipartFile.getContentType(), (int) multipartFile.getSize(),
+					savedFileName);
+
+			imageFilesMap.put(genId, imageFile);
 		} catch (IOException e) {
-			System.out.println("catch bye");
+			logger.error("Error detection in middle of File Save");
 			e.printStackTrace();
 		}
 
@@ -64,13 +62,9 @@ public class ImageUploadServiceImpl implements ImageUploadService {
 	private String saveToFile(MultipartFile src, String id) throws IOException {
 
 		String fileName = src.getOriginalFilename();
-
-		System.out.println(" File Name = " + fileName);
 		byte[] bytes = src.getBytes();
 		String saveFileName = id + "." + getExtension(fileName);
-		System.out.println(" saveFileName Name = " + saveFileName);
 		String savePath = ImageFile.IMAGE_DIR + saveFileName;
-		System.out.println(" savePath = " + savePath);
 		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(savePath));
 		bos.write(bytes);
 		bos.flush();
