@@ -4,6 +4,7 @@
 <html>
 <head>
 	<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
 	<meta id="viewport" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="<c:url value='/resources/css/common.css' />" type="text/css" />
 </head>
@@ -15,7 +16,7 @@
 					<img src="<c:url value='/resources/img/instagram.png' />" />
 				</div>
 				<div class="personInfo userId">
-					akdung21
+					<c:out value="${nickname}"/> 
 				</div>
 			</div>
 		</nav>
