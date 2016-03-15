@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.skplanet.project2.model.ImageFile;
 import com.skplanet.project2.model.PostFeedDTO;
-import com.skplanet.project2.model.Result;
 import com.skplanet.project2.service.ImageUploadServiceImpl;
 import com.skplanet.project2.service.PostFeedServiceImpl;
 
@@ -24,9 +23,6 @@ public class PostFeedController {
 	private static final Logger logger = LoggerFactory.getLogger(PostFeedController.class);
 	@Autowired
 	PostFeedServiceImpl feedservice;
-
-	@Autowired
-	Result jsonResult;
 
 	@Autowired
 	ImageUploadServiceImpl imageService;

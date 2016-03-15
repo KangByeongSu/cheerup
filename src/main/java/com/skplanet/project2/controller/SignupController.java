@@ -21,15 +21,13 @@ public class SignupController {
 	@Autowired
 	SignUpService signupService;
 	
-
-	@Autowired
-	Result jsonResult;
 	
 	String [] checkidText = {"멋진 아이디네요!","이미 사용중이거나 탈퇴한 아이디입니다."};
 	
 	
 	@RequestMapping(value = "/user/check", method = RequestMethod.GET)
 	public @ResponseBody Result checkUser(Locale locale, Model model,@RequestParam(value = "userId") String userId) {
+		Result jsonResult = new Result();
 		int result = signupService.checkUserId(userId);
 		jsonResult.setIsSuccess(result);
 		jsonResult.setMsg(checkidText[result]);

@@ -31,8 +31,6 @@ public class UserPageController {
 	@Autowired
 	UserService userService;
 
-	@Autowired
-	Result jsonResult;
 
 	/**
 	 * @param userId
@@ -44,6 +42,7 @@ public class UserPageController {
 		HttpSession session = request.getSession();
 		ModelAndView model = new ModelAndView("mypage");
 		
+		Result jsonResult = new Result();
 		
 		
 		
