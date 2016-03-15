@@ -15,30 +15,38 @@ $(document).ready(function() {
 
 	};
 		
-	$(".commentInput").keydown(function() {
-		var commentData = {		
-			  "feedId" : $(this).attr("feedId"),
-			  "message" : $(this).val()
-		};
+	$(".commentInput").keydown(function(key) {
+		
+		 if (key.keyCode == 13){
+			 var commentData = {		
+					  "feedId" : $(this).attr("feedId"),
+					  "message" : $(this).val()
+				};
+			 
+			 var addPosition=$(this).parent().parent().parent().children(".content").children(".comment").children(".commentList");
+			 $.ajax({
+					url : "./feed/comment",
+					type : 'POST', // define the type of HTTP verb
+									// we want to use (POST for our
+									// form)
+					data : JSON.stringify(commentData), // our data
+														// object
+					contentType : "application/json",
+					charset : "utf-8",
+					success : function(resData) {
+						console.log(resData.msg)
+						frontEndCommentAdd(addPosition);
+					},
 
-		$.ajax({
-			url : "./feed/comment",
-			type : 'POST', // define the type of HTTP verb
-							// we want to use (POST for our
-							// form)
-			data : JSON.stringify(commentData), // our data
-												// object
-			contentType : "application/json",
-			charset : "utf-8",
-			success : function(resData) {
-				// comment view
-				commentView();
-			},
+					error : function() {
+						
+						alert("알 수 없는 오류로 실패하였습니다.");
+					}
+				});
+		 }
+		
 
-			error : function() {
-				alert("알 수 없는 오류로 실패하였습니다.");
-			}
-		});
+		
 	});
 	
 	$.ajax({
@@ -156,20 +164,78 @@ $(document).ready(function() {
 	});
 });
 
-function commentView(){
-// $.ajax({
-// url : "./feed/"+$(this).attr("feedId")+"/comment/1",
-// type : 'GET',
-// charset : "utf-8",
-// success : function(resData) {
-//
-// },
-//
-// error : function() {
-// alert("알 수 없는 오류로 실패하였습니다.");
-// }
-//	
-// });
-		
+function frontEndCommentAdd(addPosition){
 	
+	addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span>"+$(".commentInput").val()+"</p>");
+	$(".commentInput").val("");
 }
+
+function commentPlusView(feedId,pageNo){
+	 $.ajax({
+			url : "./"+feedId+"/comment/"+pageNo,
+			type : 'get', // define the type of HTTP verb
+							// we want to use (POST for our
+							// form)
+			dataType : "application/json",
+			charset : "utf-8",
+			success : function(resData) {
+				if(resData===1){
+					return resData.commnetList;
+				}
+			},
+
+			error : function() {
+				
+				alert("알 수 없는 오류로 실패하였습니다.");
+			}
+		});
+}
+
+function commentUpdate(commentId,msg){
+	var commentData={
+			"message"	: msg
+	}
+	
+	 $.ajax({
+			url : "./feed/comment/"+commentId,
+			type : 'put', // define the type of HTTP verb
+							// we want to use (POST for our
+							// form)
+			data : JSON.stringify(commentData), // our data
+												// object
+			contentType : "application/json",
+			charset : "utf-8",
+			success : function(resData) {
+				console.log(resData.msg)
+				frontendCommentEdit();//frontend edit
+			},
+
+			error : function() {
+				
+				alert("알 수 없는 오류로 실패하였습니다.");
+			}
+		});
+
+}
+
+function commentDelete(commentId){
+	
+	 $.ajax({
+			url : "./feed/comment/"+commentId,
+			type : 'delete', // define the type of HTTP verb
+							// we want to use (POST for our
+							// form)
+			charset : "utf-8",
+			success : function(resData) {
+				console.log(resData.msg)
+				frontendCommentDelete();//frontend edit
+			},
+
+			error : function() {
+				
+				alert("알 수 없는 오류로 실패하였습니다.");
+			}
+		});
+
+}
+

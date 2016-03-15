@@ -97,7 +97,7 @@
 		(Elephant_User_u_id,Elephant_Contents_c_id,cm_time,cm_content)
 		
 		VALUES
-		(#{userId},#{feedId},#{time},#{message})
+		(#{userId},#{feedId},now(),#{message})
 
 	</insert> 
 
@@ -126,7 +126,7 @@
 		update 
 		Elephant_Comment 
 		
-		set cm_time=#{time},cm_content=#{message}
+		set cm_time=now(),cm_content=#{message}
 		
 		where
 		cm_id=#{commentId}
