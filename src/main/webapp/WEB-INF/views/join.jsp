@@ -26,7 +26,10 @@
 					<div id="checkidtext"></div>
 				</div>
 				<div class="passInput">
-					<input id="password" name="uPw" type="text" placeholder="password" />
+					<input id="password" name="uPw" type="password" placeholder="password" />
+				</div>
+				<div class="passInput">
+					<input id="password_again" name="password_again" type="password" placeholder="password" />
 				</div>
 				<div class="nickInput">
 					<input id="nickname" name="uNickname" type="text" placeholder="nickname" />

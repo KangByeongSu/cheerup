@@ -16,4 +16,6 @@ public interface UserDAO {
 	public int commentCount(int contentId);
 	
 	public PostFeedDTO extendModal(int contentId);
+	public int editUser(UserDTO userDTO);
+
 }

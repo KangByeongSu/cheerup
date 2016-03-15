@@ -11,5 +11,4 @@ public interface PostFeedDAO {
 	public int insertHashTagList(int cId, List<String> hashtags);
 
 
-
 }

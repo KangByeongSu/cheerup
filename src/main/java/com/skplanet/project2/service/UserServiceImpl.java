@@ -45,5 +45,10 @@ public class UserServiceImpl implements UserService {
 	public PostFeedDTO extendModal(int contentId) {
 		PostFeedDTO result = userDAO.extendModal(contentId); 
 		return result;
+
+	}
+	@Override
+	public int userEdit(UserDTO userDTO) {
+		return userDAO.editUser(userDTO);
 	}
 }

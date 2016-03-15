@@ -49,6 +49,10 @@ public class UserDAOImpl implements UserDAO {
 		PostFeedDTO result = sqlSession.selectOne("UserMapper.extendModal",contentId);
 		return result;
 	}
+	@Override
+	public int editUser(UserDTO userDTO) {
+		return sqlSession.update("UserMapper.updateUser",userDTO);
+	}
 	
 
 }

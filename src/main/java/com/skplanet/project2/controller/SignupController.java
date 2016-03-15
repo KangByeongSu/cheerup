@@ -30,7 +30,6 @@ public class SignupController {
 	
 	@RequestMapping(value = "/user/check", method = RequestMethod.GET)
 	public @ResponseBody Result checkUser(Locale locale, Model model,@RequestParam(value = "userId") String userId) {
-		
 		int result = signupService.checkUserId(userId);
 		jsonResult.setIsSuccess(result);
 		jsonResult.setMsg(checkidText[result]);
@@ -45,9 +44,7 @@ public class SignupController {
 	
 	@RequestMapping(value = "/user/add", method = RequestMethod.POST)
 	public String addjoin(Locale locale, Model model,UserDTO user) {
-		
 		int result = signupService.signupUser(user);
-		
 		return "redirect:/feed/lists/1";
 	}
 

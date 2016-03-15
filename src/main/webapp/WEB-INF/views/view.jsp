@@ -43,7 +43,7 @@
 					</div>
 					<div class="content">
 						<div class="text">
-							<span class="userId">akdung21</span>
+							<span class="userId" id="userId">akdung21</span>
 							아메리카노 사러갔다가 물병 필요해서<br>
 							첨으로 스벅에서 사봤당ㅋㅋ<br>
 							비싼데 이쁘긴하네~ 물 많이 마시자!!💦 <br>

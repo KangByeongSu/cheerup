@@ -42,4 +42,19 @@
 		c_comment as comment, c_imgurl as imgUrl, c_time as time FROM
 		Elephant_Contents WHERE c_id=#{contentId};
 	</select>
+
+
+
+	<update id="updateUser" parameterType="com.skplanet.project2.model.UserDTO">
+	
+		update 
+		Elephant_User 
+		
+		set u_nickname=#{uNickname},u_pw=#{uPw}
+		
+		where
+		u_id=#{uId}
+	
+	</update>
+	
 </mapper>

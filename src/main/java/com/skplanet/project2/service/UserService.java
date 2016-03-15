@@ -12,5 +12,9 @@ public interface UserService {
 	
 	public List<ImageGridDTO> userImageGridURL(String userId);
 	public PostFeedDTO extendModal(int contentId);
+	public int userEdit(UserDTO userDTO);
 
 }
+
+
+
