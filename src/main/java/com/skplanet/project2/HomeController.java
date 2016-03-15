@@ -80,5 +80,11 @@ public class HomeController {
 		return "writeContent";
 	}
 	
+	@RequestMapping(value = "/tmpUserUpdate", method = RequestMethod.GET)
+	public String tmpUserUpdate(Locale locale, Model model) {
+		
+		return "tmpUserUpdate";
+	}
+	
 }
 
