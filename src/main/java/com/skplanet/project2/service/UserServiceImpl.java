@@ -18,4 +18,10 @@ public class UserServiceImpl implements UserService {
 	public UserDTO loginProc(UserDTO userDTO) {
 		return userDAO.checkUser(userDTO); 
 	}
+
+
+	@Override
+	public int userEdit(UserDTO userDTO) {
+		return userDAO.editUser(userDTO);
+	}
 }
