@@ -12,6 +12,20 @@
 		    WHERE
 				u_id=#{uId} and u_pw=#{uPw}
 	</select>
+
+
+
+	<update id="updateUser" parameterType="com.skplanet.project2.model.UserDTO">
+	
+		update 
+		Elephant_User 
+		
+		set u_nickname=#{uNickname},u_pw=#{uPw}
+		
+		where
+		u_id=#{uId}
+	
+	</update>
 	
 	
 </mapper>

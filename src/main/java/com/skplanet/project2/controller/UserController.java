@@ -1,17 +1,19 @@
 package com.skplanet.project2.controller;
 
+import java.security.Key;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,13 +24,8 @@ import com.skplanet.project2.service.UserService;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.impl.crypto.MacProvider;
-import java.security.Key;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 
 
@@ -100,6 +97,23 @@ public class UserController {
 	}
 	
 	
-	
+	@RequestMapping(value="/{userId}",method=RequestMethod.PUT)
+	public @ResponseBody Result userEdit(@PathVariable String userId, @RequestBody UserDTO userDTO){
+		
+		userDTO.setuId(userId);
+		
+		Result jsonResult = new Result();
+		
+		if(userService.userEdit(userDTO)>=0){
+			jsonResult.setIsSuccess(1);
+			jsonResult.setMsg("update success");
+		}else{
+			jsonResult.setIsSuccess(0);
+			jsonResult.setMsg("fail");
+		}
+		
+		return jsonResult;
+		
+	}
 
 }
