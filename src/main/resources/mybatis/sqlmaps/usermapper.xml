@@ -29,10 +29,17 @@
 		SELECT COUNT(*) FROM Elephant_Like where
 		Elephant_Contents_c_id=#{contentId};
 	</select>
-	
+
 	<select id="commentCount" parameterType="Integer" resultType="Integer">
 		SELECT COUNT(*) FROM Elephant_Comment where
 		Elephant_Contents_c_id=#{contentId};
 	</select>
 
+
+	<select id="extendModal" parameterType="Integer"
+		resultType="com.skplanet.project2.model.PostFeedDTO">
+		SELECT c_id as id, Elephant_User_u_id as userId,
+		c_comment as comment, c_imgurl as imgUrl, c_time as time FROM
+		Elephant_Contents WHERE c_id=#{contentId};
+	</select>
 </mapper>

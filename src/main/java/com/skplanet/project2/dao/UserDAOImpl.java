@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.skplanet.project2.model.ImageGridDTO;
+import com.skplanet.project2.model.PostFeedDTO;
 import com.skplanet.project2.model.UserDTO;
 
 
@@ -40,6 +41,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int commentCount(int contentId) {
 		int result = sqlSession.selectOne("UserMapper.commentCount",contentId);
+		return result;
+	}
+
+	@Override
+	public PostFeedDTO extendModal(int contentId) {
+		PostFeedDTO result = sqlSession.selectOne("UserMapper.extendModal",contentId);
 		return result;
 	}
 	

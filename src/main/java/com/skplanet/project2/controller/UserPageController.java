@@ -35,7 +35,7 @@ public class UserPageController {
 	 * @return json type { contentId : id, imgUrl : url } 
 	 * @method select upload image of one user
 	 */
-	@RequestMapping(value = "/user/test", method = RequestMethod.GET)
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public @ResponseBody UserImageGridDTO imageGridURL(HttpSession session) {
 		logger.info("enter the imageGridUrl method");
 		
@@ -45,7 +45,7 @@ public class UserPageController {
 		
 		List<ImageGridDTO> resultData = userService.userImageGridURL(userId);
 
-/*		
+/*		 test case
 		
 		for (int i = 0; i < resultData.size(); i++) {
 			System.out.println(resultData.get(i).getContentId());
@@ -54,25 +54,33 @@ public class UserPageController {
 			System.out.println(resultData.get(i).getCommentCount());
 		}
 */
+		//add if success ??
 		resultJson.setIsSuccess(1);
 		resultJson.setMsg("success");
 		resultJson.setImageGridDTO(resultData);
 		
 		return resultJson;
 	}
-	/*
-	 * @RequestMapping(value="/user/{userId}",method=RequestMethod.POST)
-	 * public @ResponseBody Result Login(HttpSession session,
-	 * 
-	 * @PathVariable(value="userId") String userId) {
-	 * 
-	 * 
-	 * String userId="test1"; List<PostFeedDTO> user =
-	 * userService.userImageGridURL(userId);
-	 * 
-	 * 
-	 * 
-	 * return null; }
+	
+	/**
+	 * @param contentId
+	 * @return json type PostFeedDTO 
+	 * @method select modal data
 	 */
+	@RequestMapping(value = "/modal", method = RequestMethod.GET)
+	public @ResponseBody PostFeedDTO extendModal(HttpSession session) {
+		logger.info("enter the imageGridUrl method");
+		
+		
+		int contentId = 1; //dummy data
+		
+		PostFeedDTO resultData = userService.extendModal(contentId);
+		
+		/*test case
+		System.out.println("id  : "+resultData.getId() + "comment : "+resultData.getComment() + " time : "+resultData.getTime());
+		*/
+		
+		return resultData;
+	}
 
 }
