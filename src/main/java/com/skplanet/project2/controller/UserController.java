@@ -37,10 +37,6 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
-
-	@Autowired
-	Result jsonResult;
-
 	
 	Key key = null;
 	
@@ -51,6 +47,8 @@ public class UserController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public @ResponseBody Result Login(HttpSession session, 
 			@RequestBody UserDTO inputUserDTO) {
+		
+		Result jsonResult = new Result();
 
 		
 		UserDTO user = userService.loginProc(inputUserDTO);

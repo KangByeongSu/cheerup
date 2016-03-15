@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class Result {
 
+
 	private int isSuccess;
 	private String msg;
 	

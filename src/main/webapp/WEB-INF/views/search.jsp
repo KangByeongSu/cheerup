@@ -22,44 +22,13 @@
 		</nav>
 		
 		<div class="mainContainer">
-			<div class="navbar">
-				<div class="userImg">
-					<img src="https://igcdn-photos-h-a.akamaihd.net/hphotos-ak-xfp1/t51.2885-19/924632_1015723898456023_1603104456_a.jpg" />
-				</div>
-				<div class="userInfo">
-					<div class="userId_">
-						<span class="userId__"> akdung21</span>
-						<c:if test="${mypage}">
-							<div class="modifyBtn">
-								프로필 편집 
-							</div>
-						</c:if>
-					</div>
-					<!-- <div class="userIntro">
-						DongukKim
-						<span class="hashtag">#SW_Developer</span> 
-						<span class="hashtag">#SKplanet</span>
-					</div> -->
-					<div class="userHistory">
-						<div>
-							게시물 <span class="num">${fn:length(lists)}</span>개
-						</div>
-						<div>
-							<!-- 팔로워 <span class="num">236</span>명 -->
-						</div>
-						<div>
-							<!-- 팔로우 <span class="num">339</span>명 -->
-						</div>
-					</div>
-				</div>
-				
-			</div>
+
 			<div class="img_list">
 				<c:forEach var="item" items="${lists}">
-					<div id="imgItem_${item.contentId}" itemId="${item.contentId}" class="imgItem">
+					<div id="imgItem_${item.feedId}" itemId="${item.feedId}" class="imgItem">
 						<div class="hover">
 							<span class="hoverInfo">
-								좋아요 ${item.likeCount}&nbsp;&nbsp;댓글 ${item.commentCount}
+								좋아요 ${item.upNum} &nbsp;&nbsp;댓글
 							</span>
 						</div>
 						<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
@@ -147,7 +116,7 @@
 			$.ajax({
 		    	type:'get',
 		    	contentType: "application/json",
-		    	url: "../modal/"+$(this).attr("itemId"), 
+		    	url: "../../user/modal/"+$(this).attr("itemId"), 
 		    	success: function(result){
 		    		
 		    		
