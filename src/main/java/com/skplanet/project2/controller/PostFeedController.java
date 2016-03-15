@@ -37,7 +37,7 @@ public class PostFeedController {
 	@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
 	public String addFeedPost(@RequestParam(value = "imageFile") MultipartFile file, PostFeedDTO feed, Model model) {
 		logger.info("Enter the /feed/add POST return redirect:/view");
-		int result;
+		int result = 0;
 		try {
 			if (file.getSize() == 0) {
 
@@ -49,9 +49,10 @@ public class PostFeedController {
 					feed.setComment(" ");
 				}
 				feed.setUserId("test1");
-				feed.setImgUrl(fileInfo.getId());
+				feed.setImgUrl("/resources/img/"+fileInfo.getFileName());
 				result = feedservice.postFeed(feed);
 			}
+			
 		} catch (Exception e) {
 			logger.error("Error /feed/add POST");
 		}
