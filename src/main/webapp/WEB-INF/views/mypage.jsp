@@ -55,7 +55,7 @@
 			</div>
 			<div class="img_list">
 				<c:forEach var="item" items="${lists}">
-					<div id="imgItem_${item.contentId}"class="imgItem">
+					<div id="imgItem_${item.contentId}" itemId="${item.contentId}" class="imgItem">
 						<div class="hover">
 							<span class="hoverInfo">
 								좋아요 ${item.likeCount}&nbsp;&nbsp;댓글 ${item.commentCount}
@@ -89,9 +89,6 @@
 							<span class="date">3주</span>
 						</div>
 						<div class="contentBody">
-							<!-- <span class="userId">
-								akdung21	
-							</span> -->
 							나란말싸미듕국에다라 
 							<span class="hashtag">#졸업장</span>  
 							<span class="hashtag">#4000만원짜리</span>
@@ -130,27 +127,58 @@
 	</div>
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script >
+	
+		var makeHashtag = function(message) {
+			var tmpMessage = "";
+			$.each(message.split(" "), function(i, v) {
+				if(v.indexOf("#") == 0) {
+					tmpMessage += '<span class="hashtag">'+v+'</span> '
+				} else {
+					tmpMessage += v+' ';
+				} 
+			});
+			return tmpMessage;
+	
+		};
 		$(".imgItem").click(function() {
 			
-			$("#modal").css('top', $(document).scrollTop()+'px');
-			$("#modal").css('display', 'block');
- 			$("body").css("overflow-y","hidden");
-			$("#modal .backdrop").click(function(e) {
-				e.stopPropagation();
-				$("#modal").css('display', 'none');
-				$(document).off("keypress");
-				$("#modal .backdrop").off("click");
-				$("body").css("overflow-y","auto");	
-			});
-			$(document).keyup(function(e) {
-				e.stopPropagation();
-				if(e.keyCode == 27) {
-					$("#modal").css('display', 'none');
-					$(document).off("keypress");	
-					$("#modal .backdrop").off("click");
-					$("body").css("overflow-y","auto");
-				}
-			});
+
+			$.ajax({
+		    	type:'get',
+		    	contentType: "application/json",
+		    	url: "../modal/"+$(this).attr("itemId"), 
+		    	success: function(result){
+		    		
+		    		
+		    		
+		    		$("#modal .imgSection img").attr("src",result.imgUrl);
+		    		$("#modal .contentBody").html(makeHashtag(result.comment));
+		    		
+		    		
+		    		
+		    		$("#modal").css('top', $(document).scrollTop()+'px');
+	    			$("#modal").css('display', 'block');
+	     			$("body").css("overflow-y","hidden");
+	    			$("#modal .backdrop").click(function(e) {
+	    				e.stopPropagation();
+	    				$("#modal").css('display', 'none');
+	    				$(document).off("keypress");
+	    				$("#modal .backdrop").off("click");
+	    				$("body").css("overflow-y","auto");	
+	    			});
+	    			$(document).keyup(function(e) {
+	    				e.stopPropagation();
+	    				if(e.keyCode == 27) {
+	    					$("#modal").css('display', 'none');
+	    					$(document).off("keypress");	
+	    					$("#modal .backdrop").off("click");
+	    					$("body").css("overflow-y","auto");
+	    				}
+	    			});	
+		    		
+		    	}
+		    });
+			
 		});
 	</script>
 <%-- 	<script src="<c:url value='/resources/js/view.js' />"></script> --%>

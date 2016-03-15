@@ -84,18 +84,16 @@ public class UserPageController {
 	 * @return json type PostFeedDTO 
 	 * @method select modal data
 	 */
-	@RequestMapping(value = "/modal", method = RequestMethod.GET)
-	public @ResponseBody PostFeedDTO extendModal(HttpSession session) {
+	@RequestMapping(value = "/modal/{contentId}", method = RequestMethod.GET)
+	public @ResponseBody PostFeedDTO extendModal(HttpServletRequest request, @PathVariable(value="contentId") int contentId) {
 		logger.info("enter the imageGridUrl method");
 		
 		
-		int contentId = 1; //dummy data
+//		int contentId = 1; //dummy data
 		
 		PostFeedDTO resultData = userService.extendModal(contentId);
 		
-		/*test case
-		System.out.println("id  : "+resultData.getId() + "comment : "+resultData.getComment() + " time : "+resultData.getTime());
-		*/
+//		logger.info("", resultData);
 		
 		return resultData;
 	}
