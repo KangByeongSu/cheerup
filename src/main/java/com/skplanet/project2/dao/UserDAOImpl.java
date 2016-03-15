@@ -19,6 +19,11 @@ public class UserDAOImpl implements UserDAO {
 		
 		return result;
 	}
+
+	@Override
+	public int editUser(UserDTO userDTO) {
+		return sqlSession.update("UserMapper.updateUser",userDTO);
+	}
 	
 
 }
