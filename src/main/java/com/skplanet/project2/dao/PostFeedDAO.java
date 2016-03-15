@@ -1,6 +1,5 @@
 package com.skplanet.project2.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.skplanet.project2.model.PostFeedDTO;
