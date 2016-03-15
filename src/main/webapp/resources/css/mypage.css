@@ -171,24 +171,24 @@ nav {
 	}
 	@media not screen and (min-width : 450px) and (min-device-width: 450px)  {
 		.mainContainer .navbar .userHistory {
-			clear:both;
+		/* 	clear:both; */
 		}
 		.mainContainer .navbar .userHistory div{
-			float: left;
-		    margin-right: 35px;
+			/* float: left;
+		    margin-right: 35px; */
 		    font-weight: 400;
 		}
 		    
 		    
 		.mainContainer .navbar .userHistory{
 			line-height: 33px;
-		    font-size: 15px;
+		    font-size: 13px;
 		    margin: 0 auto;
-		    position: relative;
+		   /*  position: relative;
 		    left: 50%;
 		    top: 25%;
 		    margin-top: 20px;
-		    margin-left: -158px;
+		    margin-left: -158px; */
 		}
 		
 		.mainContainer .navbar .userHistory .num {
@@ -196,7 +196,7 @@ nav {
 		}
 		.mainContainer .img_list {
 			clear: both;
-			margin-top: 41px;
+			margin-top: 0px;
 		}
 	}
 	@media screen and (min-width : 450px) and (min-device-width: 450px)  {
@@ -331,25 +331,38 @@ nav {
     height: 100%;
 }
 
-.mainContainer .img_list .imgItem .hover .hoverInfo{
-	position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    line-height: 18px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 15px;
-    vertical-align: baseline;
-    font-weight: 600;
-}
-    
-    
 .mainContainer .img_list .imgItem:hover > .hover {
   display:block;
 }
+
+@media not screen and (min-width : 736px) and (min-device-width: 736px)  {
+	.mainContainer .img_list .imgItem .hover .hoverInfo{
+		display:none;
+	}
+}
+
+@media screen and (min-width : 736px) and (min-device-width: 736px)  {
+	.mainContainer .img_list .imgItem .hover .hoverInfo{
+		position: absolute;
+		display:block;
+	    left: 50%;
+	    top: 50%;
+	    transform: translate(-50%, -50%);
+	    color: white;
+	    line-height: 18px;
+	    margin: 0;
+	    padding: 0;
+	    border: 0;
+	    font-size: 15px;
+	    vertical-align: baseline;
+	    font-weight: 600;
+	}
+}
+
+
+    
+    
+
 
 
 

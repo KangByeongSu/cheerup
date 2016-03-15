@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <% request.setCharacterEncoding("utf8");%>
 <%@ page session="false" %>
 <html>
@@ -34,20 +35,20 @@
 							</div>
 						</c:if>
 					</div>
-					<div class="userIntro">
+					<!-- <div class="userIntro">
 						DongukKim
 						<span class="hashtag">#SW_Developer</span> 
 						<span class="hashtag">#SKplanet</span>
-					</div>
+					</div> -->
 					<div class="userHistory">
 						<div>
-							게시물 <span class="num">37</span>개
+							게시물 <span class="num">${fn:length(lists)}</span>개
 						</div>
 						<div>
-							팔로워 <span class="num">236</span>명
+							<!-- 팔로워 <span class="num">236</span>명 -->
 						</div>
 						<div>
-							팔로우 <span class="num">339</span>명
+							<!-- 팔로우 <span class="num">339</span>명 -->
 						</div>
 					</div>
 				</div>
