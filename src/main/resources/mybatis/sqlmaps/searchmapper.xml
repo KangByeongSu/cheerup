@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="search">
+
+	<select id="selectInterestItem" parameterType="hashmap" resultType="com.skplanet.project2.model.SearchDTO" >
+		select hash_id as hashId, s.hash_tag as hashTag, s.Elephant_Contents_c_id as feedId, c.c_imgurl as imgurl, IFNULL(sum(l.l_up),0) as upNum,IFNULL(sum(l.l_down),0) as downNum, c_time as createTime
+		from Elephant_Search s
+		left join
+		(
+			select *
+			from Elephant_Like 
+		) l on s.Elephant_Contents_c_id = l.Elephant_Contents_c_id 
+		left join Elephant_Contents c on s.Elephant_Contents_c_id=c.c_id
+		where hash_tag=trim(#{hashtag})
+		group by l.Elephant_Contents_c_id
+		<if test='type == "interest"'>
+   			order by upNum DESC
+   		</if>
+		<if test='type == "lastest"'>
+   			order by c_time DESC
+   		</if>
+   		limit #{pageNum},5
+	</select>
+
+
+</mapper>
