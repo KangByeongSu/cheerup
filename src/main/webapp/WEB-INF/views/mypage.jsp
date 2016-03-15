@@ -28,9 +28,11 @@
 				<div class="userInfo">
 					<div class="userId_">
 						<span class="userId__"> akdung21</span>
-						<div class="modifyBtn">
-							프로필 편집 
-						</div>
+						<c:if test="${mypage}">
+							<div class="modifyBtn">
+								프로필 편집 
+							</div>
+						</c:if>
 					</div>
 					<div class="userIntro">
 						DongukKim
@@ -52,85 +54,17 @@
 				
 			</div>
 			<div class="img_list">
-				<div class="imgItem">
-					<div class="hover">
+				<c:forEach var="item" items="${lists}">
+					<div id="imgItem_${item.contentId}"class="imgItem">
+						<div class="hover">
+							<span class="hoverInfo">
+								좋아요 ${item.likeCount}&nbsp;&nbsp;댓글 ${item.commentCount}
+							</span>
+						</div>
+						<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
+						
 					</div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-					
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				<div class="imgItem">
-					<div class="hover"></div>
-					<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
-				</div>
-				
+				</c:forEach>
 			</div>
 		</div>
 		<div id="modal">
