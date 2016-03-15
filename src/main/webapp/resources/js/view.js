@@ -61,7 +61,7 @@ $(document).ready(function() {
 						'<section>' +
 							'<div class="nav">' +
 								'<div class="userImg">' +
-// '<img src="'+ v.imgurl +'" />' +
+									'<img src="'+ v.imgurl +'" />' +
 									 '<span class="userId">' +
 									 	v.userId +
 									 '</span>'+
@@ -71,7 +71,7 @@ $(document).ready(function() {
 								'</div>'+
 							'</div>'+
 							'<div class="img">'+
-// '<img src="'+ v.imgurl +'" />'+
+								'<img src="'+ v.imgurl +'" />'+
 							'</div>'+
 							'<div class="mainData">'+
 								'<div class="likeCount">'+
