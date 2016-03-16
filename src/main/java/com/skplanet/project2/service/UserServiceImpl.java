@@ -45,9 +45,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public DetailModalDTO extendModal(int contentId) {
-		
-		String userId = "session";
+	public DetailModalDTO extendModal(int contentId, String userId) {
+
 		int likeCount=0;
 		int likeClicked=0;
 	

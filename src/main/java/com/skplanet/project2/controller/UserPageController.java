@@ -90,7 +90,10 @@ public class UserPageController {
 	public @ResponseBody DetailModalDTO extendModal(HttpServletRequest request, @PathVariable(value="contentId") int contentId) {
 		logger.info("enter the extendModal method");
 		
-		DetailModalDTO resultData = userService.extendModal(contentId);
+		
+		
+		
+		DetailModalDTO resultData = userService.extendModal(contentId, (String)request.getSession().getAttribute("id"));
 
 
 
