@@ -4,7 +4,7 @@
 <mapper namespace="UserMapper">
 	<select id="checkUser" parameterType="com.skplanet.project2.model.UserDTO"
 		resultType="com.skplanet.project2.model.UserDTO">
-        select
+		select
 		count(*) as count,
 		IFNULL(u_nickname, '') as
 		uNickname
