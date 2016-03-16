@@ -36,25 +36,45 @@
 	</select>
 
 
-	<select id="extendModal" parameterType="Integer"
+	<select id="extendModalContents" parameterType="Integer"
 		resultType="com.skplanet.project2.model.PostFeedDTO">
 		SELECT c_id as id, Elephant_User_u_id as userId,
-		c_comment as comment, c_imgurl as imgUrl, c_time as time FROM
-		Elephant_Contents WHERE c_id=#{contentId};
+		c_comment
+		as comment, c_imgurl as imgUrl, c_time as time FROM
+		Elephant_Contents
+		WHERE c_id=#{contentId};
 	</select>
 
 
+	<select id="extendModalComment" parameterType="Integer"
+		resultMap="CommentsMap">
+		SELECT cm_id as commentId, Elephant_User_u_id as userId,
+		Elephant_Contents_c_id
+		as feedId, cm_time as time, cm_content as message FROM
+		Elephant_Comment
+		WHERE Elephant_Contents_c_id=#{contentId};
+	</select>
+
+	<resultMap id="CommentsMap" type="com.skplanet.project2.model.CommentDTO">
+		<result property="commentId" column="cm_id" />
+		<result property="userId" column="Elephant_User_u_id" />
+		<result property="feedId" column="Elephant_Contents_c_id" />
+		<result property="time" column="cm_time" />
+		<result property="message" column="cm_content" />
+	</resultMap>
+
 
 	<update id="updateUser" parameterType="com.skplanet.project2.model.UserDTO">
-	
-		update 
-		Elephant_User 
-		
-		set u_nickname=#{uNickname},u_pw=#{uPw}
-		
+
+		update
+		Elephant_User
+
+		set
+		u_nickname=#{uNickname},u_pw=#{uPw}
+
 		where
 		u_id=#{uId}
-	
+
 	</update>
-	
+
 </mapper>
