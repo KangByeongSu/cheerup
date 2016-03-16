@@ -13,7 +13,7 @@
 		<nav class="navbar">
 			<div class="content">
 				<div class="logo">
-					<img src="<c:url value='/resources/img/instagram.png' />" />
+					<a href="/view"> <img src="<c:url value='/resources/img/instagram.png' />" /></a>
 				</div>
 				<div class="personInfo userId">
 					로그아웃 

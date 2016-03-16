@@ -45,7 +45,7 @@ public class HomeController {
 	public ModelAndView view(HttpServletRequest request, HttpSession session, Locale locale, Model model) {
 		
 		ModelAndView mav = new ModelAndView();
-
+		mav.addObject("userId",session.getAttribute("id") );
 		mav.addObject("nickname",session.getAttribute("nickname") );
 		mav.setViewName("view");
 		

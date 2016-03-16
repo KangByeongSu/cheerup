@@ -13,10 +13,10 @@
 		<nav class="navbar">
 			<div class="content">
 				<div class="logo">
-					<img src="<c:url value='/resources/img/instagram.png' />" />
+					<a href="/view"> <img src="<c:url value='/resources/img/instagram.png' />" /></a>
 				</div>
 				<div class="personInfo userId">
-					<c:out value="${nickname}"/> 
+					<a style="color: #125688;" href="./user/test/${userId}"><c:out value="${nickname}"/></a> 
 				</div>
 			</div>
 		</nav>
