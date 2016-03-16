@@ -29,7 +29,7 @@
 	</delete>
 	<!-- update mapper -->
 	<update id="updateLikeStatus" parameterType="com.skplanet.project2.model.LikeDTO">
-		update Elephant_Like
+	update Elephant_Like
 		set
 		l_up=#{up} , l_down=#{down}
 		where Elephant_Contents_c_id=#{contentId} AND

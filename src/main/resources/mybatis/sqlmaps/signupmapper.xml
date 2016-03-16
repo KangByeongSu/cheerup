@@ -4,7 +4,7 @@
 <mapper namespace="signup">
 
 	<insert id="insertUser" parameterType="com.skplanet.project2.model.UserDTO" >
-	insert into Elephant_User(u_id,u_pw,u_nickname) values (#{uId},password(#{uPw}),#{uNickname})
+		insert into Elephant_User(u_id,u_pw,u_nickname) values (#{uId},password(#{uPw}),#{uNickname})
 	</insert>
 	
 	<select id="selectUser" parameterType="String" resultType="java.lang.Integer" >
