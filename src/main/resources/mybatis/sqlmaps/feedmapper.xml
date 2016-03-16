@@ -7,16 +7,16 @@
 
 
 <select id="selectFeed" resultMap="FeedResultMap">
-		    SELECT 
-			c_comment,
-			c_imgurl,
-			c_time,
-			c_id,
-			contents.Elephant_User_u_id content_user_id,
-			comments.Elephant_User_u_id comment_user_id,
-			cm_id,
-			cm_time,
-			cm_content
+			select
+				c_comment,
+				c_imgurl,
+				c_time,
+				c_id,
+				contents.Elephant_User_u_id content_user_id,
+				comments.Elephant_User_u_id comment_user_id,
+				cm_id,
+				cm_time,
+				cm_content
 			
 			
 		    FROM
@@ -61,7 +61,7 @@
  
 <select id="getUpUserId" resultType="java.lang.String">
 		    
-			SELECT 
+			select 
 			Elephant_User_u_id
 			
 		    FROM
@@ -76,7 +76,7 @@
 	
 	<select id="getDownUserId" resultType="java.lang.String">
 		    
-			SELECT 
+			select 
 			Elephant_User_u_id
 			
 		    FROM
