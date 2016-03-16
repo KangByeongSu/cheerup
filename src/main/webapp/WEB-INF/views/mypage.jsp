@@ -65,7 +65,7 @@
 							</span>
 						</div>
 						
-						<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
+						<img src="${item.imgUrl}">
 						
 					</div>
 				</c:forEach>
@@ -89,7 +89,7 @@
 					
 					<div class="commentListSection">
 						<div class="status">
-							<span class="likeNum">좋아요 19개</span>
+							<span class="likeNum">좋아요 <span class="likeNumData">19</span>개</span>
 							<span class="date">3주</span>
 						</div>
 						<div class="contentBody">
@@ -199,8 +199,14 @@
 		    	dataType: 'json',
 		    	success: function(result){
 		    		if(result.isSuccess == 1) {
-		    			console.log("success",$(self));
-		    			$(self).children().attr("src","/resources/img/like.png")
+		    			var likeNum = parseInt($(".likeNumData").html());
+		    			if($(".likeBtn").children().attr("src") === "/resources/img/like.png" ) {
+			    			$(".likeBtn").children().attr("src","/resources/img/like_.png");
+			    			$(".likeNumData").html(likeNum-1);
+			    		} else {
+ 			    			$(".likeBtn").children().attr("src","/resources/img/like.png");
+ 			    			$(".likeNumData").html(likeNum+1);
+			    		}
 		    		} else {
 		    			alert("fail");
 		    		}
@@ -223,9 +229,18 @@
 		    		$("#modal .imgSection img").attr("src",result.detailPost.imgUrl);
 		    		$("#modal .contentBody").html(makeHashtag(result.detailPost.comment));
 		    		$("#modal .date").html(jQuery.timeago(result.detailPost.time));
-		    		$(".likeBtn").attr("feedId", itemId );
+		    		$("#modal .likeBtn").attr("feedId", itemId );
+		    		$("#modal .likeNumData").html(result.detailPost.likeCount);
+		    		console.log(result.detailPost.likeClicked == 0);
+		    		if(result.detailPost.likeClicked == 0) {
+		    			$(".likeBtn").children().attr("src","/resources/img/like_.png");
+		    		} else {
+		    			$(".likeBtn").children().attr("src","/resources/img/like.png");
+		    		}
+		    		
 		    		$(".commentInput").attr("feedId", itemId );
 		    		$('.commentList').html("");
+		    		
 		    		
 		    		$.each(result.commentList, function(i, v) {
 		    			$('.commentList').append("<div class='commentItem'><span class='userId'>"+v.userId+"</span>"+v.message+"</p>");
@@ -240,7 +255,6 @@
 	    				$(document).off("keypress");
 	    				$("#modal .backdrop").off("click");
 	    				$("body").css("overflow-y","auto");	
-	    				$(".likeBtn").children().attr("src","/resources/img/like_.png")
 	    			});
 	    			$(document).keyup(function(e) {
 	    				e.stopPropagation();
@@ -249,7 +263,6 @@
 	    					$(document).off("keypress");	
 	    					$("#modal .backdrop").off("click");
 	    					$("body").css("overflow-y","auto");
-	    					$(".likeBtn").children().attr("src","/resources/img/like_.png")
 	    				}
 	    			});	
 		    		

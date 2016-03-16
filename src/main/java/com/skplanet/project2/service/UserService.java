@@ -11,7 +11,7 @@ public interface UserService {
 	public UserDTO loginProc(UserDTO userDTO);
 	
 	public List<ImageGridDTO> userImageGridURL(String userId);
-	public DetailModalDTO extendModal(int contentId);
+	public DetailModalDTO extendModal(int contentId, String userId);
 	public int userEdit(UserDTO userDTO);
 
 }
