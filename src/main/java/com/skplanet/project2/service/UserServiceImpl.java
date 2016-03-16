@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skplanet.project2.dao.UserDAO;
+import com.skplanet.project2.model.CommentDTO;
+import com.skplanet.project2.model.CommentResultDTO;
+import com.skplanet.project2.model.DetailModalDTO;
 import com.skplanet.project2.model.ImageGridDTO;
 import com.skplanet.project2.model.PostFeedDTO;
 import com.skplanet.project2.model.UserDTO;
@@ -42,9 +45,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public PostFeedDTO extendModal(int contentId) {
-		PostFeedDTO result = userDAO.extendModal(contentId); 
-		return result;
+	public DetailModalDTO extendModal(int contentId) {
+		
+
+		DetailModalDTO resultDTO=new DetailModalDTO();
+
+		PostFeedDTO detailPost = userDAO.extendModalContents(contentId); 
+		List<CommentDTO> commentList = userDAO.extendModalComment(contentId);
+		
+		resultDTO.setDetailPost(detailPost);
+		resultDTO.setCommentList(commentList);
+		//최종  DTO 에 합친다..
+		return resultDTO;
 
 	}
 	@Override

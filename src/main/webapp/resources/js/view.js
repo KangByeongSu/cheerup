@@ -110,6 +110,7 @@ $(document).ready(function() {
 				});
 				
 				$(".likeBtn").click(function(e) {
+					var self=this;
 					console.log("feedId : ", $(this).attr("feedId"));
 					$.ajax({
 				    	type:'post',
@@ -124,10 +125,10 @@ $(document).ready(function() {
 				    	success: function(result){
 				    		if(result.isSuccess == 1) {
 				    			alert("success")	
+				    			
 				    		} else {
 				    			alert("fail");
 				    		}
-				    		
 				    	}
 				    });
 				}) ;

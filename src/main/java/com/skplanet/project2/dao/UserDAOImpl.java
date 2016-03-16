@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.skplanet.project2.model.CommentDTO;
 import com.skplanet.project2.model.ImageGridDTO;
 import com.skplanet.project2.model.PostFeedDTO;
 import com.skplanet.project2.model.UserDTO;
@@ -44,15 +45,22 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
-	@Override
-	public PostFeedDTO extendModal(int contentId) {
-		PostFeedDTO result = sqlSession.selectOne("UserMapper.extendModal",contentId);
-		return result;
-	}
+
 	@Override
 	public int editUser(UserDTO userDTO) {
 		return sqlSession.update("UserMapper.updateUser",userDTO);
 	}
-	
 
+	@Override
+	public PostFeedDTO extendModalContents(int contentId) {
+		PostFeedDTO result = sqlSession.selectOne("UserMapper.extendModalContents",contentId);
+		return result;
+	}
+
+	@Override
+	public List<CommentDTO> extendModalComment(int contentId) {
+		List<CommentDTO> result = sqlSession.selectList("UserMapper.extendModalComment",contentId);
+		return result;
+	}
+	
 }

@@ -62,6 +62,7 @@
 								좋아요 ${item.likeCount}&nbsp;&nbsp;댓글 ${item.commentCount}
 							</span>
 						</div>
+						
 						<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
 						
 					</div>
@@ -114,7 +115,7 @@
 					</div>
 					
 					<div class="commentSection">
-						<div class="likeBtn">
+						<div feedId="" class="likeBtn">
 							<img src="<c:url value='/resources/img/like_.png' />" />
 						</div>
 						<div>
@@ -178,6 +179,32 @@
 			 }
 		});
 		
+		$(".likeBtn").click(function(e) {
+			var itemId = $(this).attr("itemId");
+			var self = this;
+			
+			$.ajax({
+		    	type:'post',
+		    	contentType: "application/json",
+		    	url: "../../feed/like", 
+		    	data : JSON.stringify({
+		    		contentId: $(this).attr("feedId"),
+		    		up:1,
+		    		down:0
+		    	}),
+		    	dataType: 'json',
+		    	success: function(result){
+		    		if(result.isSuccess == 1) {
+		    			console.log("success",$(self));
+		    			$(self).children().attr("src","/resources/img/like.png")
+		    		} else {
+		    			alert("fail");
+		    		}
+		    		
+		    	}
+		    });
+		});
+		
 		$(".imgItem").click(function() {
 			var itemId = $(this).attr("itemId");
 			
@@ -187,12 +214,17 @@
 		    	url: "../modal/"+itemId, 
 		    	success: function(result){
 		    		
+		    		console.log(result.detailPost.comment);
 		    		
-		    		
-		    		$("#modal .imgSection img").attr("src",result.imgUrl);
-		    		$("#modal .contentBody").html(makeHashtag(result.comment));
+		    		$("#modal .imgSection img").attr("src",result.detailPost.imgUrl);
+		    		$("#modal .contentBody").html(makeHashtag(result.detailPost.comment));
+		    		$(".likeBtn").attr("feedId", itemId );
 		    		$(".commentInput").attr("feedId", itemId );
+		    		$('.commentList').html("");
 		    		
+		    		$.each(result.commentList, function(i, v) {
+		    			$('.commentList').append("<div class='commentItem'><span class='userId'>"+v.userId+"</span>"+v.message+"</p>");
+		    		});
 		    		
 		    		$("#modal").css('top', $(document).scrollTop()+'px');
 	    			$("#modal").css('display', 'block');
@@ -203,6 +235,7 @@
 	    				$(document).off("keypress");
 	    				$("#modal .backdrop").off("click");
 	    				$("body").css("overflow-y","auto");	
+	    				$(".likeBtn").children().attr("src","/resources/img/like_.png")
 	    			});
 	    			$(document).keyup(function(e) {
 	    				e.stopPropagation();
@@ -211,6 +244,7 @@
 	    					$(document).off("keypress");	
 	    					$("#modal .backdrop").off("click");
 	    					$("body").css("overflow-y","auto");
+	    					$(".likeBtn").children().attr("src","/resources/img/like_.png")
 	    				}
 	    			});	
 		    		
