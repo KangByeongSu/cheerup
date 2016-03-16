@@ -49,7 +49,7 @@ public class PostFeedController {
 					feed.setComment(" ");
 				}
 				feed.setUserId("test1");
-				feed.setImgUrl("/resources/img/"+fileInfo.getFileName());
+				feed.setImgUrl("/images/"+fileInfo.getFileName());
 				result = feedservice.postFeed(feed);
 			}
 			
