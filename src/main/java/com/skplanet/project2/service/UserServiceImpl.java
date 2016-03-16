@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.skplanet.project2.dao.UserDAO;
 import com.skplanet.project2.model.CommentDTO;
-import com.skplanet.project2.model.CommentResultDTO;
 import com.skplanet.project2.model.DetailModalDTO;
+import com.skplanet.project2.model.DetailViewDTO;
 import com.skplanet.project2.model.ImageGridDTO;
-import com.skplanet.project2.model.PostFeedDTO;
+import com.skplanet.project2.model.LikeDTO;
 import com.skplanet.project2.model.UserDTO;
 
 @Service
@@ -47,15 +47,29 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public DetailModalDTO extendModal(int contentId) {
 		
-
+		String userId = "session";
+		int likeCount=0;
+		int likeClicked=0;
+	
+		
 		DetailModalDTO resultDTO=new DetailModalDTO();
-
-		PostFeedDTO detailPost = userDAO.extendModalContents(contentId); 
+		LikeDTO likeInfo=new LikeDTO();
+		likeInfo.setUserId(userId);
+		likeInfo.setContentId(contentId);
+		
+		
+		DetailViewDTO detailPost = userDAO.extendModalContents(contentId); 
+		
+		likeCount =  userDAO.extendModalLikeCount(contentId);
+		likeClicked = userDAO.extendModalLikeClicked(likeInfo);
+		detailPost.setLikeCount(likeCount);
+		detailPost.setLikeClicked(likeClicked);
+		
+	
 		List<CommentDTO> commentList = userDAO.extendModalComment(contentId);
 		
 		resultDTO.setDetailPost(detailPost);
 		resultDTO.setCommentList(commentList);
-		//최종  DTO 에 합친다..
 		return resultDTO;
 
 	}
