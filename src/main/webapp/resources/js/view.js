@@ -15,39 +15,7 @@ $(document).ready(function() {
 
 	};
 		
-	$(".commentInput").keydown(function(key) {
-		
-		 if (key.keyCode == 13){
-			 var commentData = {		
-					  "feedId" : $(this).attr("feedId"),
-					  "message" : $(this).val()
-				};
-			 
-			 var addPosition=$(this).parent().parent().parent().children(".content").children(".comment").children(".commentList");
-			 $.ajax({
-					url : "./feed/comment",
-					type : 'POST', // define the type of HTTP verb
-									// we want to use (POST for our
-									// form)
-					data : JSON.stringify(commentData), // our data
-														// object
-					contentType : "application/json",
-					charset : "utf-8",
-					success : function(resData) {
-						console.log(resData.msg)
-						frontEndCommentAdd(addPosition);
-					},
 
-					error : function() {
-						
-						alert("알 수 없는 오류로 실패하였습니다.");
-					}
-				});
-		 }
-		
-
-		
-	});
 	
 	$.ajax({
 		url: "./feed/lists/1",
@@ -107,6 +75,41 @@ $(document).ready(function() {
 						'</section>';
 					
 					$('.moreFeed').before(temp);
+					
+					$(".commentInput").keydown(function(key) {
+						
+						 if (key.keyCode == 13){
+							 var commentData = {		
+									  "feedId" : $(this).attr("feedId"),
+									  "message" : $(this).val()
+								};
+							 
+							 var addPosition=$(this).parent().parent().parent().children(".content").children(".comment").children(".commentList");
+							 $.ajax({
+									url : "./feed/comment",
+									type : 'POST', // define the type of HTTP verb
+													// we want to use (POST for our
+													// form)
+									data : JSON.stringify(commentData), // our data
+																		// object
+									contentType : "application/json",
+									charset : "utf-8",
+									success : function(resData) {
+										console.log(resData.msg)
+										addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span>"+$(".commentInput").val()+"</p>");
+										$(".commentInput").val("");
+									},
+
+									error : function() {
+										
+										alert("알 수 없는 오류로 실패하였습니다.");
+									}
+								});
+						 }
+						
+
+						
+					});
 				});
 				
 				$(".likeBtn").click(function(e) {
@@ -163,13 +166,12 @@ $(document).ready(function() {
 			alert("알 수 없는 오류로 실패하였습니다.");
 		}
 	});
+	
+	
+	
 });
 
-function frontEndCommentAdd(addPosition){
-	
-	addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span>"+$(".commentInput").val()+"</p>");
-	$(".commentInput").val("");
-}
+
 
 function commentPlusView(feedId,pageNo){
 	 $.ajax({
