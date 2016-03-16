@@ -130,6 +130,8 @@
 		</div>
 	</div>
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.timeago.js' />"></script>
+	<script src="<c:url value='/resources/js/jquery.timeago.ko.js' />"></script>
 	<script >
 	
 		var makeHashtag = function(message) {
@@ -220,6 +222,7 @@
 		    		
 		    		$("#modal .imgSection img").attr("src",result.detailPost.imgUrl);
 		    		$("#modal .contentBody").html(makeHashtag(result.detailPost.comment));
+		    		$("#modal .date").html(jQuery.timeago(result.detailPost.time));
 		    		$(".likeBtn").attr("feedId", itemId );
 		    		$(".commentInput").attr("feedId", itemId );
 		    		$('.commentList').html("");

@@ -35,7 +35,7 @@ $(document).ready(function() {
 									 '</span>'+
 								'</div>'+
 								'<div class="updateTime">'+
-									'1시간'+ 
+									jQuery.timeago(v.createTime)+ 
 								'</div>'+
 							'</div>'+
 							'<div class="img">'+

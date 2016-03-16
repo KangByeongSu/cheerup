@@ -84,6 +84,8 @@
 		</div>
 	</div>
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.timeago.js' />"></script>
+	<script src="<c:url value='/resources/js/jquery.timeago.ko.js' />"></script>
 	<script src="<c:url value='/resources/js/view.js' />"></script>
 </body>
 </html>
