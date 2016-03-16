@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% request.setCharacterEncoding("utf8");%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page session="false" %>
 <html>
 <head>
@@ -11,7 +11,7 @@
 	<form>
 		<input id="nickname" type="text">
 		<input id="pw" type="text">
-		<button id="btn">변경</button>
+		<button id="btn">ë³ê²½</button>
 
 	</form> 
 	
@@ -46,7 +46,7 @@ $(document).ready(function(){
 
 			error : function() {
 				
-				alert("알 수 없는 오류로 실패하였습니다.");
+				alert("ì ì ìë ì¤ë¥ë¡ ì¤í¨íììµëë¤.");
 			}
 
 
