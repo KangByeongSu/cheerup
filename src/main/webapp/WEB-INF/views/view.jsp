@@ -22,7 +22,7 @@
 		</nav>
 		
 		<div class="mainContainer">
-			<section>
+			<%-- <section>
 				<div class="nav">
 					<div class="userImg">
 						 <img src="https://igcdn-photos-g-a.akamaihd.net/hphotos-ak-xft1/t51.2885-19/s150x150/12552423_441484902713862_1832731177_a.jpg" />
@@ -74,7 +74,7 @@
 					</div>
 				</div>
 			</section>
-			
+			 --%>
 			
 			
 			
