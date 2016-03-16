@@ -14,6 +14,19 @@ $(document).ready(function() {
 // class="hashtag">#물병</span>'+
 
 	};
+	
+	var makeComment=function(comment){
+		var tmpComment="";
+		$.each(comment, function(comment_index, comment_value){
+			
+		
+		tmpComment+="<p><span class='userId'>"+comment_value.userId+"</span>"+comment_value.message+"</p>"
+			
+			
+			
+		});
+		return tmpComment;
+	}
 		
 
 	
@@ -51,8 +64,8 @@ $(document).ready(function() {
 										makeHashtag(v.message) + 
 									'</div>'+
 									'<div class="comment">'+
-										'<div class="commentList'+feed_index+'">'
-											
+										'<div class="commentList">'+
+										makeComment(v.commentList)+
 										'</div>'+
 									'</div>'+
 								'</div>'+
@@ -75,15 +88,7 @@ $(document).ready(function() {
 					
 					$('.moreFeed').before(temp);
 					
-					$.each(v.commentList, function(comment_index, comment_value){
-			
-						$('.commentList'+feed_index).append(
-
-								"<p><span class='userId'>"+comment_value.userId+"</span>"+comment_value.message+"</p>"
-						
-						)
-						
-					});
+				
 					
 					$(".commentInput").keydown(function(key) {
 						
