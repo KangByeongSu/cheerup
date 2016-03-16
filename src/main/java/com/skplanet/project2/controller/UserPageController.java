@@ -68,6 +68,9 @@ public class UserPageController {
 		
 		model.addObject("lists", resultData);
 		
+		model.addObject("pageUserId", userId);
+		model.addObject("sessionId", session.getAttribute("id"));
+		
 		if(userId.equals((String)session.getAttribute("id"))) {
 			model.addObject("mypage", true);
 		} else {
@@ -91,6 +94,7 @@ public class UserPageController {
 //		int contentId = 1; //dummy data
 		
 		PostFeedDTO resultData = userService.extendModal(contentId);
+		
 		
 //		logger.info("", resultData);
 		

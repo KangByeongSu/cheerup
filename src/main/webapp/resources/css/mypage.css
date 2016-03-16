@@ -458,7 +458,7 @@ nav {
     width: 87%;
 	padding-top: 25px;
 	height: 68%;
-	overflow-y: scroll;
+	overflow-y: auto;
 	border-bottom: 1px solid #edeeee;
 }
 

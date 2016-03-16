@@ -28,7 +28,7 @@
 				</div>
 				<div class="userInfo">
 					<div class="userId_">
-						<span class="userId__"> akdung21</span>
+						<span class="userId__"> ${pageUserId}</span>
 						<c:if test="${mypage}">
 							<div class="modifyBtn">
 								프로필 편집 
@@ -95,7 +95,7 @@
 							<span class="hashtag">#4000만원짜리</span>
 						</div>
 						<div class="commentList">
-						<div class="commentItem">
+							<div class="commentItem">
 								<span class="userId">
 									akdung21	
 								</span>
@@ -118,7 +118,7 @@
 							<img src="<c:url value='/resources/img/like_.png' />" />
 						</div>
 						<div>
-							<input class="commentInput" type="text" placeholder="댓글달기..." />
+							<input feedId="" class="commentInput" type="text" placeholder="댓글달기..." />
 						</div>
 					</div>
 				</div>
@@ -141,20 +141,57 @@
 			return tmpMessage;
 	
 		};
-		$(".imgItem").click(function() {
+		
+		var frontEndCommentAdd = function(){
 			
+			$('.commentList').append("<div class='commentItem'><span class='userId'>${sessionId}</span>"+$(".commentInput").val()+"</p>");
+			$(".commentInput").val("");
+		}
+		
+		$(".commentInput").keydown(function(key) {
+			 if (key.keyCode == 13){
+				 var commentData = {		
+						  "feedId" : $(this).attr("feedId"),
+						  "message" : $(this).val()
+					};
+				 
+				 
+				 $.ajax({
+						url : "../../feed/comment",
+						type : 'POST', // define the type of HTTP verb
+										// we want to use (POST for our
+										// form)
+						data : JSON.stringify(commentData), // our data
+															// object
+						contentType : "application/json",
+						charset : "utf-8",
+						success : function(resData) {
+							console.log(resData.msg)
+							frontEndCommentAdd();
+						},
 
+						error : function() {
+							
+							alert("알 수 없는 오류로 실패하였습니다.");
+						}
+					});
+			 }
+		});
+		
+		$(".imgItem").click(function() {
+			var itemId = $(this).attr("itemId");
+			
 			$.ajax({
 		    	type:'get',
 		    	contentType: "application/json",
-		    	url: "../modal/"+$(this).attr("itemId"), 
+		    	url: "../modal/"+itemId, 
 		    	success: function(result){
 		    		
 		    		
 		    		
 		    		$("#modal .imgSection img").attr("src",result.imgUrl);
 		    		$("#modal .contentBody").html(makeHashtag(result.comment));
-		    		
+		    		$(".commentInput").attr("feedId", itemId );
 		    		
 		    		
 		    		$("#modal").css('top', $(document).scrollTop()+'px');
