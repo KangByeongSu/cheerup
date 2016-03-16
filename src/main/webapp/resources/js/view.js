@@ -24,7 +24,7 @@ $(document).ready(function() {
 				$(".likeBtn").off("click");
 				$(".dislikeBtn").off("click");
 				
-				$.each(resData.feedList, function(i, v) {
+				$.each(resData.feedList, function(feed_index, v) {
 					var temp =
 						'<section>' +
 							'<div class="nav">' +
@@ -51,9 +51,8 @@ $(document).ready(function() {
 										makeHashtag(v.message) + 
 									'</div>'+
 									'<div class="comment">'+
-										'<div class="commentList">'+
-											'<p><span class="userId">akdung21</span> 우왕~~~😍😍</p>'+
-											'<p><span class="userId">joao.marcos.mt</span> 😍😘😘</p>'+
+										'<div class="commentList'+feed_index+'">'
+											
 										'</div>'+
 									'</div>'+
 								'</div>'+
@@ -75,6 +74,16 @@ $(document).ready(function() {
 						'</section>';
 					
 					$('.moreFeed').before(temp);
+					
+					$.each(v.commentList, function(comment_index, comment_value){
+			
+						$('.commentList'+feed_index).append(
+
+								"<p><span class='userId'>"+comment_value.userId+"</span>"+comment_value.message+"</p>"
+						
+						)
+						
+					});
 					
 					$(".commentInput").keydown(function(key) {
 						

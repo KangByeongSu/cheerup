@@ -22,12 +22,12 @@
 		      Elephant_Comment comments
 		      on contents.c_id = comments.Elephant_Contents_c_id
 		      
-		    ORDER BY cm_time DESC
+		    ORDER BY c_time DESC,cm_time DESC
 			
 		      
-		    LIMIT 
+		  <!--   LIMIT 
 				#{limitStart},
-				 5
+				 5 -->
 		    
 	</select>
 	
