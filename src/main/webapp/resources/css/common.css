@@ -361,8 +361,39 @@ nav {
 }
 
 #checkidText{
-	 padding-top:8px;
-	 color:red;
+	display:none;
+	color: red;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 600;
+    overflow: hidden;
+	word-break:normal;
+    white-space: nowrap;
+}
+
+.error {
+	color: red;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 600;
+    overflow: hidden;
+	word-break:normal;
+    white-space: nowrap;
+}
+
+.loginBox .errorMsg {
+	display:none;
+	color: red;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 600;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
