@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.skplanet.project2.model.CommentDTO;
+import com.skplanet.project2.model.DetailViewDTO;
 import com.skplanet.project2.model.ImageGridDTO;
-import com.skplanet.project2.model.PostFeedDTO;
+import com.skplanet.project2.model.LikeDTO;
 import com.skplanet.project2.model.UserDTO;
 
 
@@ -52,14 +53,26 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public PostFeedDTO extendModalContents(int contentId) {
-		PostFeedDTO result = sqlSession.selectOne("UserMapper.extendModalContents",contentId);
+	public DetailViewDTO extendModalContents(int contentId) {
+		DetailViewDTO result = sqlSession.selectOne("UserMapper.extendModalContents",contentId);
 		return result;
 	}
 
 	@Override
 	public List<CommentDTO> extendModalComment(int contentId) {
 		List<CommentDTO> result = sqlSession.selectList("UserMapper.extendModalComment",contentId);
+		return result;
+	}
+
+	@Override
+	public int extendModalLikeCount(int contentId) {
+		int result = sqlSession.selectOne("UserMapper.extendModalLikeCount",contentId);
+		return result;
+	}
+	@Override
+	public int extendModalLikeClicked(LikeDTO likeInfo) {
+		
+		int result = sqlSession.selectOne("UserMapper.extendModalLikeClicked",likeInfo);
 		return result;
 	}
 	

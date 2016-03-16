@@ -1,7 +1,7 @@
 package com.skplanet.project2.model;
 public class ImageFile {
 	
-	public static final String IMAGE_DIR = "/usr/local/tomcat/webapps/ROOT/resources/img/";
+	public static final String IMAGE_DIR = "/usr/local/images/";
 	private String id;
 	private String contentType;
 	private int contentLength;

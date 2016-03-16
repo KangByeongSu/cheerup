@@ -8,8 +8,9 @@
 	content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta charset="utf-8">
-<link rel="stylesheet"
+	<link rel="stylesheet"
 	href="<c:url value='/resources/css/common.css' />" type="text/css" />
+	
 </head>
 <body>
 	<div id="wrap">
@@ -29,14 +30,28 @@
 						<input id="loginBtn" type="button" value="로그인" />
 					</div>
 					<div class="joinBtn">
-						<input type="button" value="회원가입" />
+						<input id="joinBtn" type="button" value="회원가입" />
 					</div>
 				</form>
+			</div>
+			<div class="errorMsg">
+				아이디 혹은 비밀번호를 확인해주세요!
 			</div>
 		</div>
 	</div>
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script>
+	
+		$(document).keypress(function(e) {
+			if(e.which == 13) {
+				$("#loginBtn").click();
+			}	
+		});
+		
+		$("#joinBtn").click(function() {
+			location.href="./join";
+		});
+		
 		$("#loginBtn").click(function(){
 			
 		    $.ajax({
@@ -52,7 +67,7 @@
 		    		if(result.isSuccess == 1) {
 		    			location.href='./view';	
 		    		} else {
-		    			alert("로그인에 실패했습니다!");
+		    			$(".errorMsg").show();	
 		    		}
 		    		
 		    	}

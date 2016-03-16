@@ -4,15 +4,16 @@ import java.util.List;
 
 public class DetailModalDTO extends Result{
 
-	private PostFeedDTO detailPost;
+	private DetailViewDTO detailPost;
 
 	private List<CommentDTO> commentList;
 	
-	public PostFeedDTO getDetailPost() {
+
+	public DetailViewDTO getDetailPost() {
 		return detailPost;
 	}
 
-	public void setDetailPost(PostFeedDTO detailPost) {
+	public void setDetailPost(DetailViewDTO detailPost) {
 		this.detailPost = detailPost;
 	}
 

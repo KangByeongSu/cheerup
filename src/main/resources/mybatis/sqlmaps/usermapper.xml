@@ -37,7 +37,7 @@
 
 
 	<select id="extendModalContents" parameterType="Integer"
-		resultType="com.skplanet.project2.model.PostFeedDTO">
+		resultType="com.skplanet.project2.model.DetailViewDTO">
 		SELECT c_id as id, Elephant_User_u_id as userId,
 		c_comment
 		as comment, c_imgurl as imgUrl, c_time as time FROM
@@ -45,12 +45,27 @@
 		WHERE c_id=#{contentId};
 	</select>
 
+	<select id="extendModalLikeCount" parameterType="Integer"
+		resultType="Integer">
+		SELECT count(*) FROM
+		Elephant_Like
+		WHERE Elephant_Contents_c_id=#{contentId};
+	</select>
+
+	<select id="extendModalLikeClicked" parameterType="com.skplanet.project2.model.LikeDTO"
+		resultType="Integer">
+		SELECT count(*) FROM
+		Elephant_Like
+		WHERE Elephant_Contents_c_id=#{contentId} AND Elephant_User_u_id=#{userId};
+	</select>
+
 
 	<select id="extendModalComment" parameterType="Integer"
 		resultMap="CommentsMap">
 		SELECT cm_id as commentId, Elephant_User_u_id as userId,
 		Elephant_Contents_c_id
-		as feedId, cm_time as time, cm_content as message FROM
+		as feedId, cm_time as time, cm_content as
+		message FROM
 		Elephant_Comment
 		WHERE Elephant_Contents_c_id=#{contentId};
 	</select>

@@ -8,6 +8,7 @@ public class SearchDTO {
 	private String imgurl;
 	private int upNum;
 	private int downNum;
+	private int commentNum;
 	private String createTime;
 	
 	public int getHashId() {
@@ -52,5 +53,13 @@ public class SearchDTO {
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
+	public int getCommentNum() {
+		return commentNum;
+	}
+	public void setCommentNum(int commentNum) {
+		this.commentNum = commentNum;
+	}
+	
+	
 
 }
