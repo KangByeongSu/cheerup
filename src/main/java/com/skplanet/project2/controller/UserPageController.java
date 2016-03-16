@@ -9,13 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skplanet.project2.model.DetailModalDTO;
 import com.skplanet.project2.model.ImageGridDTO;
 import com.skplanet.project2.model.PostFeedDTO;
 import com.skplanet.project2.model.Result;
@@ -84,16 +84,23 @@ public class UserPageController {
 	 * @method select modal data
 	 */
 	@RequestMapping(value = "/modal/{contentId}", method = RequestMethod.GET)
-	public @ResponseBody PostFeedDTO extendModal(HttpServletRequest request, @PathVariable(value="contentId") int contentId) {
-		logger.info("enter the imageGridUrl method");
+	public @ResponseBody DetailModalDTO extendModal(HttpServletRequest request, @PathVariable(value="contentId") int contentId) {
+		logger.info("enter the extendModal method");
 		
+		DetailModalDTO resultData = userService.extendModal(contentId);
 		
-//		int contentId = 1; //dummy data
-		
-		PostFeedDTO resultData = userService.extendModal(contentId);
-		
-//		logger.info("", resultData);
-		
+		if(resultData == null)
+		{
+			logger.error("Extend Modal Null Pointer Exception - Databases Error");
+			resultData.setIsSuccess(0);
+			resultData.setMsg("Database I/O Error");
+		}
+		else
+		{
+			logger.error("Success Extend Modal Select");
+			resultData.setIsSuccess(1);
+			resultData.setMsg("Detail Post is : "+resultData.getDetailPost() + ", Comment Size : "+resultData.getCommentList().size());
+		}
 		return resultData;
 	}
 
