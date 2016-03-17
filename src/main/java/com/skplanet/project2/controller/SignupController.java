@@ -2,6 +2,8 @@ package com.skplanet.project2.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,8 +43,12 @@ public class SignupController {
 	
 	
 	@RequestMapping(value = "/user/add", method = RequestMethod.POST)
-	public String addjoin(Locale locale, Model model,UserDTO user) {
+	public String addjoin(HttpSession session, Locale locale, Model model,UserDTO user) {
 		signupService.signupUser(user);
+		
+		session.setAttribute("id",user.getuId());
+	    session.setAttribute("nickname",user.getuNickname());
+		
 		return "redirect:/view";
 	}
 

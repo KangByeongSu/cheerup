@@ -2,6 +2,10 @@ body {
 	margin:0px;
 	background-color: #fafafa;
 }
+a{
+	    color: #125688;
+	     text-decoration:none;
+}
 p {
 	margin:0px;
 }
@@ -314,9 +318,10 @@ nav {
 	position: relative;
 }
 
+
 .mainContainer .img_list .imgItem img {
-	width:100%
-	
+	width:100%;
+	height: 25%;
 }
 
 .mainContainer .img_list .imgItem .hover{
@@ -404,6 +409,7 @@ nav {
 
 #modal .content .contentSection {
 	width:40%;
+	height:100%;
 	float:left;
 }
 #modal .content .contentSection .navSection {
@@ -482,7 +488,7 @@ nav {
 #modal .content .contentSection .commentSection {
     margin-left: 7%;
     width: 87%;
-    padding-top: 25px;
+    padding-top: 10%;
     
 }
 
@@ -503,6 +509,11 @@ nav {
 }
 
 
+
+.commentItem .hashtag {
+		font-weight:400;
+		color: #125688;
+	}
 
 
 

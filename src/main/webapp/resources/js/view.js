@@ -1,9 +1,11 @@
 var pageNo=1;
+var userId = $("#wrap").attr("userId");
+
 var makeHashtag = function(message) {
 	var tmpMessage = "";
 	$.each(message.split(" "), function(i, v) {
 		if(v.indexOf("#") == 0) {
-			tmpMessage += '<span class="hashtag">'+v+'</span> '
+			tmpMessage += '<span class="hashtag"><a href="/search/interest?hashtag='+v.substring(1,v.length)+'">'+v+'</a></span> ';
 		} else {
 			tmpMessage += v+' ';
 		} 
@@ -42,10 +44,13 @@ var commentDelete=function(commentId){
 
 var makeComment=function(comment){
 	var tmpComment="";
+	
 	$.each(comment, function(comment_index, comment_value){
 		
 
-		tmpComment+="<p id='comment"+comment_value.commentId+"'><span class='userId'>"+comment_value.userId+"</span> "+comment_value.message;
+
+		tmpComment+="<p id='comment"+comment_value.commentId+"'><span class='userId'> <a href='/user/test/"+comment_value.userId+"'>"+comment_value.userId+"</a></span> "+makeHashtag(comment_value.message);
+
 		
 		
 		if(comment_value.userId === $("#userId").text()) {
@@ -70,7 +75,7 @@ var makeLikeBtn=function(upList){
 	
 	var likeBtn = "";
 	
-	if($.inArray("user", upList) >= 0) {
+	if($.inArray(userId, upList) >= 0) {
 		likeBtn = '<img  src="/resources/img/like.png" />';
 	} else {
 		likeBtn = '<img  src="/resources/img/like_.png" />';
@@ -94,7 +99,7 @@ var getFeedList=function(pageNo){
 								'<div class="userImg">' +
 									'<img src="'+ v.imgurl +'" />' +
 									 '<span class="userId">' +
-									 	v.userId +
+									 	'<a href="/user/test/'+v.userId+'">'+v.userId + '</a>' +
 									 '</span>'+
 								'</div>'+
 								'<div class="updateTime">'+
@@ -176,6 +181,7 @@ var getFeedList=function(pageNo){
 								charset : "utf-8",
 								success : function(resData) {
 									console.log(resData.msg)
+
 //									addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span> "+commentData.message+"<span id='commentDelete"+commentData.commentId+"'> <img style='width:14px' src='/resources/img/delete.png' /> </span>");
 //									$(".commentInput").val("");
 ////									$("#commentDelete"+commentData.commentId).on("click", function(commentData,e) {
@@ -185,7 +191,8 @@ var getFeedList=function(pageNo){
 //										commentDelete(event.data.param1);
 //									});
 									
-									addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span> "+commentData.message+"<span> <img style='width:14px' src='/resources/img/delete.png' /> </span>");
+									addPosition.append("<p><span class='userId'><a href='/user/test/"+$("#userId").text()+"'>"+$("#userId").text()+"</a></span> "+makeHashtag(commentData.message)+" <img style='width:14px' src='/resources/img/delete.png' /></p>");
+
 									$(".commentInput").val("");
 									
 								},

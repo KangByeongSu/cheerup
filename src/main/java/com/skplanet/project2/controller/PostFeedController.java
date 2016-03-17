@@ -2,6 +2,8 @@ package com.skplanet.project2.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +37,11 @@ public class PostFeedController {
 	}
 
 	@RequestMapping(value = "/feed/add", method = RequestMethod.POST)
-	public String addFeedPost(@RequestParam(value = "imageFile") MultipartFile file, PostFeedDTO feed, Model model) {
+	public String addFeedPost(HttpServletRequest request, @RequestParam(value = "imageFile") MultipartFile file, PostFeedDTO feed, Model model) {
 		logger.info("Enter the /feed/add POST return redirect:/view");
 		try {
+			String uid = (String)request.getSession().getAttribute("id");
+			
 			if (file.getSize() == 0) {
 
 			} else {
@@ -47,9 +51,18 @@ public class PostFeedController {
 				} else {
 					feed.setComment(" ");
 				}
-				feed.setUserId("test1");
-				feed.setImgUrl("/images/"+fileInfo.getFileName());
-				feedservice.postFeed(feed);
+				
+				
+				
+				if(uid == null) {
+					return "redirect:/login";
+				} else {
+					feed.setUserId(uid);
+					feed.setImgUrl("/images/"+fileInfo.getFileName());
+					feedservice.postFeed(feed);
+				}
+				
+				
 			}
 			
 		} catch (Exception e) {

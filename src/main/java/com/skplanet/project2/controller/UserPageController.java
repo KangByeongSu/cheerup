@@ -43,6 +43,7 @@ public class UserPageController {
 
 		
 		model.addObject("lists", resultData);
+	
 		
 		model.addObject("pageUserId", userId);
 		model.addObject("sessionId", session.getAttribute("id"));
