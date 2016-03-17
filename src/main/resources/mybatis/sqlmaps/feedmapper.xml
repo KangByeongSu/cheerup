@@ -4,11 +4,7 @@
 
 <mapper namespace="com.skplanet.project2.mapper.FeedMapper">
 	<select id="selectFeed" resultMap="FeedResultMap">
-		<!-- SELECT c_comment, c_imgurl, c_time, c_id, contents.Elephant_User_u_id 
-			content_user_id, comments.Elephant_User_u_id comment_user_id, cm_id, cm_time, 
-			cm_content FROM Elephant_Contents contents left outer join Elephant_Comment 
-			comments on contents.c_id = comments.Elephant_Contents_c_id ORDER BY c_time 
-			DESC,cm_time DESC -->
+
 		SELECT
 		contents.c_comment,
 		contents.c_imgurl,

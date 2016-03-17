@@ -409,6 +409,7 @@ nav {
 
 #modal .content .contentSection {
 	width:40%;
+	height:100%;
 	float:left;
 }
 #modal .content .contentSection .navSection {
@@ -487,7 +488,7 @@ nav {
 #modal .content .contentSection .commentSection {
     margin-left: 7%;
     width: 87%;
-    padding-top: 25px;
+    padding-top: 10%;
     
 }
 
