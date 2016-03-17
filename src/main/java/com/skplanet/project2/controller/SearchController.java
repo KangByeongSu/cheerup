@@ -51,7 +51,6 @@ public class SearchController {
 	
 	@RequestMapping(value = "/search/{type}", method = RequestMethod.GET)
 	public ModelAndView getSearchList(@PathVariable(value="type") String type, @RequestParam(value = "hashtag") String hashtag,@RequestParam(value = "pageNum", defaultValue="0") int pageNum) {
-
 		ModelAndView model = new ModelAndView("search");
 		List<SearchDTO> list = searchservice.searchInterestFeed(hashtag, pageNum,type);
 		if(list.isEmpty()){
