@@ -62,7 +62,7 @@
 						// validation
 
 						if (hashes == "") {
-							document.getElementById("hashing").value = "hash_null";
+							document.getElementById("hashing").value = "";
 
 						} else {
 							document.getElementById("hashing").value = hashes;

@@ -22,6 +22,7 @@
 				</div>
 				<div class="personInfo userId">
 					<a style="color: #125688;" href="./user/test/${userId}"><c:out value="${nickname}"/></a> 
+					<span id="userId" style="visibility:hidden">${userId}</span>
 				</div>
 			</div>
 		</nav>

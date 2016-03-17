@@ -28,7 +28,7 @@ public class PostFeedServiceImpl implements PostFeedService {
 		String hashtag = content.getHashtag();
 
 		ContentInsertResult = contentDAO.insertFeed(content);
-		if (hashtag.equals("hash_null") || hashtag == null) {
+		if (hashtag.equals("")) {
 			logger.info("This Content has not hashtags.");
 
 		} else {

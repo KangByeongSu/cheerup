@@ -19,7 +19,7 @@ public class PostFeedtDAOImpl implements PostFeedDAO {
 	@Override
 	public int insertFeed(PostFeedDTO content) {
 		// TODO Auto-generated method stub
-		int result = sqlSession.insert("postfeed.insertFeed", content);	
+		sqlSession.insert("postfeed.insertFeed", content);	
 		System.out.println(content.getId());
 		int c_id = content.getId();
 		return c_id;
