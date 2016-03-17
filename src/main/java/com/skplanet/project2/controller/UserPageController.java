@@ -100,8 +100,10 @@ public class UserPageController {
 		if(resultData == null)
 		{
 			logger.error("Extend Modal Null Pointer Exception - Databases Error");
-			resultData.setIsSuccess(0);
-			resultData.setMsg("Database I/O Error");
+			DetailModalDTO errorData = new DetailModalDTO();
+			errorData.setIsSuccess(0);
+			errorData.setMsg("Database I/O Error");
+			return errorData;
 		}
 		else
 		{
