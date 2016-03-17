@@ -32,25 +32,25 @@ public class SearchController {
 	
 	@Autowired
 	SearchResultDTO jsonResult;
+
+	/*@RequestMapping(value = "/search/{type}/{hashtag}", method = RequestMethod.GET)
+	public @ResponseBody SearchResultDTO getSearchList(@PathVariable(value = "type") String type,@PathVariable(value = "hashtag") String hashtag,@RequestParam(value = "pageNum", defaultValue="0") int pageNum){
+			List<SearchDTO> list = searchservice.searchInterestFeed(hashtag, pageNum,type);
+			if(list.isEmpty()){
+				jsonResult.setIsSuccess(0);
+				jsonResult.setMsg("null");
+				jsonResult.setSearchList(null);
+			}else{
+				jsonResult.setIsSuccess(1);
+				jsonResult.setMsg("Success");
+				jsonResult.setSearchList(list);
+			}
+		return jsonResult;
+	}*/
 	
-//	@RequestMapping(value = "/search/{type}/{hashtag}", method = RequestMethod.GET)
-//	public @ResponseBody SearchResultDTO getSearchList(@PathVariable(value = "type") String type,@PathVariable(value = "hashtag") String hashtag,@RequestParam(value = "pageNum", defaultValue="9") int pageNum){
-//			List<SearchDTO> list = searchservice.searchInterestFeed(hashtag, pageNum,type);
-//			if(list.isEmpty()){
-//				jsonResult.setIsSuccess(0);
-//				jsonResult.setMsg("null");
-//				jsonResult.setSearchList(null);
-//			}else{
-//				jsonResult.setIsSuccess(1);
-//				jsonResult.setMsg("Success");
-//				jsonResult.setSearchList(list);
-//			}
-//		return jsonResult;
-//	}
 	
-	
-	@RequestMapping(value = "/search/{type}/{hashtag}", method = RequestMethod.GET)
-	public ModelAndView getSearchList(@PathVariable(value="type") String type, @PathVariable(value = "hashtag") String hashtag,@RequestParam(value = "pageNum", defaultValue="0") int pageNum) {
+	@RequestMapping(value = "/search/{type}", method = RequestMethod.GET)
+	public ModelAndView getSearchList(@PathVariable(value="type") String type, @RequestParam(value = "hashtag") String hashtag,@RequestParam(value = "pageNum", defaultValue="0") int pageNum) {
 		ModelAndView model = new ModelAndView("search");
 		List<SearchDTO> list = searchservice.searchInterestFeed(hashtag, pageNum,type);
 		if(list.isEmpty()){

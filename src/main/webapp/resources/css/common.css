@@ -400,6 +400,28 @@ a {
 	    text-decoration: none;
 }
 
+.content .search {
+	padding-left : 40px;
+}
+
+.search {
+	left : 50%;
+	margin-left : -183px;
+	top: 0;
+	height : 20px;
+	
+}
+
+.search input {
+	border-radius : 15px;
+	border : solid 1px #edeeee;
+	font-size : 14px;
+	outline : 3px 10px 3px 26px;
+	padding : 3px 10px 3px 26px;
+	width : 178px;
+	z-index : 2;
+}
+
 
 
 

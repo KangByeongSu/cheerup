@@ -15,6 +15,11 @@
 				<div class="logo">
 					<a href="/view"> <img src="<c:url value='/resources/img/instagram.png' />" /></a>
 				</div>
+				<div class="search">
+					<form method="get" action="./search/interest">
+						<input id="txtSearch" placeholder="검색" type="text" name="hashtag" />
+					</form>
+				</div>
 				<div class="personInfo userId">
 					<a style="color: #125688;" href="./user/test/${userId}"><c:out value="${nickname}"/></a> 
 					<span id="userId" style="visibility:hidden">${userId}</span>
