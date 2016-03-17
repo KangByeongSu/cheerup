@@ -27,6 +27,20 @@ $(document).ready(function() {
 		});
 		return tmpComment;
 	}
+	
+	
+	var makeLikeBtn=function(upList){
+		
+		var likeBtn = "";
+		
+		if($.inArray("user", upList) >= 0) {
+			likeBtn = '<img  src="/resources/img/like.png" />'
+		} else {
+			likeBtn = '<img  src="/resources/img/like_.png" />'
+		}
+		
+		return likeBtn;
+	}
 		
 
 	
@@ -56,7 +70,7 @@ $(document).ready(function() {
 							'</div>'+
 							'<div class="mainData">'+
 								'<div class="likeCount">'+
-									'좋아요 '+ v.upUserList.length +
+									'좋아요 <span id="likeNum'+v.feedId+'" class="likeNumData">'+ v.upUserList.length + '</span>'+
 								'</div>'+
 								'<div class="content">'+
 									'<div class="text">'+
@@ -71,10 +85,8 @@ $(document).ready(function() {
 								'</div>'+
 								'<div class="commentAdd">'+
 									'<div feedId="'+v.feedId+'" class="likeBtn">'+
-										'<img  src="./resources/img/like_.png" />'+
-									'</div>'+
-									'<div feedId="'+v.feedId+'" class="dislikeBtn">'+
-										'<img src="./resources/img/like_.png" />'+
+										makeLikeBtn(v.upUserList)+
+										//'<img  src="./resources/img/like_.png" />'+
 									'</div>'+
 									'<div>'+
 										'<input feedId="'+v.feedId+'"class="commentInput" type="text" placeholder="댓글달기..." />'+
@@ -130,7 +142,6 @@ $(document).ready(function() {
 				
 				$(".likeBtn").click(function(e) {
 					var self=this;
-					console.log("feedId : ", $(this).attr("feedId"));
 					$.ajax({
 				    	type:'post',
 				    	contentType: "application/json",
@@ -143,7 +154,16 @@ $(document).ready(function() {
 				    	dataType: 'json',
 				    	success: function(result){
 				    		if(result.isSuccess == 1) {
-				    			alert("success")	
+				    			var elLikeNum = $(self).parent().parent().children(".likeCount").children(".likeNumData");
+				    			var likeNum = parseInt(elLikeNum.html());
+				    			
+				    			if($(self).children().attr("src") === "/resources/img/like.png" ) {
+					    			$(self).children().attr("src","/resources/img/like_.png");
+					    			elLikeNum.html(likeNum-1);
+					    		} else {
+		 			    			$(self).children().attr("src","/resources/img/like.png");
+		 			    			elLikeNum.html(likeNum+1);
+					    		}
 				    			
 				    		} else {
 				    			alert("fail");
@@ -152,28 +172,7 @@ $(document).ready(function() {
 				    });
 				}) ;
 				
-				$(".dislikeBtn").click(function(e) {
-					console.log("feedId : ", $(this).attr("feedId"));
-					$.ajax({
-				    	type:'post',
-				    	contentType: "application/json",
-				    	url: "./feed/like", 
-				    	data : JSON.stringify({
-				    		contentId: $(this).attr("feedId"),
-				    		up:0,
-				    		down:1
-				    	}),
-				    	dataType: 'json',
-				    	success: function(result){
-				    		if(result.isSuccess == 1) {
-				    			alert("success")	
-				    		} else {
-				    			alert("fail");
-				    		}
-				    		
-				    	}
-				    });
-				}) ;
+				
 			} else {
 				alert("알 수 없는 오류로 실패하였습니다.");
 			}
