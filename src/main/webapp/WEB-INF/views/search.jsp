@@ -31,7 +31,7 @@
 								좋아요 ${item.upNum} &nbsp;&nbsp;댓글
 							</span>
 						</div>
-						<img src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12748407_1123003344378522_2087727875_n.jpg?ig_cache_key=MTE4NzM5NjU3ODI5MTM4NzI0Nw%3D%3D.2">
+						<img src="${item.imgurl}">
 						
 					</div>
 				</c:forEach>
@@ -55,7 +55,7 @@
 					
 					<div class="commentListSection">
 						<div class="status">
-							<span class="likeNum">좋아요 19개</span>
+							<span class="likeNum">좋아요 <span class="likeNumData">19</span>개</span>
 							<span class="date">3주</span>
 						</div>
 						<div class="contentBody">
@@ -64,7 +64,7 @@
 							<span class="hashtag">#4000만원짜리</span>
 						</div>
 						<div class="commentList">
-						<div class="commentItem">
+							<div class="commentItem">
 								<span class="userId">
 									akdung21	
 								</span>
@@ -83,11 +83,11 @@
 					</div>
 					
 					<div class="commentSection">
-						<div class="likeBtn">
+						<div feedId="" class="likeBtn">
 							<img src="<c:url value='/resources/img/like_.png' />" />
 						</div>
 						<div>
-							<input class="commentInput" type="text" placeholder="댓글달기..." />
+							<input feedId="" class="commentInput" type="text" placeholder="댓글달기..." />
 						</div>
 					</div>
 				</div>
@@ -96,60 +96,146 @@
 		</div>
 	</div>
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.timeago.js' />"></script>
+	<script src="<c:url value='/resources/js/jquery.timeago.ko.js' />"></script>
 	<script >
 	
-		var makeHashtag = function(message) {
-			var tmpMessage = "";
-			$.each(message.split(" "), function(i, v) {
-				if(v.indexOf("#") == 0) {
-					tmpMessage += '<span class="hashtag">'+v+'</span> '
-				} else {
-					tmpMessage += v+' ';
-				} 
-			});
-			return tmpMessage;
-	
-		};
-		$(".imgItem").click(function() {
-			
-
-			$.ajax({
-		    	type:'get',
-		    	contentType: "application/json",
-		    	url: "../../user/modal/"+$(this).attr("itemId"), 
-		    	success: function(result){
-		    		
-		    		
-		    		
-		    		$("#modal .imgSection img").attr("src",result.imgUrl);
-		    		$("#modal .contentBody").html(makeHashtag(result.comment));
-		    		
-		    		
-		    		
-		    		$("#modal").css('top', $(document).scrollTop()+'px');
-	    			$("#modal").css('display', 'block');
-	     			$("body").css("overflow-y","hidden");
-	    			$("#modal .backdrop").click(function(e) {
-	    				e.stopPropagation();
-	    				$("#modal").css('display', 'none');
-	    				$(document).off("keypress");
-	    				$("#modal .backdrop").off("click");
-	    				$("body").css("overflow-y","auto");	
-	    			});
-	    			$(document).keyup(function(e) {
-	    				e.stopPropagation();
-	    				if(e.keyCode == 27) {
-	    					$("#modal").css('display', 'none');
-	    					$(document).off("keypress");	
-	    					$("#modal .backdrop").off("click");
-	    					$("body").css("overflow-y","auto");
-	    				}
-	    			});	
-		    		
-		    	}
-		    });
-			
+	var makeHashtag = function(message) {
+		var tmpMessage = "";
+		$.each(message.split(" "), function(i, v) {
+			if(v.indexOf("#") == 0) {
+				tmpMessage += '<span class="hashtag">'+v+'</span> '
+			} else {
+				tmpMessage += v+' ';
+			} 
 		});
+		return tmpMessage;
+
+	};
+	
+	var frontEndCommentAdd = function(){
+		
+		$('.commentList').append("<div class='commentItem'><span class='userId'>${sessionId}</span>"+$(".commentInput").val()+"</p>");
+		$(".commentInput").val("");
+	}
+	
+	$(".commentInput").keydown(function(key) {
+		 if (key.keyCode == 13){
+			 var commentData = {		
+					  "feedId" : $(this).attr("feedId"),
+					  "message" : $(this).val()
+				};
+			 
+			 
+			 $.ajax({
+					url : "../../feed/comment",
+					type : 'POST', // define the type of HTTP verb
+									// we want to use (POST for our
+									// form)
+					data : JSON.stringify(commentData), // our data
+														// object
+					contentType : "application/json",
+					charset : "utf-8",
+					success : function(resData) {
+						console.log(resData.msg)
+						frontEndCommentAdd();
+					},
+
+					error : function() {
+						
+						alert("알 수 없는 오류로 실패하였습니다.");
+					}
+				});
+		 }
+	});
+	
+	$(".likeBtn").click(function(e) {
+		var itemId = $(this).attr("itemId");
+		var self = this;
+		
+		$.ajax({
+	    	type:'post',
+	    	contentType: "application/json",
+	    	url: "../../feed/like", 
+	    	data : JSON.stringify({
+	    		contentId: $(this).attr("feedId"),
+	    		up:1,
+	    		down:0
+	    	}),
+	    	dataType: 'json',
+	    	success: function(result){
+	    		if(result.isSuccess == 1) {
+	    			var likeNum = parseInt($(".likeNumData").html());
+	    			if($(".likeBtn").children().attr("src") === "/resources/img/like.png" ) {
+		    			$(".likeBtn").children().attr("src","/resources/img/like_.png");
+		    			$(".likeNumData").html(likeNum-1);
+		    		} else {
+			    			$(".likeBtn").children().attr("src","/resources/img/like.png");
+			    			$(".likeNumData").html(likeNum+1);
+		    		}
+	    		} else {
+	    			alert("fail");
+	    		}
+	    		
+	    	}
+	    });
+	});
+	
+	$(".imgItem").click(function() {
+		var itemId = $(this).attr("itemId");
+		
+		$.ajax({
+	    	type:'get',
+	    	contentType: "application/json",
+	    	url: "../user/modal/"+itemId, 
+	    	success: function(result){
+	    		
+	    		console.log(result.detailPost.comment);
+	    		
+	    		$("#modal .imgSection img").attr("src",result.detailPost.imgUrl);
+	    		$("#modal .contentBody").html(makeHashtag(result.detailPost.comment));
+	    		$("#modal .date").html(jQuery.timeago(result.detailPost.time));
+	    		$("#modal .likeBtn").attr("feedId", itemId );
+	    		$("#modal .likeNumData").html(result.detailPost.likeCount);
+	    		console.log(result.detailPost.likeClicked == 0);
+	    		if(result.detailPost.likeClicked == 0) {
+	    			$(".likeBtn").children().attr("src","/resources/img/like_.png");
+	    		} else {
+	    			$(".likeBtn").children().attr("src","/resources/img/like.png");
+	    		}
+	    		
+	    		$(".commentInput").attr("feedId", itemId );
+	    		$('.commentList').html("");
+	    		
+	    		
+	    		$.each(result.commentList, function(i, v) {
+	    			$('.commentList').append("<div class='commentItem'><span class='userId'>"+v.userId+"</span>"+v.message+"</p>");
+	    		});
+	    		
+	    		$("#modal").css('top', $(document).scrollTop()+'px');
+    			$("#modal").css('display', 'block');
+     			$("body").css("overflow-y","hidden");
+    			$("#modal .backdrop").click(function(e) {
+    				e.stopPropagation();
+    				$("#modal").css('display', 'none');
+    				$(document).off("keypress");
+    				$("#modal .backdrop").off("click");
+    				$("body").css("overflow-y","auto");	
+    			});
+    			$(document).keyup(function(e) {
+    				e.stopPropagation();
+    				if(e.keyCode == 27) {
+    					$("#modal").css('display', 'none');
+    					$(document).off("keypress");	
+    					$("#modal .backdrop").off("click");
+    					$("body").css("overflow-y","auto");
+    				}
+    			});	
+	    		
+	    	}
+	    });
+		
+	});
 	</script>
 <%-- 	<script src="<c:url value='/resources/js/view.js' />"></script> --%>
 </body>

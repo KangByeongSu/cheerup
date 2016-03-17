@@ -93,16 +93,18 @@ public class UserController {
 		mav.setViewName("redirect:/view");
 		return mav;
 	}
-	
+
 	
 	@RequestMapping(value="/{userId}",method=RequestMethod.PUT)
-	public @ResponseBody Result userEdit(@PathVariable String userId, @RequestBody UserDTO userDTO){
+	public @ResponseBody Result userEdit(HttpServletRequest request, @PathVariable String userId, @RequestBody UserDTO userDTO){
+		Result jsonResult = new Result();
+		String sessionId = (String)request.getSession().getAttribute("id");
+
 		
 		userDTO.setuId(userId);
 		
-		Result jsonResult = new Result();
-		
-		if(userService.userEdit(userDTO)>=0){
+
+		if(userId.equals(sessionId) && userService.userEdit(userDTO)>=0){
 			jsonResult.setIsSuccess(1);
 			jsonResult.setMsg("update success");
 		}else{

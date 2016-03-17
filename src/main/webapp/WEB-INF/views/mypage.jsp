@@ -32,9 +32,11 @@
 					<div class="userId_">
 						<span class="userId__"> ${pageUserId}</span>
 						<c:if test="${mypage}">
-							<div class="modifyBtn">
-								프로필 편집 
-							</div>
+							<a href="/modify">
+								<div class="modifyBtn">
+									프로필 편집 
+								</div>
+							</a>
 						</c:if>
 					</div>
 					<!-- <div class="userIntro">
