@@ -24,7 +24,7 @@
 						<input id="u_id" name="u_id" type="text" placeholder="닉네임" />
 					</div>
 					<div class="passInput">
-						<input id="u_pw" name="u_pw" type="text" placeholder="비밀번호" />
+						<input id="u_pw" name="u_pw" type="password" placeholder="비밀번호" />
 					</div>
 					<div class="loginBtn">
 						<input id="loginBtn" type="button" value="수정하기" />
@@ -53,7 +53,7 @@
 		});
 		
 		$("#loginBtn").click(function(){
-			var userId = "11";
+			var userId = "${userId}";
 		    $.ajax({
 		    	type:'PUT',
 		    	contentType: "application/json",

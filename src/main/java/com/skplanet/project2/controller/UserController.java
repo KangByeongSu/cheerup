@@ -99,7 +99,7 @@ public class UserController {
 	public @ResponseBody Result userEdit(HttpServletRequest request, @PathVariable String userId, @RequestBody UserDTO userDTO){
 		Result jsonResult = new Result();
 		String sessionId = (String)request.getSession().getAttribute("id");
-
+		
 		
 		userDTO.setuId(userId);
 		

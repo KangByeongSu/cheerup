@@ -81,9 +81,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public String tmpUserUpdate(Locale locale, Model model) {
+	public ModelAndView tmpUserUpdate(HttpServletRequest request, HttpSession session, Locale locale, Model model) {
 		
-		return "modify";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("userId",session.getAttribute("id") );
+		mav.addObject("nickname",session.getAttribute("nickname") );
+		mav.setViewName("modify");
+		
+		return mav;
 	}
 	
 }
