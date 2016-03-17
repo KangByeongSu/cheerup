@@ -1,51 +1,53 @@
-$(document).ready(function() {	
-	var makeHashtag = function(message) {
-		var tmpMessage = "";
-		$.each(message.split(" "), function(i, v) {
-			if(v.indexOf("#") == 0) {
-				tmpMessage += '<span class="hashtag">'+v+'</span> '
-			} else {
-				tmpMessage += v+' ';
-			} 
-		});
-		return tmpMessage;
-// '<span class="hashtag">#스타벅스</span>' <span class="hashtag">#STARBUCKS</span>
-// <span class="hashtag">#텀블러</span> <span class="hashtag">#써니보틀</span> <span
-// class="hashtag">#물병</span>'+
 
-	};
-	
-	var makeComment=function(comment){
-		var tmpComment="";
-		$.each(comment, function(comment_index, comment_value){
-			
-		
-		tmpComment+="<p><span class='userId'>"+comment_value.userId+"</span>"+comment_value.message+"</p>"
-			
-			
-			
-		});
-		return tmpComment;
-	}
-	
-	
-	var makeLikeBtn=function(upList){
-		
-		var likeBtn = "";
-		
-		if($.inArray("user", upList) >= 0) {
-			likeBtn = '<img  src="/resources/img/like.png" />'
+
+var pageNo=1;
+var makeHashtag = function(message) {
+	var tmpMessage = "";
+	$.each(message.split(" "), function(i, v) {
+		if(v.indexOf("#") == 0) {
+			tmpMessage += '<span class="hashtag">'+v+'</span> '
 		} else {
-			likeBtn = '<img  src="/resources/img/like_.png" />'
-		}
-		
-		return likeBtn;
-	}
-		
+			tmpMessage += v+' ';
+		} 
+	});
+	return tmpMessage;
+//'<span class="hashtag">#스타벅스</span>' <span class="hashtag">#STARBUCKS</span>
+//<span class="hashtag">#텀블러</span> <span class="hashtag">#써니보틀</span> <span
+//class="hashtag">#물병</span>'+
 
+};
+
+var makeComment=function(comment){
+	var tmpComment="";
+	$.each(comment, function(comment_index, comment_value){
+		
 	
+	tmpComment+="<p><span class='userId'>"+comment_value.userId+"</span>"+comment_value.message+"</p>"
+		
+		
+		
+	});
+	return tmpComment;
+}
+
+
+var makeLikeBtn=function(upList){
+	
+	var likeBtn = "";
+	
+	if($.inArray("user", upList) >= 0) {
+		likeBtn = '<img  src="/resources/img/like.png" />'
+	} else {
+		likeBtn = '<img  src="/resources/img/like_.png" />'
+	}
+	
+	return likeBtn;
+}
+	
+
+var getFeedList=function(pageNo){
 	$.ajax({
-		url: "./feed/lists/1",
+		url: "./feed/lists/"+pageNo,
 		success:function(resData) {
 			if(resData.isSuccess) {
 				$(".likeBtn").off("click");
@@ -105,72 +107,8 @@ $(document).ready(function() {
 					
 				});
 				
-				$(".commentInput").keydown(function(key) {
-					
-					 if (key.keyCode == 13){
-						 var commentData = {		
-								  "feedId" : $(this).attr("feedId"),
-								  "message" : $(this).val()
-							};
-						 
-						 var addPosition=$(this).parent().parent().parent().children(".content").children(".comment").children(".commentList");
-						 $.ajax({
-								url : "./feed/comment",
-								type : 'POST', // define the type of HTTP verb
-												// we want to use (POST for our
-												// form)
-								data : JSON.stringify(commentData), // our data
-																	// object
-								contentType : "application/json",
-								charset : "utf-8",
-								success : function(resData) {
-									console.log(resData.msg)
-									addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span>"+commentData.message+"</p>");
-									$(".commentInput").val("");
-								},
-
-								error : function() {
-									
-									alert("알 수 없는 오류로 실패하였습니다.");
-								}
-							});
-					 }
-					
-
-					
-				});
 				
-				$(".likeBtn").click(function(e) {
-					var self=this;
-					$.ajax({
-				    	type:'post',
-				    	contentType: "application/json",
-				    	url: "./feed/like", 
-				    	data : JSON.stringify({
-				    		contentId: $(this).attr("feedId"),
-				    		up:1,
-				    		down:0
-				    	}),
-				    	dataType: 'json',
-				    	success: function(result){
-				    		if(result.isSuccess == 1) {
-				    			var elLikeNum = $(self).parent().parent().children(".likeCount").children(".likeNumData");
-				    			var likeNum = parseInt(elLikeNum.html());
-				    			
-				    			if($(self).children().attr("src") === "/resources/img/like.png" ) {
-					    			$(self).children().attr("src","/resources/img/like_.png");
-					    			elLikeNum.html(likeNum-1);
-					    		} else {
-		 			    			$(self).children().attr("src","/resources/img/like.png");
-		 			    			elLikeNum.html(likeNum+1);
-					    		}
-				    			
-				    		} else {
-				    			alert("fail");
-				    		}
-				    	}
-				    });
-				}) ;
+				
 				
 				
 			} else {
@@ -181,10 +119,87 @@ $(document).ready(function() {
 			alert("알 수 없는 오류로 실패하였습니다.");
 		}
 	});
+};
+$(document).ready(function() {	
+	
+	getFeedList(1);
 	
 	
+	
+	$(".commentInput").keydown(function(key) {
+		
+		 if (key.keyCode == 13){
+			 var commentData = {		
+					  "feedId" : $(this).attr("feedId"),
+					  "message" : $(this).val()
+				};
+			 
+			 var addPosition=$(this).parent().parent().parent().children(".content").children(".comment").children(".commentList");
+			 $.ajax({
+					url : "./feed/comment",
+					type : 'POST', // define the type of HTTP verb
+									// we want to use (POST for our
+									// form)
+					data : JSON.stringify(commentData), // our data
+														// object
+					contentType : "application/json",
+					charset : "utf-8",
+					success : function(resData) {
+						console.log(resData.msg)
+						addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span>"+commentData.message+"</p>");
+						$(".commentInput").val("");
+					},
+
+					error : function() {
+						
+						alert("알 수 없는 오류로 실패하였습니다.");
+					}
+				});
+		 }
+		
+
+		
+	});
+	
+	$(".likeBtn").click(function(e) {
+		var self=this;
+		$.ajax({
+	    	type:'post',
+	    	contentType: "application/json",
+	    	url: "./feed/like", 
+	    	data : JSON.stringify({
+	    		contentId: $(this).attr("feedId"),
+	    		up:1,
+	    		down:0
+	    	}),
+	    	dataType: 'json',
+	    	success: function(result){
+	    		if(result.isSuccess == 1) {
+	    			var elLikeNum = $(self).parent().parent().children(".likeCount").children(".likeNumData");
+	    			var likeNum = parseInt(elLikeNum.html());
+	    			
+	    			if($(self).children().attr("src") === "/resources/img/like.png" ) {
+		    			$(self).children().attr("src","/resources/img/like_.png");
+		    			elLikeNum.html(likeNum-1);
+		    		} else {
+		    			$(self).children().attr("src","/resources/img/like.png");
+		    			elLikeNum.html(likeNum+1);
+		    		}
+	    			
+	    		} else {
+	    			alert("fail");
+	    		}
+	    	}
+	    });
+	}) ;
+	
+	
+	$(".moreFeed").click(function(){
+		getFeedList(++pageNo);
+	});
 	
 });
+
 
 
 
