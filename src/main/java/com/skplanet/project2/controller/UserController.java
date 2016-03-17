@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.skplanet.project2.HomeController;
 import com.skplanet.project2.model.Result;
 import com.skplanet.project2.model.UserDTO;
 import com.skplanet.project2.service.UserService;

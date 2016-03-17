@@ -15,7 +15,6 @@ public class SignUpDAOImpl implements SignUpDAO {
 	
 	@Override
 	public int selectUserId(String userId) {
-		// TODO Auto-generated method stub
 		int cnt = sqlSession.selectOne("signup.selectUser", userId);
 		return cnt;
 	}

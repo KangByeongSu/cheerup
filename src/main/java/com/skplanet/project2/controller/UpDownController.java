@@ -26,7 +26,6 @@ public class UpDownController {
 	UpDownServiceImpl upDownService;
 
 	@RequestMapping(value = "/feed/like", method = RequestMethod.POST)
-	/* @RequestMapping(value = "/feed/like", method = RequestMethod.POST) */
 	public @ResponseBody Result callLike(HttpServletRequest request, @RequestBody LikeDTO like, Model model) {
 		logger.info("Enter in the UpDownController. ");
 		

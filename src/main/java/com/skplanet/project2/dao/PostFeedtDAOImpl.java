@@ -18,7 +18,6 @@ public class PostFeedtDAOImpl implements PostFeedDAO {
 
 	@Override
 	public int insertFeed(PostFeedDTO content) {
-		// TODO Auto-generated method stub
 		sqlSession.insert("postfeed.insertFeed", content);	
 		System.out.println(content.getId());
 		int c_id = content.getId();
@@ -27,7 +26,6 @@ public class PostFeedtDAOImpl implements PostFeedDAO {
 
 	@Override
 	public int insertHashTagList(int cId,List<String> hashlist) {
-		// TODO Auto-generated method stub
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("contentId", cId);
 		map.put("list", hashlist);

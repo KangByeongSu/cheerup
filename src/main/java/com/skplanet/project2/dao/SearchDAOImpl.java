@@ -20,7 +20,6 @@ public class SearchDAOImpl implements SearchDAO{
 	
 	@Override
 	public List<SearchDTO> selectinterestList(String hashtag, int pageNum, String type) {
-		// TODO Auto-generated method stub
 		List<SearchDTO> searchlist = new ArrayList<SearchDTO>();
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("hashtag", hashtag);

@@ -14,7 +14,6 @@ public class SignUpServiceImpl implements SignUpService{
 
 	@Override
 	public int checkUserId(String userId) {
-		// TODO Auto-generated method stub
 		int result = signupdao.selectUserId(userId);
 		return result;
 	}
