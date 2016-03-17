@@ -1,4 +1,6 @@
 var pageNo=1;
+var userId = $("#wrap").attr("userId");
+
 var makeHashtag = function(message) {
 	var tmpMessage = "";
 	$.each(message.split(" "), function(i, v) {
@@ -17,6 +19,7 @@ var makeHashtag = function(message) {
 
 var makeComment=function(comment){
 	var tmpComment="";
+	
 	$.each(comment, function(comment_index, comment_value){
 		
 
@@ -42,7 +45,7 @@ var makeLikeBtn=function(upList){
 	
 	var likeBtn = "";
 	
-	if($.inArray("user", upList) >= 0) {
+	if($.inArray(userId, upList) >= 0) {
 		likeBtn = '<img  src="/resources/img/like.png" />';
 	} else {
 		likeBtn = '<img  src="/resources/img/like_.png" />';
