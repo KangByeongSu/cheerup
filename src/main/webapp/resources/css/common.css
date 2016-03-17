@@ -400,28 +400,39 @@ a {
 	    text-decoration: none;
 }
 
-.content .search {
-	padding-left : 40px;
-}
-
-.search {
-	left : 50%;
-	margin-left : -183px;
-	top: 0;
-	height : 20px;
+@media not screen and (min-width : 601px) and (min-device-width: 601px)  {
+	
+	
+	.search {
+	    display:none;
+	}
 	
 }
 
-.search input {
-	border-radius : 15px;
-	border : solid 1px #edeeee;
-	font-size : 14px;
-	outline : 3px 10px 3px 26px;
-	padding : 3px 10px 3px 26px;
-	width : 178px;
-	z-index : 2;
-}
+@media screen and (min-width : 601px) and (min-device-width: 601px)  {
+	.content .search {
+		padding-left : 40px;
+		float: left;
+	}
+	
+	.search {
+		display:block;
+	    margin-left: 70px;
+	    margin-top: 6px;
+	    height: 20px;
+	}
+	
+	.search input {
+		border-radius : 15px;
+		border : solid 1px #edeeee;
+		font-size : 14px;
+		outline : 3px 10px 3px 26px;
+		padding : 3px 10px 3px 26px;
+		width : 178px;
+		z-index : 2;
+	}
 
+}
 
 
 
