@@ -15,20 +15,48 @@ var makeHashtag = function(message) {
 
 };
 
+
+
+var commentDelete=function(commentId){
+	
+	 $.ajax({
+			url : "./feed/comment/"+commentId,
+			type : 'delete', // define the type of HTTP verb
+							// we want to use (POST for our
+							// form)
+			charset : "utf-8",
+			success : function(resData) {
+				console.log(resData.msg)
+				$("#comment"+commentId).remove();
+			
+			},
+
+			error : function() {
+				
+				alert("알 수 없는 오류로 실패하였습니다.");
+			}
+		});
+
+}
+
+
 var makeComment=function(comment){
 	var tmpComment="";
 	$.each(comment, function(comment_index, comment_value){
 		
 
-		tmpComment+="<p><span class='userId'>"+comment_value.userId+"</span> "+comment_value.message;
+		tmpComment+="<p id='comment"+comment_value.commentId+"'><span class='userId'>"+comment_value.userId+"</span> "+comment_value.message;
 		
 		
-		if(comment_value.userId === userId) {
-			tmpComment+= " <img style='width:14px' src='/resources/img/delete.png' />"
+		if(comment_value.userId === $("#userId").text()) {
+			tmpComment+= "<span id='commentDelete"+comment_value.commentId+"'> <img style='width:14px' src='/resources/img/delete.png' /> </span>"
 		}
 		tmpComment+= "</p>";
+		
+	
 			
-		});
+	});
+	
 		return tmpComment;
 }
 	
@@ -109,8 +137,25 @@ var getFeedList=function(pageNo){
 						
 						$('.moreFeed').before(temp);
 						
+						
+						$.each(v.commentList,function(i,comment){
+							$("#commentDelete"+comment.commentId).click({param1 : comment.commentId},function(event){
+								commentDelete(event.data.param1);
+							});
+//							$("#commentDelete"+comment.commentId).on("click", function(comment,e) {
+//								commentDelete(e.comment.commentId);
+//							});
+						});
+						
+						
 					
 				});
+				
+				
+				$(".moreFeed").click(function(){
+					getFeedList(++pageNo);
+				});
+				
 				$(".commentInput").keydown(function(key) {
 					
 					 if (key.keyCode == 13){
@@ -131,8 +176,18 @@ var getFeedList=function(pageNo){
 								charset : "utf-8",
 								success : function(resData) {
 									console.log(resData.msg)
-									addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span> "+commentData.message+" <img style='width:14px' src='/resources/img/delete.png' /></p>");
+//									addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span> "+commentData.message+"<span id='commentDelete"+commentData.commentId+"'> <img style='width:14px' src='/resources/img/delete.png' /> </span>");
+//									$(".commentInput").val("");
+////									$("#commentDelete"+commentData.commentId).on("click", function(commentData,e) {
+////										commentDelete(e.commentData.commentId);
+////									});
+//									$("#commentDelete"+commentData.commentId).click({param1 : commentData.commentId},function(event){
+//										commentDelete(event.data.param1);
+//									});
+									
+									addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span> "+commentData.message+"<span> <img style='width:14px' src='/resources/img/delete.png' /> </span>");
 									$(".commentInput").val("");
+									
 								},
 
 								error : function() {
@@ -179,13 +234,10 @@ var getFeedList=function(pageNo){
 				}) ;
 				
 				
-				$(".moreFeed").click(function(){
-					getFeedList(++pageNo);
-				});
-				
 			} else {
 				alert("알 수 없는 오류로 실패하였습니다.");
 			}
+			
 			
 		},
 				
@@ -252,25 +304,3 @@ function commentUpdate(commentId,msg){
 		});
 
 }
-
-function commentDelete(commentId){
-	
-	 $.ajax({
-			url : "./feed/comment/"+commentId,
-			type : 'delete', // define the type of HTTP verb
-							// we want to use (POST for our
-							// form)
-			charset : "utf-8",
-			success : function(resData) {
-				console.log(resData.msg)
-				frontendCommentDelete();//frontend edit
-			},
-
-			error : function() {
-				
-				alert("알 수 없는 오류로 실패하였습니다.");
-			}
-		});
-
-}
-
