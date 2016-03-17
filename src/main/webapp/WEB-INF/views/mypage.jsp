@@ -37,6 +37,12 @@
 									프로필 편집 
 								</div>
 							</a>
+							<a href="/feed/add">
+								<div class="modifyBtn">
+									글쓰기  
+								</div>
+							</a>
+							
 						</c:if>
 					</div>
 					<!-- <div class="userIntro">

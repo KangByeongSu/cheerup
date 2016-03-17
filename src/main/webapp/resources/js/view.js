@@ -1,5 +1,3 @@
-
-
 var pageNo=1;
 var makeHashtag = function(message) {
 	var tmpMessage = "";
@@ -21,30 +19,38 @@ var makeComment=function(comment){
 	var tmpComment="";
 	$.each(comment, function(comment_index, comment_value){
 		
-	
-	tmpComment+="<p><span class='userId'>"+comment_value.userId+"</span>"+comment_value.message+"</p>"
+
+		tmpComment+="<p><span class='userId'>"+comment_value.userId+"</span> "+comment_value.message;
 		
 		
-		
-	});
-	return tmpComment;
+		if(comment_value.userId === userId) {
+			tmpComment+= " <img style='width:14px' src='/resources/img/delete.png' />"
+		}
+		tmpComment+= "</p>";
+			
+		});
+		return tmpComment;
 }
+	
+
+		
+
 
 
 var makeLikeBtn=function(upList){
 	
+	
 	var likeBtn = "";
 	
 	if($.inArray("user", upList) >= 0) {
-		likeBtn = '<img  src="/resources/img/like.png" />'
+		likeBtn = '<img  src="/resources/img/like.png" />';
 	} else {
-		likeBtn = '<img  src="/resources/img/like_.png" />'
+		likeBtn = '<img  src="/resources/img/like_.png" />';
 	}
 	
 	return likeBtn;
 }
 	
-
 var getFeedList=function(pageNo){
 	$.ajax({
 		url: "./feed/lists/"+pageNo,
@@ -78,43 +84,111 @@ var getFeedList=function(pageNo){
 									'<div class="text">'+
 										'<span class="userId">'+v.userId+'</span>'+
 										makeHashtag(v.message) + 
+
+										'</div>'+
+										'<div class="comment">'+
+											'<div class="commentList">'+
+											makeComment(v.commentList)+
+											'</div>'+
+										'</div>'+
 									'</div>'+
-									'<div class="comment">'+
-										'<div class="commentList">'+
-										makeComment(v.commentList)+
+									'<div class="commentAdd">'+
+										'<div feedId="'+v.feedId+'" class="likeBtn">'+
+											makeLikeBtn(v.upUserList)+
+											//'<img  src="./resources/img/like_.png" />'+
+										'</div>'+
+										'<div>'+
+											'<input feedId="'+v.feedId+'"class="commentInput" type="text" placeholder="댓글달기..." />'+
+										'</div>'+
+										'<div class="more">'+
+											'<img src="./resources/img/moreBtn.png" />'+
 										'</div>'+
 									'</div>'+
 								'</div>'+
-								'<div class="commentAdd">'+
-									'<div feedId="'+v.feedId+'" class="likeBtn">'+
-										makeLikeBtn(v.upUserList)+
-										//'<img  src="./resources/img/like_.png" />'+
-									'</div>'+
-									'<div>'+
-										'<input feedId="'+v.feedId+'"class="commentInput" type="text" placeholder="댓글달기..." />'+
-									'</div>'+
-									'<div class="more">'+
-										'<img src="./resources/img/moreBtn.png" />'+
-									'</div>'+
-								'</div>'+
-							'</div>'+
-						'</section>';
+							'</section>';
+						
+						$('.moreFeed').before(temp);
+						
 					
-					$('.moreFeed').before(temp);
+				});
+				$(".commentInput").keydown(function(key) {
 					
-				
+					 if (key.keyCode == 13){
+						 var commentData = {		
+								  "feedId" : $(this).attr("feedId"),
+								  "message" : $(this).val()
+							};
+						 
+						 var addPosition=$(this).parent().parent().parent().children(".content").children(".comment").children(".commentList");
+						 $.ajax({
+								url : "./feed/comment",
+								type : 'POST', // define the type of HTTP verb
+												// we want to use (POST for our
+												// form)
+								data : JSON.stringify(commentData), // our data
+																	// object
+								contentType : "application/json",
+								charset : "utf-8",
+								success : function(resData) {
+									console.log(resData.msg)
+									addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span> "+commentData.message+" <img style='width:14px' src='/resources/img/delete.png' /></p>");
+									$(".commentInput").val("");
+								},
+
+								error : function() {
+									
+									alert("알 수 없는 오류로 실패하였습니다.");
+								}
+							});
+					 }
 					
+
 					
 				});
 				
+				$(".likeBtn").click(function(e) {
+					var self=this;
+					$.ajax({
+				    	type:'post',
+				    	contentType: "application/json",
+				    	url: "./feed/like", 
+				    	data : JSON.stringify({
+				    		contentId: $(this).attr("feedId"),
+				    		up:1,
+				    		down:0
+				    	}),
+				    	dataType: 'json',
+				    	success: function(result){
+				    		if(result.isSuccess == 1) {
+				    			var elLikeNum = $(self).parent().parent().children(".likeCount").children(".likeNumData");
+				    			var likeNum = parseInt(elLikeNum.html());
+				    			
+				    			if($(self).children().attr("src") === "/resources/img/like.png" ) {
+					    			$(self).children().attr("src","/resources/img/like_.png");
+					    			elLikeNum.html(likeNum-1);
+					    		} else {
+					    			$(self).children().attr("src","/resources/img/like.png");
+					    			elLikeNum.html(likeNum+1);
+					    		}
+				    			
+				    		} else {
+				    			alert("fail");
+				    		}
+				    	}
+				    });
+				}) ;
 				
 				
-				
+				$(".moreFeed").click(function(){
+					getFeedList(++pageNo);
+				});
 				
 			} else {
 				alert("알 수 없는 오류로 실패하였습니다.");
 			}
+			
 		},
+				
 		error: function() {
 			alert("알 수 없는 오류로 실패하였습니다.");
 		}
@@ -123,80 +197,8 @@ var getFeedList=function(pageNo){
 $(document).ready(function() {	
 	
 	getFeedList(1);
-	
-	
-	
-	$(".commentInput").keydown(function(key) {
-		
-		 if (key.keyCode == 13){
-			 var commentData = {		
-					  "feedId" : $(this).attr("feedId"),
-					  "message" : $(this).val()
-				};
-			 
-			 var addPosition=$(this).parent().parent().parent().children(".content").children(".comment").children(".commentList");
-			 $.ajax({
-					url : "./feed/comment",
-					type : 'POST', // define the type of HTTP verb
-									// we want to use (POST for our
-									// form)
-					data : JSON.stringify(commentData), // our data
-														// object
-					contentType : "application/json",
-					charset : "utf-8",
-					success : function(resData) {
-						console.log(resData.msg)
-						addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span>"+commentData.message+"</p>");
-						$(".commentInput").val("");
-					},
 
-					error : function() {
-						
-						alert("알 수 없는 오류로 실패하였습니다.");
-					}
-				});
-		 }
-		
-
-		
-	});
 	
-	$(".likeBtn").click(function(e) {
-		var self=this;
-		$.ajax({
-	    	type:'post',
-	    	contentType: "application/json",
-	    	url: "./feed/like", 
-	    	data : JSON.stringify({
-	    		contentId: $(this).attr("feedId"),
-	    		up:1,
-	    		down:0
-	    	}),
-	    	dataType: 'json',
-	    	success: function(result){
-	    		if(result.isSuccess == 1) {
-	    			var elLikeNum = $(self).parent().parent().children(".likeCount").children(".likeNumData");
-	    			var likeNum = parseInt(elLikeNum.html());
-	    			
-	    			if($(self).children().attr("src") === "/resources/img/like.png" ) {
-		    			$(self).children().attr("src","/resources/img/like_.png");
-		    			elLikeNum.html(likeNum-1);
-		    		} else {
-		    			$(self).children().attr("src","/resources/img/like.png");
-		    			elLikeNum.html(likeNum+1);
-		    		}
-	    			
-	    		} else {
-	    			alert("fail");
-	    		}
-	    	}
-	    });
-	}) ;
-	
-	
-	$(".moreFeed").click(function(){
-		getFeedList(++pageNo);
-	});
 	
 });
 

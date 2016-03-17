@@ -41,7 +41,7 @@
 		Elephant_Comment comments
 		ON c_id=Elephant_Contents_c_id
 
-		ORDER BY c_time DESC,cm_time DESC
+		ORDER BY c_time DESC,cm_time 
 
 
 
