@@ -84,7 +84,7 @@
 			
 			
 			
-			<div class="moreFeed" nextFeed="2">
+			<div class="moreFeed" >
 				<span class="moreText"> 더 읽어들이기 </span>
 			</div>
 		</div>
