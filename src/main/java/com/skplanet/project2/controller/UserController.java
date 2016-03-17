@@ -45,7 +45,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public @ResponseBody Result Login(HttpSession session, 
+	public @ResponseBody Result login(HttpSession session, 
 			@RequestBody UserDTO inputUserDTO) {
 		
 		Result jsonResult = new Result();

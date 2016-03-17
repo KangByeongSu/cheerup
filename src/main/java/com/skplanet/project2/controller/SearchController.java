@@ -50,15 +50,9 @@ public class SearchController {
 	
 	
 	@RequestMapping(value = "/search/{type}/{hashtag}", method = RequestMethod.GET)
-	public ModelAndView getSearchList(HttpServletRequest request, @PathVariable(value="type") String type, @PathVariable(value = "hashtag") String hashtag,@RequestParam(value = "pageNum", defaultValue="0") int pageNum) {
-		HttpSession session = request.getSession();
+	public ModelAndView getSearchList(@PathVariable(value="type") String type, @PathVariable(value = "hashtag") String hashtag,@RequestParam(value = "pageNum", defaultValue="0") int pageNum) {
 		ModelAndView model = new ModelAndView("search");
-		
-		
-		
-		
 		List<SearchDTO> list = searchservice.searchInterestFeed(hashtag, pageNum,type);
-		
 		if(list.isEmpty()){
 			jsonResult.setIsSuccess(0);
 			jsonResult.setMsg("null");
@@ -71,8 +65,6 @@ public class SearchController {
 		logger.info("{}", list);
 		
 		model.addObject("lists", list);
-
-		
 		return model;
 	}
 

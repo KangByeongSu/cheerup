@@ -42,29 +42,8 @@ public class UserPageController {
 		HttpSession session = request.getSession();
 		ModelAndView model = new ModelAndView("mypage");
 		
-		Result jsonResult = new Result();
-		
-		
-		
-		UserImageGridDTO resultJson = new UserImageGridDTO();
-		
-//		String userId = "test1"; //dummy data
-		
 		List<ImageGridDTO> resultData = userService.userImageGridURL(userId);
 
-/*		 test case
-		
-		for (int i = 0; i < resultData.size(); i++) {
-			System.out.println(resultData.get(i).getContentId());
-			System.out.println(resultData.get(i).getImgUrl());
-			System.out.println(resultData.get(i).getLikeCount());
-			System.out.println(resultData.get(i).getCommentCount());
-		}
-*/
-		//add if success ??
-//		resultJson.setIsSuccess(1);
-//		resultJson.setMsg("success");
-//		resultJson.setImageGridDTO(resultData);
 		
 		model.addObject("lists", resultData);
 		
