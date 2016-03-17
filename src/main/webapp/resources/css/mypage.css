@@ -145,7 +145,7 @@ nav {
 	}
 	.mainContainer .navbar .userId_ .modifyBtn {
 		float: left;
-	    width: 57px;
+	    width: 50px;
 	    height: 13px;
 	    border: 1px solid #818488;
 	    border-radius: 4px;
@@ -252,23 +252,21 @@ nav {
 	
 	.mainContainer .navbar .userId__ {
 		float:left;
-		font-size: 34px;
+		font-size: 24px;
 	    line-height: 40px;
 	    color: #4b4f54;
 	    font-weight: 300;
 		margin-right: 25px;
-		
 	}
 	.mainContainer .navbar .userId_ .modifyBtn {
 		float:left;
-		width: 66px;
-	    height: 18px;
 	    border: 1px solid #818488;
 	    border-radius: 4px;
 	    color: #818488;
 	    padding: 6px 20px;
-	    font-size: 14px;
+	    font-size: 11px;
 	    margin-top: 3px;
+	    margin-right : 1px;
 	    cursor: pointer;
 	}
 	
