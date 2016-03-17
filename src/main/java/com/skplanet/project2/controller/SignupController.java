@@ -43,7 +43,7 @@ public class SignupController {
 	@RequestMapping(value = "/user/add", method = RequestMethod.POST)
 	public String addjoin(Locale locale, Model model,UserDTO user) {
 		signupService.signupUser(user);
-		return "redirect:/feed/lists/1";
+		return "redirect:/view";
 	}
 
 }

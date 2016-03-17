@@ -11,7 +11,7 @@
 		FROM
 		Elephant_User user
 		WHERE
-		u_id=#{uId} and u_pw=#{uPw}
+		u_id=#{uId} and u_pw=password(#{uPw})
 	</select>
 
 	<resultMap id="ImageGridMap" type="com.skplanet.project2.model.ImageGridDTO">
@@ -85,7 +85,7 @@
 		Elephant_User
 
 		set
-		u_nickname=#{uNickname},u_pw=#{uPw}
+		u_nickname=#{uNickname},u_pw=password(#{uPw})
 
 		where
 		u_id=#{uId}
