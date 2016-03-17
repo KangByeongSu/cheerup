@@ -17,9 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skplanet.project2.model.DetailModalDTO;
 import com.skplanet.project2.model.ImageGridDTO;
-import com.skplanet.project2.model.PostFeedDTO;
-import com.skplanet.project2.model.Result;
-import com.skplanet.project2.model.UserImageGridDTO;
 import com.skplanet.project2.service.UserService;
 
 @Controller
