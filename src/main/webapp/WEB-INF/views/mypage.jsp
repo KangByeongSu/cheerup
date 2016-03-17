@@ -145,19 +145,21 @@
 		var makeHashtag = function(message) {
 			var tmpMessage = "";
 			$.each(message.split(" "), function(i, v) {
+				
 				if(v.indexOf("#") == 0) {
-					tmpMessage += '<span class="hashtag">'+v+'</span> '
+					tmpMessage += '<span class="hashtag"><a href="/search/interest?hashtag='+v+'">'+v+'</a></span> '
 				} else {
 					tmpMessage += v+' ';
 				} 
 			});
+			console.log("tmpMessage : ", tmpMessage);
 			return tmpMessage;
 	
 		};
 		
 		var frontEndCommentAdd = function(){
 			
-			$('.commentList').append("<div class='commentItem'><span class='userId'>${sessionId}</span>"+$(".commentInput").val()+"</p>");
+			$('.commentList').append("<div class='commentItem'><span class='userId'> <a href='/user/test/${sessionId}'>${sessionId}</a></span>"+makeHashtag($(".commentInput").val())+"</p>");
 			$(".commentInput").val("");
 		}
 		
@@ -179,7 +181,6 @@
 						contentType : "application/json",
 						charset : "utf-8",
 						success : function(resData) {
-							console.log(resData.msg)
 							frontEndCommentAdd();
 						},
 
@@ -232,14 +233,12 @@
 		    	url: "../modal/"+itemId, 
 		    	success: function(result){
 		    		
-		    		console.log(result.detailPost.comment);
-		    		
 		    		$("#modal .imgSection img").attr("src",result.detailPost.imgUrl);
 		    		$("#modal .contentBody").html(makeHashtag(result.detailPost.comment));
 		    		$("#modal .date").html(jQuery.timeago(result.detailPost.time));
 		    		$("#modal .likeBtn").attr("feedId", itemId );
 		    		$("#modal .likeNumData").html(result.detailPost.likeCount);
-		    		console.log(result.detailPost.likeClicked == 0);
+		    		
 		    		if(result.detailPost.likeClicked == 0) {
 		    			$(".likeBtn").children().attr("src","/resources/img/like_.png");
 		    		} else {
@@ -251,7 +250,7 @@
 		    		
 		    		
 		    		$.each(result.commentList, function(i, v) {
-		    			$('.commentList').append("<div class='commentItem'><span class='userId'>"+v.userId+"</span>"+v.message+"</p>");
+		    			$('.commentList').append("<div class='commentItem'><span class='userId'> <a href='/user/test/"+v.userId+"'>"+v.userId+"</a></span>"+makeHashtag(v.message)+"</p>");
 		    		});
 		    		
 		    		$("#modal").css('top', $(document).scrollTop()+'px');

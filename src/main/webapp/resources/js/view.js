@@ -3,7 +3,7 @@ var makeHashtag = function(message) {
 	var tmpMessage = "";
 	$.each(message.split(" "), function(i, v) {
 		if(v.indexOf("#") == 0) {
-			tmpMessage += '<span class="hashtag">'+v+'</span> '
+			tmpMessage += '<span class="hashtag"><a href="/search/interest?hashtag='+v+'">'+v+'</a></span> ';
 		} else {
 			tmpMessage += v+' ';
 		} 
@@ -20,7 +20,7 @@ var makeComment=function(comment){
 	$.each(comment, function(comment_index, comment_value){
 		
 
-		tmpComment+="<p><span class='userId'>"+comment_value.userId+"</span> "+comment_value.message;
+		tmpComment+="<p><span class='userId'> <a href='/user/test/"+comment_value.userId+"'>"+comment_value.userId+"</a></span> "+makeHashtag(comment_value.message);
 		
 		
 		if(comment_value.userId === userId) {
@@ -66,7 +66,7 @@ var getFeedList=function(pageNo){
 								'<div class="userImg">' +
 									'<img src="'+ v.imgurl +'" />' +
 									 '<span class="userId">' +
-									 	v.userId +
+									 	'<a href="/user/test/'+v.userId+'">'+v.userId + '</a>' +
 									 '</span>'+
 								'</div>'+
 								'<div class="updateTime">'+
@@ -131,7 +131,7 @@ var getFeedList=function(pageNo){
 								charset : "utf-8",
 								success : function(resData) {
 									console.log(resData.msg)
-									addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span> "+commentData.message+" <img style='width:14px' src='/resources/img/delete.png' /></p>");
+									addPosition.append("<p><span class='userId'><a href='/user/test/"+$("#userId").text()+"'>"+$("#userId").text()+"</a></span> "+makeHashtag(commentData.message)+" <img style='width:14px' src='/resources/img/delete.png' /></p>");
 									$(".commentInput").val("");
 								},
 

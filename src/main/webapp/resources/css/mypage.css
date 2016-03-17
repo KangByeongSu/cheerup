@@ -2,6 +2,10 @@ body {
 	margin:0px;
 	background-color: #fafafa;
 }
+a{
+	    color: #125688;
+	     text-decoration:none;
+}
 p {
 	margin:0px;
 }
@@ -503,6 +507,11 @@ nav {
 }
 
 
+
+.commentItem .hashtag {
+		font-weight:400;
+		color: #125688;
+	}
 
 
 
