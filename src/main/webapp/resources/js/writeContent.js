@@ -16,37 +16,7 @@
 	removeInput.className = removeInput.className.replace(/(^|\s)no-js(\s|$)/,
 			"$1js$2");
 
-	/**
-	 * @method : Hashtag recognization Event (still developing...)
-	 * discuss in codereview time
-	 */
-	/*document
-			.getElementById("styled")
-			.addEventListener(
-					"input",
-					function(e) {
-						var input_value = e.target.value;
-						// 1. input을 받아온다.
-						// 2. 받아온 input 전체를 div에 +=한다.
-						// 3. input을 비운다.
-						// 4. div의 value를 파싱한다.
-						console.log("input_value : ", input_value);
 
-						var hashtagSplit = input_value.split("#");
-						var textareaData = hashtagSplit[0];
-
-						for (var i = 1, max = hashtagSplit.length; i < max; i += 1) {
-							var hashtagTemp = hashtagSplit[i].split(" ");
-							var hashtag = hashtagTemp[0];
-							textareaData += "<span style='color: red'>#"
-									+ hashtag + "</span>";
-							for (var j = 1, temp_max = hashtagTemp.length; j < temp_max; j += 1) {
-								textareaData += hashtagTemp[j];
-							}
-						}
-						// document.getElementById("adapted-hashtag").innerHTML
-						// = textareaData;
-					});*/
 
 	/**
 	 * @method : submit click event - submit clientside validation

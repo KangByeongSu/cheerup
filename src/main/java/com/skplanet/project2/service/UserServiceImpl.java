@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService {
 	public List<ImageGridDTO> userImageGridURL(String userId) {
 		
 		List<ImageGridDTO> result = userDAO.userImageGridURL(userId); 
-		//카운트 뽑아야한다.
 		
 		for(int i=0; i<result.size();i++)
 		{
@@ -39,7 +38,6 @@ public class UserServiceImpl implements UserService {
 			temp.setLikeCount(likeCount);
 			int commentCount = userDAO.commentCount(temp.getContentId());
 			temp.setCommentCount(commentCount);
-			//System.out.println("like COunt : " + likeCount + "Comment Count : "+ commentCount);
 		}
 		return result; 
 	}

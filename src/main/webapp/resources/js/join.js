@@ -6,25 +6,7 @@ $(document).ready(function() {
 	
 	$("#register-form").validate({
 		 rules: {
-			    /*uId: {
-	                required: true,
-	                minlength: 5,
-	                remote: {
-	                    url:  "./check",
-	                    type: "GET",
-	                    data: {
-							"userId" : function(){
-								return $("#checkid").val();
-							}
-						},
-						success : function(resData) {
-							//$("#checkidtext").html(resData.msg);
-							resultText = resData.msg;
-						    console.log(resultText);
-						    
-						}
-	                  }
-	            },*/
+			    
 	            uPw: {
 	                required: true,
 	                minlength: 5
@@ -37,11 +19,7 @@ $(document).ready(function() {
 	            uNickname: "required"
 	        },
 	        messages: {
-	        	/*uId: {
-	                required: "아이디를 입력해줘",
-	                minlength: "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능해.",
-	                remote : resultText
-	            },*/
+	        	
 	        	uPw: {
 	                required: "패스워드를 입력해주세요",
 	                minlength: "비밀번호는 5자리 이상입니다"

@@ -16,7 +16,6 @@ public class SearchServiceImpl implements SearchService {
 	
 	@Override
 	public List<SearchDTO> searchInterestFeed(String hashtag, int pageNum,String type) {
-		// TODO Auto-generated method stub
 		return searchdao.selectinterestList(hashtag, pageNum,type);
 	}
 	
