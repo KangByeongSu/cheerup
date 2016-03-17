@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="<c:url value='/resources/css/common.css' />" type="text/css" />
 </head>
 <body>
-	<div id="wrap">
+	<div id="wrap" userId="${userId}">
 		<nav class="navbar">
 			<div class="content">
 				<div class="logo">

@@ -1,4 +1,5 @@
 $(document).ready(function() {	
+	var userId = $("#wrap").attr("userId");
 	
 	$(".moreFeed").click(function() {
 		var nextFeed = parseInt($(this).attr("nextFeed"));
@@ -29,9 +30,13 @@ $(document).ready(function() {
 		$.each(comment, function(comment_index, comment_value){
 			
 		
-		tmpComment+="<p><span class='userId'>"+comment_value.userId+"</span>"+comment_value.message+"</p>"
-			
-			
+		tmpComment+="<p><span class='userId'>"+comment_value.userId+"</span> "+comment_value.message;
+		
+		
+		if(comment_value.userId === userId) {
+			tmpComment+= " <img style='width:14px' src='/resources/img/delete.png' />"
+		}
+		tmpComment+= "</p>";
 			
 		});
 		return tmpComment;
@@ -42,7 +47,7 @@ $(document).ready(function() {
 		
 		var likeBtn = "";
 		
-		if($.inArray("user", upList) >= 0) {
+		if($.inArray(userId, upList) >= 0) {
 			likeBtn = '<img  src="/resources/img/like.png" />'
 		} else {
 			likeBtn = '<img  src="/resources/img/like_.png" />'
@@ -135,7 +140,7 @@ $(document).ready(function() {
 									charset : "utf-8",
 									success : function(resData) {
 										console.log(resData.msg)
-										addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span>"+commentData.message+"</p>");
+										addPosition.append("<p><span class='userId'>"+$("#userId").text()+"</span> "+commentData.message+" <img style='width:14px' src='/resources/img/delete.png' /></p>");
 										$(".commentInput").val("");
 									},
 
