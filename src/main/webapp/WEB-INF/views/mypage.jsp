@@ -147,7 +147,7 @@
 			$.each(message.split(" "), function(i, v) {
 				
 				if(v.indexOf("#") == 0) {
-					tmpMessage += '<span class="hashtag"><a href="/search/interest?hashtag='+v+'">'+v+'</a></span> '
+					tmpMessage += '<span class="hashtag"><a href="/search/interest?hashtag='+v.substring(1,v.length)+'">'+v+'</a></span> '
 				} else {
 					tmpMessage += v+' ';
 				} 
