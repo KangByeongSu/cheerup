@@ -49,7 +49,7 @@
 		});
 		
 		$("#joinBtn").click(function() {
-			location.href="./join";
+			location.href="./user/add";
 		});
 		
 		$("#loginBtn").click(function(){
