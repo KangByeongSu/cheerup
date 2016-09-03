@@ -11,64 +11,69 @@
             box-sizing: border-box;
         }
         .header {
-            width: 100%;
+            width: 980px;
+            height: 80px;
+            margin: auto;
             position: relative;
             border-bottom: 1px solid black;
         }
         .header .login {
-            position: relative;
-            right: 10px;
+            width: 397px;
+            height: 40px;
+            float: right;
+            margin: 20px;
         }
-        .header .login .id {
-            width: 100px;
+        .header .login * {
+            padding: 8px;
         }
-        .header .login .pwd {
-            width: 100px;
+        .header .login .login_text_box {
+            padding: 3px;
+            width: 32.3%;
         }
         .wrapper {
-            width: 100%;
+            width: 980px;
+            margin: auto;
             height: 100%;
             display: block-inline;
         }
         .image {
             width: 500px;
             height: 400px;
-            margin-top: 100px;
-            margin-left: 100px;
+            margin: 20px;
             float: left;
-            border: 1px solid black;
         }
         .form {
             width: 400px;
-            height: 400px;
-            margin-top: 100px;
-            margin-left: 50px;
             float: left;
-            border: 1px solid black;
+            margin: 20px;
+            padding: 0px;
         }
         .join {
             width: auto;
         }
-
-        .join .hundred_width {
+        .join * {
+            padding: 8px;
+        }
+        .join .hundred_width, .birth{
             width: 100%;
+            margin: 2px;
         }
         .join .birth {
             white-space: nowrap;
-        }
-        .join .privacy .privacy_contents {
-            overflow: scroll;
-            overflow-x: hidden;
-            height: 150px;
-            padding: 10px;
-        }
-        .join .privacy .privacy_check {
-            text-align: right;
-            white-space: nowrap;
+            padding: 0px;
+            border: 1px solid lightgray;
+            background-color: white;
         }
         .join .radio {
             text-align: center;
             white-space: nowrap;
+        }
+
+        .image {
+            font-family: sans-serif;
+            font-size: 84pt;
+            font-weight: bolder;
+            color: black;
         }
     </style>
 </head>
@@ -77,20 +82,27 @@
     <div class="header">
         <div class="login">
             <form action="#" accept-charset="utf-8" name="login_info" method="post">
-                <input type="text" name="email" placeholder="e-mail">
-                <input type="text" name="password" placeholder="password">
-                <input type="submit" value="Login"/>
+                <input type="text" class="login_text_box" name="email" placeholder="E-mail">
+                <input type="password" class="login_text_box"  name="password" placeholder="Password">
+                <input type="submit" class="login_text_box"  value="SIGN IN"/>
             </form>
         </div>
     </div>
     <div class="wrapper">
-        <div class="image"></div>
+        <div class="image">
+            AaBbCc<br>
+            DdEeFfGg
+        </div>
         <div class="form">
             <div class="join">
                 <form action="#" accept-charset="utf-8" name="login_info" method="post">
-                    <input type="text" class="hundred_width" name="name" placeholder="name">
-                    <input type="text" class="hundred_width" name="phone" placeholder="phone">
+                    <input type="text" class="hundred_width" name="name" placeholder="Name">
+                    <input type="text" class="hundred_width" name="phone" placeholder="Phone">
+                    <input type="text" class="hundred_width" name="email" placeholder="E-mail">
+                    <input type="password" class="hundred_width" name="password" placeholder="Password">
+                    <input type="password" class="hundred_width" name="confirm_password" placeholder="Confirm Password">
                     <div class="birth">
+                        <label for="birth">Birth</label>
                         <select name="year">
                             <option value="2016">2016</option>
                             <option value="2015">2015</option>
@@ -187,26 +199,11 @@
                             <option value="31">31</option>
                         </select>
                     </div>
-                    <input type="text" class="hundred_width" name="email" placeholder="e-mail">
-                    <input type="password" class="hundred_width" name="password" placeholder="password">
-                    <input type="password" class="hundred_width" name="confirm_password" placeholder="confirm password">
-                    <div class="privacy">
-                        <div class="privacy_contents">
-                            <p>
-                                1. 개인정보 취급 동의<br>
-                                가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-                            </p>
-                        </div>
-                        <div class="privacy_check">
-                            개인정보 취급 동의
-                            <input type="checkbox" class="checkbox_button" neme="agree" width="1em">
-                        </div>
-                    </div>
                     <div class="radio">
-                        <label for="c">취준</label><input type="radio" class="radio_button" name="cj" value="c" checked="checked">
-                        <label for="j">직딩</label><input type="radio" class="radio_button" name="cj" value="j" >
+                        <label for="c">취업준비생</label><input type="radio" class="radio_button" name="cj" value="c" checked="checked">
+                        <label for="j">직장인</label><input type="radio" class="radio_button" name="cj" value="j" >
                     </div>
-                    <input type="submit" class="hundred_width" value = "Join"/>
+                    <input type="submit" class="hundred_width" value = "SIGN UP"/>
                 </form>
             </div>
         </div>
